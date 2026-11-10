@@ -5,42 +5,105 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>RA - Riyan Ahmed | P.D.B High School</title>
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
-body{background:linear-gradient(135deg,#1a0033,#2a0a6b 40%,#0a1a5e);color:#fff;text-align:center}
-nav{display:flex;justify-content:space-between;align-items:center;padding:15px 25px;background:rgba(0,0,0,.3);border-bottom:1px solid #00d4ff}
-.logo{width:55px;height:55px;border:2px solid #00d4ff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:22px;color:#00d4ff;box-shadow:0 0 15px #7b2ff7}
-nav a{color:#00d4ff;text-decoration:none;margin:0 10px;font-size:13px}
-.hero{padding:50px 20px;margin:20px;border-radius:15px;background:rgba(255,255,255,.08);border:1px solid rgba(0,212,255,.4)}
-.hero-logo{width:90px;height:90px;margin:0 auto;border:2px solid #00d4ff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:32px;font-weight:900;color:#00d4ff;box-shadow:0 0 25px #7b2ff7}
-h1{font-size:32px;margin:15px 0 5px;background:linear-gradient(90deg,#c084fc,#00d4ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:2px}
-.sub{color:#fff;font-size:16px}
-.tag{margin:15px 0;color:#a5f3fc;font-size:13px}
-.btn{padding:10px 20px;margin:5px;border:1px solid #00d4ff;background:transparent;color:#00d4ff;cursor:pointer;border-radius:25px}
-.btn-gold{background:linear-gradient(90deg,#7b2ff7,#00d4ff);color:#fff;font-weight:bold;border:none;box-shadow:0 0 15px #7b2ff7}
-.section{padding:30px 20px;text-align:left;max-width:800px;margin:0 auto}
-h2{color:#00d4ff;font-size:24px;margin-bottom:10px}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:15px;margin-top:15px}
-.card{border:1px solid rgba(0,212,255,.4);padding:20px;border-radius:15px;background:rgba(0,0,0,.35)}
-.card b{color:#fff;font-size:18px}
-.card p{color:#a5f3fc;font-size:13px;margin-top:5px}
-.rule{border:1px solid rgba(0,212,255,.4);padding:20px;border-radius:15px;margin-top:15px;background:rgba(0,0,0,.35)}
-.loc{color:#fff;font-size:15px;margin-top:8px}
-.school-box{border:1px solid rgba(0,212,255,.4);background:rgba(0,0,0,.35);padding:20px;border-radius:15px;margin-top:15px}
-footer{padding:20px;color:#a5f3fc;font-size:12px;border-top:1px solid #00d4ff}
-.music-box{position:fixed;bottom:15px;right:15px;background:linear-gradient(90deg,#7b2ff7,#00d4ff);color:#fff;padding:12px 16px;border-radius:30px;font-weight:bold;cursor:pointer;z-index:99}
-.now-playing{font-size:12px;color:#00d4ff;margin-top:10px}
-@media(max-width:600px){.grid{grid-template-columns:1fr}h1{font-size:26px}}
+  *{margin:0;padding:0;box-sizing:border-box;font-family:Arial, sans-serif}
+  body{background:url('bg.jpg') center/cover fixed no-repeat; color:#fff;text-align:center;min-height:100vh}
+  body::before{content:"";position:fixed;inset:0;background:rgba(0,0,0,0.55);z-index:-1}
+  nav{display:flex;justify-content:space-between;align-items:center;padding:15px 25px;background:rgba(0,0,0,0.5);border-bottom:1px solid #00d4ff}
+  .logo{width:55px;height:55px;border:2px solid #00d4ff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:22px;color:#00d4ff;box-shadow:0 0 15px #7b2ff7}
+  nav a{color:#00d4ff;text-decoration:none;margin:0 10px;font-size:13px;letter-spacing:1px}
+  .hero{padding:50px 20px;margin:20px;border-radius:15px;background:rgba(0,0,0,0.45);border:1px solid rgba(0,212,255,0.4)}
+  .hero-logo{width:90px;height:90px;margin:0 auto;border:2px solid #00d4ff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:32px;font-weight:900;color:#00d4ff;box-shadow:0 0 25px #7b2ff7}
+  h1{font-size:32px;margin:15px 0 5px;background:linear-gradient(90deg,#c084fc,#00d4ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:2px}
+  .sub{color:#fff;font-size:16px}
+  .tag{margin:15px 0;color:#a5f3fc;font-size:13px;letter-spacing:1px}
+  .btn{padding:10px 20px;margin:5px;border:1px solid #00d4ff;background:transparent;color:#00d4ff;cursor:pointer;border-radius:25px}
+  .btn-gold{background:linear-gradient(90deg,#7b2ff7,#00d4ff);color:#fff;font-weight:bold;border:none;box-shadow:0 0 15px #7b2ff7}
+  .section{padding:30px 20px;text-align:left;max-width:800px;margin:0 auto}
+  h2{color:#00d4ff;font-size:24px;margin-bottom:10px}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:15px;margin-top:15px}
+  .card{border:1px solid rgba(0,212,255,0.4);padding:20px;border-radius:15px;background:rgba(0,0,0,0.55)}
+  .card b{color:#fff;font-size:18px}
+  .card p{color:#a5f3fc;font-size:13px;margin-top:5px}
+  .rule{border:1px solid rgba(0,212,255,0.4);padding:20px;border-radius:15px;margin-top:15px;background:rgba(0,0,0,0.55)}
+  .loc{color:#fff;font-size:15px;margin-top:8px}
+  .school-box{border:1px solid rgba(0,212,255,0.4);background:rgba(0,0,0,0.55);padding:20px;border-radius:15px;margin-top:15px}
+  footer{padding:20px;color:#a5f3fc;font-size:12px;border-top:1px solid #00d4ff;background:rgba(0,0,0,0.5)}
+  .music-box{position:fixed;bottom:15px;right:15px;background:linear-gradient(90deg,#7b2ff7,#00d4ff);color:#fff;padding:12px 16px;border-radius:30px;font-weight:bold;cursor:pointer;z-index:99}
+  @media(max-width:600px){.grid{grid-template-columns:1fr} h1{font-size:26px}}
 </style>
 </head>
 <body>
-<nav><div class="logo">RA</div><div><a href="#">HOME</a><a href="#goals">GOALS</a><a href="#sports">SPORTS</a><a href="#life">MY LIFE</a></div></nav>
-<div class="hero"><div class="hero-logo">RA</div><h1>RIYAN AHMED</h1><div class="sub">Aspiring Scientist • P.D.B High School</div><div class="tag">DRIVEN BY CURIOSITY • BUILDING THE FUTURE THROUGH SCIENCE & INNOVATION</div><div class="loc">📍 Location: Bheramara, Kushtia, Bangladesh</div><div class="loc">🎓 School: P.D.B High School</div><button class="btn">DOWNLOAD CV</button><button class="btn btn-gold" onclick="document.getElementById('bgMusic').play()">▶ PLAY XTALI</button><div class="now-playing">🎵 Now Playing: XTALI - PHONK</div></div>
-<div class="section" id="goals"><h2>MY GOALS</h2><p>Focusing on scientific research, continuous learning, and creating impact through innovation and discipline.</p><p style="margin-top:10px">✓ Become a scientist<br>✓ Build my own programming language, as powerful as Swift or Kotlin</p></div>
-<div class="section" id="sports"><h2 style="text-align:center">SPORTS GAMES & MORE</h2><div class="grid"><div class="card"><b>⚽ Outdoor</b><p>Football as CB • Badminton</p></div><div class="card"><b>🧩 Indoor</b><p>Puzzles • Chess • Ludo • Free Fire</p></div><div class="card"><b>🎬 Watching</b><p>Anime: Naruto, Jujutsu Kaisen, One Punch Man</p></div><div class="card"><b>💪 Fitness</b><p>Calisthenics • Gym • Building body</p></div></div></div>
-<div class="section"><h2>🎓 EDUCATION</h2><div class="school-box"><p><b style="color:#fff;font-size:18px">P.D.B High School</b></p><p style="margin-top:5px">Class 10 • Science Group • SSC Candidate</p><p>Bheramara, Kushtia</p></div></div>
-<div class="section" id="life"><h2 style="text-align:center">MY LIFE MY RULE</h2><div class="rule"><p>I am Riyan Ahmed from Bheramara, Kushtia, Bangladesh.</p><br><p>I study at P.D.B High School. I am currently in Class 10 (Science group), and I am an SSC candidate.</p><br><p>My main focus now is my career and building a solid future in the tech world. I love coding, AI and math.</p><br><p>Discipline. Consistency. Growth. Living by my own principles.</p></div></div>
+
+<nav>
+  <div class="logo">RA</div>
+  <div><a href="#">HOME</a><a href="#goals">GOALS</a><a href="#sports">SPORTS</a><a href="#life">MY LIFE</a></div>
+</nav>
+
+<div class="hero">
+  <div class="hero-logo">RA</div>
+  <h1>RIYAN AHMED</h1>
+  <div class="sub">Aspiring Scientist • P.D.B High School</div>
+  <div class="tag">DRIVEN BY CURIOSITY • BUILDING THE FUTURE THROUGH SCIENCE & INNOVATION</div>
+  <div class="loc">📍 Location: Bheramara, Kushtia, Bangladesh</div>
+  <div class="loc">🎓 School: P.D.B High School</div>
+  <button class="btn">DOWNLOAD CV</button>
+  <button class="btn btn-gold">CONTACT ME</button>
+</div>
+
+<div class="section" id="goals">
+  <h2>MY GOALS</h2>
+  <p>Focusing on scientific research, continuous learning, and creating impact through innovation and discipline.</p>
+  <p style="margin-top:10px">✓ Become a scientist<br>✓ Build my own programming language, as powerful as Swift or Kotlin</p>
+</div>
+
+<div class="section" id="sports">
+  <h2 style="text-align:center">SPORTS GAMES & MORE</h2>
+  <div class="grid">
+    <div class="card"><b>⚽ Outdoor</b><p>Football • Badminton • Cricket</p></div>
+    <div class="card"><b>🧩 Indoor</b><p>Free Fire • Minecraft • Roblox</p></div>
+    <div class="card"><b>🎬 Watching</b><p>Anime: True Love, Love Forever, Your Name</p></div>
+    <div class="card"><b>💪 Fitness</b><p>Gym • Build an Aesthetic Body</p></div>
+    <div class="card"><b>❤️ Tomar Jonno</b><p>I Love N....!</p></div>
+  </div>
+</div>
+
+<div class="section">
+  <h2>🎓 EDUCATION</h2>
+  <div class="school-box">
+    <p><b style="color:#fff;font-size:18px">P.D.B High School</b></p>
+    <p style="margin-top:5px">Class 8 • Science Group</p>
+    <p>Bheramara, Kushtia</p>
+  </div>
+</div>
+
+<div class="section" id="life">
+  <h2 style="text-align:center">MY LIFE MY RULE</h2>
+  <div class="rule">
+    <p>I am Riyan Ahmed from Bheramara, Kushtia, Bangladesh.</p><br>
+    <p>I study at P.D.B High School. I am currently in Class 8 (Science group).</p><br>
+    <p>My main focus now is my career and building a solid future in the tech world. I love coding, AI and math.</p><br>
+    <p>Discipline. Consistency. Growth. Living by my own principles.</p>
+  </div>
+</div>
+
 <footer>© 2024 RIYAN AHMED • P.D.B HIGH SCHOOL • BHERAMARA, KUSHTIA • RA</footer>
-<audio id="bgMusic" loop><source src="music.mp3" type="audio/mpeg"></audio>
-<div class="music-box" onclick="let m=document.getElementById('bgMusic'); if(m.paused){m.play(); this.innerText='⏸ XTALI - PAUSE'} else {m.pause(); this.innerText='▶ PLAY XTALI'}">▶ PLAY XTALI</div>
+
+<audio id="bgMusic" loop autoplay>
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<div class="music-box" id="musicBtn" onclick="let m=document.getElementById('bgMusic'); if(m.paused){m.play(); this.innerText='⏸ XTALI - PAUSE'} else {m.pause(); this.innerText='▶ PLAY XTALI'}">▶ PLAY XTALI</div>
+
+<script>
+  window.addEventListener('load', function(){
+    let m = document.getElementById('bgMusic');
+    m.play().catch(()=>{});
+  });
+  document.addEventListener('click', function(){
+    let m = document.getElementById('bgMusic');
+    if(m.paused){ m.play().catch(()=>{}); document.getElementById('musicBtn').innerText='⏸ XTALI - PAUSE'; }
+  }, {once:true});
+</script>
+
 </body>
 </html>
