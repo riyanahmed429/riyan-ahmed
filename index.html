@@ -1,109 +1,111 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="bn">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>RA - Riyan Ahmed | P.D.B High School</title>
+<title>Riyan Ahmed - XTALI</title>
 <style>
-  *{margin:0;padding:0;box-sizing:border-box;font-family:Arial, sans-serif}
-  body{background:url('bg.jpg') center/cover fixed no-repeat; color:#fff;text-align:center;min-height:100vh}
-  body::before{content:"";position:fixed;inset:0;background:rgba(0,0,0,0.55);z-index:-1}
-  nav{display:flex;justify-content:space-between;align-items:center;padding:15px 25px;background:rgba(0,0,0,0.5);border-bottom:1px solid #00d4ff}
-  .logo{width:55px;height:55px;border:2px solid #00d4ff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:22px;color:#00d4ff;box-shadow:0 0 15px #7b2ff7}
-  nav a{color:#00d4ff;text-decoration:none;margin:0 10px;font-size:13px;letter-spacing:1px}
-  .hero{padding:50px 20px;margin:20px;border-radius:15px;background:rgba(0,0,0,0.45);border:1px solid rgba(0,212,255,0.4)}
-  .hero-logo{width:90px;height:90px;margin:0 auto;border:2px solid #00d4ff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:32px;font-weight:900;color:#00d4ff;box-shadow:0 0 25px #7b2ff7}
-  h1{font-size:32px;margin:15px 0 5px;background:linear-gradient(90deg,#c084fc,#00d4ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:2px}
-  .sub{color:#fff;font-size:16px}
-  .tag{margin:15px 0;color:#a5f3fc;font-size:13px;letter-spacing:1px}
-  .btn{padding:10px 20px;margin:5px;border:1px solid #00d4ff;background:transparent;color:#00d4ff;cursor:pointer;border-radius:25px}
-  .btn-gold{background:linear-gradient(90deg,#7b2ff7,#00d4ff);color:#fff;font-weight:bold;border:none;box-shadow:0 0 15px #7b2ff7}
-  .section{padding:30px 20px;text-align:left;max-width:800px;margin:0 auto}
-  h2{color:#00d4ff;font-size:24px;margin-bottom:10px}
-  .grid{display:grid;grid-template-columns:1fr 1fr;gap:15px;margin-top:15px}
-  .card{border:1px solid rgba(0,212,255,0.4);padding:20px;border-radius:15px;background:rgba(0,0,0,0.55)}
-  .card b{color:#fff;font-size:18px}
-  .card p{color:#a5f3fc;font-size:13px;margin-top:5px}
-  .rule{border:1px solid rgba(0,212,255,0.4);padding:20px;border-radius:15px;margin-top:15px;background:rgba(0,0,0,0.55)}
-  .loc{color:#fff;font-size:15px;margin-top:8px}
-  .school-box{border:1px solid rgba(0,212,255,0.4);background:rgba(0,0,0,0.55);padding:20px;border-radius:15px;margin-top:15px}
-  footer{padding:20px;color:#a5f3fc;font-size:12px;border-top:1px solid #00d4ff;background:rgba(0,0,0,0.5)}
-  .music-box{position:fixed;bottom:15px;right:15px;background:linear-gradient(90deg,#7b2ff7,#00d4ff);color:#fff;padding:12px 16px;border-radius:30px;font-weight:bold;cursor:pointer;z-index:99}
-  @media(max-width:600px){.grid{grid-template-columns:1fr} h1{font-size:26px}}
+* { margin:0; padding:0; box-sizing:border-box; font-family: Arial, sans-serif; }
+body { background:#000; color:white; text-align:center; overflow-x:hidden; }
+.hero { min-height:100vh; background: url('bg.jpg') no-repeat center center/cover; display:flex; flex-direction:column; justify-content:center; align-items:center; position:relative; }
+.hero::before { content:''; position:absolute; inset:0; background:rgba(0,0,0,0.45); }
+.hero > * { position:relative; z-index:2; }
+h1 { font-size:48px; text-shadow:0 0 20px #ff0055; }
+p { margin:10px 0 20px; font-size:18px; }
+.btn { background:#ff0055; color:white; border:none; padding:14px 30px; font-size:18px; border-radius:50px; cursor:pointer; font-weight:bold; box-shadow:0 0 20px #ff0055; }
+.follow-box { background:rgba(0,0,0,0.6); border:1px solid rgba(255,255,255,0.3); padding:15px 20px; border-radius:20px; margin:15px 0; }
+.follow-count { font-size:22px; font-weight:bold; margin-bottom:10px; }
+.follow-count span { color:#ff0055; font-size:26px; }
+.follow-btn { background:#0095f6; color:white; border:none; padding:12px 35px; font-size:18px; border-radius:50px; cursor:pointer; font-weight:bold; }
+.follow-btn.followed { background:#333; border:1px solid #555; }
+.game-zone { background:#111; padding:30px 10px 40px; }
+.game-zone h2 { font-size:28px; margin-bottom:5px; color:#00ff88; }
+.game-zone p { font-size:14px; opacity:0.7; margin-bottom:15px; }
+#gameBox { background:white; max-width:600px; height:180px; margin:0 auto; border-radius:12px; position:relative; overflow:hidden; }
+canvas { width:100%; height:100%; display:block; }
+#score { position:absolute; top:8px; right:12px; color:#333; font-weight:bold; }
+#gameOver { position:absolute; inset:0; display:none; flex-direction:column; justify-content:center; align-items:center; background:rgba(255,255,255,0.85); color:#111; }
+.jump-btn { margin-top:15px; background:#00ff88; color:#000; border:none; padding:12px 30px; font-size:18px; border-radius:50px; font-weight:bold; cursor:pointer; margin:5px; }
+.mario-zone { background:#0a1a2e; padding:30px 10px 40px; }
+.mario-zone h2 { color:#ffcc00; font-size:28px; }
+#marioBox { background:#5cb6ff; max-width:600px; height:220px; margin:0 auto; border-radius:12px; position:relative; overflow:hidden; }
+.ctrl { display:flex; justify-content:center; gap:10px; margin-top:12px; }
+.ctrl button { background:#ffcc00; border:none; width:70px; height:55px; font-size:24px; border-radius:12px; font-weight:bold; }
+/* PLAY OVERLAY */
+.play-overlay { position:absolute; inset:0; background:rgba(0,0,0,0.65); display:flex; flex-direction:column; justify-content:center; align-items:center; z-index:10; }
+.play-overlay b { font-size:24px; margin-bottom:12px; color:white; }
+.play-big { background:#ff0055; color:white; border:none; width:80px; height:80px; font-size:35px; border-radius:50%; cursor:pointer; box-shadow:0 0 25px #ff0055; }
+.play-big:active { transform:scale(0.9); }
+.mario-play { background:#ffcc00; color:#000; box-shadow:0 0 25px #ffcc00; }
 </style>
 </head>
 <body>
 
-<nav>
-  <div class="logo">RA</div>
-  <div><a href="#">HOME</a><a href="#goals">GOALS</a><a href="#sports">SPORTS</a><a href="#life">MY LIFE</a></div>
-</nav>
-
 <div class="hero">
-  <div class="hero-logo">RA</div>
   <h1>RIYAN AHMED</h1>
-  <div class="sub">Aspiring Scientist • P.D.B High School</div>
-  <div class="tag">DRIVEN BY CURIOSITY • BUILDING THE FUTURE THROUGH SCIENCE & INNOVATION</div>
-  <div class="loc">📍 Location: Bheramara, Kushtia, Bangladesh</div>
-  <div class="loc">🎓 School: P.D.B High School</div>
-  <button class="btn">DOWNLOAD CV</button>
-  <button class="btn btn-gold">CONTACT ME</button>
-</div>
-
-<div class="section" id="goals">
-  <h2>MY GOALS</h2>
-  <p>Focusing on scientific research, continuous learning, and creating impact through innovation and discipline.</p>
-  <p style="margin-top:10px">✓ Become a scientist<br>✓ Build my own programming language, as powerful as Swift or Kotlin</p>
-</div>
-
-<div class="section" id="sports">
-  <h2 style="text-align:center">SPORTS GAMES & MORE</h2>
-  <div class="grid">
-    <div class="card"><b>⚽ Outdoor</b><p>Football • Badminton • Cricket</p></div>
-    <div class="card"><b>🧩 Indoor</b><p>Free Fire • Minecraft • Roblox</p></div>
-    <div class="card"><b>🎬 Watching</b><p>Anime: True Love, Love Forever, Your Name</p></div>
-    <div class="card"><b>💪 Fitness</b><p>Gym • Build an Aesthetic Body</p></div>
-    <div class="card"><b>❤️ Tomar Jonno</b><p>Money.!</p></div>
+  <p>Welcome To My World ❤️</p>
+  <div class="follow-box">
+    <div class="follow-count">👥 <span id="followCount">1,250</span> Followers</div>
+    <button id="followBtn" class="follow-btn" onclick="doFollow()">+ Follow</button>
+    <div id="followMsg" style="font-size:13px; margin-top:8px; opacity:0.8;"></div>
   </div>
+  <button class="btn" onclick="playMusic()">▶ PLAY XTALI</button>
+  <audio id="myAudio" loop><source src="music.mp3" type="audio/mpeg"></audio>
+  <p style="margin-top:20px; font-size:14px;">👇 Niche 2 ta Game Ase 👇</p>
 </div>
 
-<div class="section">
-  <h2>🎓 EDUCATION</h2>
-  <div class="school-box">
-    <p><b style="color:#fff;font-size:18px">P.D.B High School</b></p>
-    <p style="margin-top:5px">Class 8 • Science Group</p>
-    <p>Bheramara, Kushtia</p>
+<!-- GAME 1 DINO -->
+<div class="game-zone">
+  <h2>🎮 GAME 1 - DINO 🎮</h2>
+  <p>PLAY chap diye suru kor!</p>
+  <div id="gameBox">
+    <canvas id="game" width="600" height="180"></canvas>
+    <div id="score">Score: 0</div>
+    <div id="gameOver"><b>Game Over! 😭</b><span id="finalScore"></span><button class="jump-btn" onclick="restartGame()">🔁 Abar Khel</button></div>
+    <!-- DINO PLAY -->
+    <div id="dinoPlay" class="play-overlay">
+      <b>🦖 DINO GAME</b>
+      <button class="play-big" onclick="startDino()">▶</button>
+      <span style="margin-top:10px; font-size:14px; opacity:0.9;">Khelte PLAY chap de!</span>
+    </div>
   </div>
+  <button class="jump-btn" onclick="jump()">🦖 JUMP!</button>
 </div>
 
-<div class="section" id="life">
-  <h2 style="text-align:center">MY LIFE MY RULE</h2>
-  <div class="rule">
-    <p>I am Riyan Ahmed from Bheramara, Kushtia, Bangladesh.</p><br>
-    <p>I study at P.D.B High School. I am currently in Class 8 (Science group).</p><br>
-    <p>My main focus now is my career and building a solid future in the tech world. I love coding, AI and math.</p><br>
-    <p>Discipline. Consistency. Growth. Living by my own principles.</p>
+<!-- GAME 2 MARIO -->
+<div class="mario-zone">
+  <h2>🍄 GAME 2 - SUPER RIYAN 🍄</h2>
+  <p>PLAY chap diye suru kor! | Coin: <span id="coinCount">0</span></p>
+  <div id="marioBox">
+    <canvas id="mario" width="600" height="220"></canvas>
+    <!-- MARIO PLAY -->
+    <div id="marioPlay" class="play-overlay">
+      <b>🍄 SUPER RIYAN</b>
+      <button class="play-big mario-play" onclick="startMario()">▶</button>
+      <span style="margin-top:10px; font-size:14px;">Khelte PLAY chap de!</span>
+    </div>
   </div>
+  <div class="ctrl">
+    <button onclick="mLeft=true; setTimeout(()=>mLeft=false,200)">⬅️</button>
+    <button onclick="mJump()">⬆️</button>
+    <button onclick="mRight=true; setTimeout(()=>mRight=false,200)">➡️</button>
+  </div>
+  <button class="jump-btn" style="background:#ffcc00;" onclick="restartMario()">🔁 Abar Khel</button>
+  <p id="marioMsg" style="margin-top:10px; color:#ffcc00; font-weight:bold;"></p>
 </div>
-
-<footer>© 2024 RIYAN AHMED • P.D.B HIGH SCHOOL • BHERAMARA, KUSHTIA • RA</footer>
-
-<audio id="bgMusic" loop autoplay>
-  <source src="music.mp3" type="audio/mpeg">
-</audio>
-
-<div class="music-box" id="musicBtn" onclick="let m=document.getElementById('bgMusic'); if(m.paused){m.play(); this.innerText='⏸ XTALI - PAUSE'} else {m.pause(); this.innerText='▶ PLAY XTALI'}">▶ PLAY XTALI</div>
 
 <script>
-  window.addEventListener('load', function(){
-    let m = document.getElementById('bgMusic');
-    m.play().catch(()=>{});
-  });
-  document.addEventListener('click', function(){
-    let m = document.getElementById('bgMusic');
-    if(m.paused){ m.play().catch(()=>{}); document.getElementById('musicBtn').innerText='⏸ XTALI - PAUSE'; }
-  }, {once:true});
-</script>
+function playMusic(){ var a=document.getElementById('myAudio'); if(a.paused) a.play(); else a.pause(); }
+// FOLLOW
+var baseFollowers = 1250;
+var myFollow = localStorage.getItem('riyan_follow') === 'yes';
+var extra = parseInt(localStorage.getItem('riyan_extra') || '0');
+async function loadFollowers(){ try{ let res = await fetch('https://api.countapi.xyz/get/riyan-ahmed-xtali/followers'); let data = await res.json(); if(data.value){ baseFollowers = data.value; } }catch(e){} updateFollowUI(); }
+function updateFollowUI(){ var total = baseFollowers + extra; document.getElementById('followCount').innerText = total.toLocaleString('en-IN'); var btn = document.getElementById('followBtn'); if(myFollow){ btn.innerText='✓ Following'; btn.classList.add('followed'); document.getElementById('followMsg').innerText='Thanks for following! ❤️'; } else { btn.innerText='+ Follow'; btn.classList.remove('followed'); document.getElementById('followMsg').innerText=''; } }
+async function doFollow(){ if(!myFollow){ myFollow=true; extra++; localStorage.setItem('riyan_follow','yes'); localStorage.setItem('riyan_extra', extra); try{ await fetch('https://api.countapi.xyz/hit/riyan-ahmed-xtali/followers'); }catch(e){} updateFollowUI(); } else { myFollow=false; extra=Math.max(0,extra-1); localStorage.setItem('riyan_follow','no'); localStorage.setItem('riyan_extra', extra); updateFollowUI(); } }
+loadFollowers(); updateFollowUI();
 
-</body>
-</html>
+// --- DINO WITH PLAY ---
+var canvas=document.getElementById('game'); var ctx=canvas.getContext('2d');
+var dinoY=120, velocity=0, jumping=false, obstacles=[], score=0, gameRunning=false, dinoStarted=false, speed=4;
+function drawDino(){ ctx.fillStyle='#333'; ctx.fillRect(40,dinoY,35,40); ctx.fillRect(68,dinoY-8,18,15); ctx.fillStyle='white'; ctx.fillRect
