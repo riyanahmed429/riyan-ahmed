@@ -6,63 +6,58 @@
 <title>RA - Riyan Ahmed</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
-body{background:#0f0c29 url('bg.jpg') center/cover fixed no-repeat;color:#fff;text-align:center;min-height:100vh;overflow-x:hidden}
-body::before{content:"";position:fixed;inset:0;background:rgba(0,0,0,0.65);z-index:-1}
-#beatBg{position:fixed;inset:0;z-index:-1;opacity:0;pointer-events:none;transition:opacity 0.5s;background:radial-gradient(circle at 20% 20%,#7b2ff7 0%,transparent 40%),radial-gradient(circle at 80% 80%,#00d4ff 0%,transparent 40%),radial-gradient(circle at 50% 50%,#ff0055 0%,transparent 50%)}
-body.beat-on #beatBg{opacity:0.85;animation:beatPulse 0.6s infinite alternate}
-@keyframes beatPulse{0%{transform:scale(1);filter:hue-rotate(0deg)}100%{transform:scale(1.08);filter:hue-rotate(40deg)}}
-#beatBars{position:fixed;bottom:0;left:0;right:0;height:90px;display:none;justify-content:center;align-items:flex-end;gap:6px;z-index:1;pointer-events:none;opacity:0.7}
+body{background:linear-gradient(180deg,#0f0c29,#302b63,#24243e);color:#fff;text-align:center;min-height:100vh;overflow-x:hidden}
+#beatBg{position:fixed;inset:0;z-index:-1;opacity:0;pointer-events:none;transition:opacity .5s;background:radial-gradient(circle at 20% 20%,#7b2ff7 0%,transparent 40%),radial-gradient(circle at 80% 80%,#00d4ff 0%,transparent 40%)}
+body.beat-on #beatBg{opacity:.85;animation:beatPulse .6s infinite alternate}
+@keyframes beatPulse{0%{transform:scale(1)}100%{transform:scale(1.08)}}
+#beatBars{position:fixed;bottom:0;left:0;right:0;height:90px;display:none;justify-content:center;align-items:flex-end;gap:6px;z-index:1;pointer-events:none;opacity:.7}
 body.beat-on #beatBars{display:flex}
-.beat-bar{width:14px;background:linear-gradient(180deg,#00d4ff,#7b2ff7,#ff0055);border-radius:10px 10px 0 0;animation:barJump 0.4s infinite alternate}
-@keyframes barJump{0%{transform:scaleY(0.4)}100%{transform:scaleY(1.4)}}
-.hero.beat-hero{animation:heroBeat 0.6s infinite alternate}
-@keyframes heroBeat{0%{transform:scale(1)}100%{transform:scale(1.02)}}
-.music-box.beat-btn{animation:btnBeat 0.5s infinite alternate;box-shadow:0 0 25px #ff0055}
-@keyframes btnBeat{0%{transform:scale(1)}100%{transform:scale(1.08)}}
-nav{display:flex;justify-content:space-between;align-items:center;padding:15px 25px;background:rgba(0,0,0,0.6);border-bottom:1px solid #00d4ff;position:relative;z-index:5}
-.logo{width:55px;height:55px;min-width:55px;border:2px solid #00d4ff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:22px;color:#00d4ff;overflow:hidden;background:#000;position:relative;box-shadow:0 0 15px #00d4ff}
-.logo img{width:100%;height:100%;object-fit:cover;object-position:center;display:block}
+.beat-bar{width:14px;background:linear-gradient(180deg,#00d4ff,#7b2ff7,#ff0055);border-radius:10px 10px 0 0;animation:barJump .4s infinite alternate}
+@keyframes barJump{0%{transform:scaleY(.4)}100%{transform:scaleY(1.4)}}
+nav{display:flex;justify-content:space-between;align-items:center;padding:15px 25px;background:rgba(0,0,0,.7);border-bottom:1px solid #00d4ff;position:relative;z-index:5}
+.logo{width:55px;height:55px;min-width:55px;border:2px solid #00d4ff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:22px;color:#00d4ff;overflow:hidden;background:#000;position:relative}
+.logo img{width:100%;height:100%;object-fit:cover;display:block}
 .logo span{position:absolute;z-index:2}
 nav a{color:#00d4ff;text-decoration:none;margin:0 8px;font-size:12px}
-.hero{padding:40px 20px;margin:20px;border-radius:20px;background:rgba(0,0,0,0.45);border:1px solid rgba(0,212,255,0.4);position:relative;z-index:5;box-shadow:0 0 30px rgba(0,212,255,0.3)}
+.hero{padding:40px 20px;margin:20px;border-radius:20px;background:rgba(0,0,0,.5);border:1px solid rgba(0,212,255,.4);position:relative;z-index:5}
 .hero-logo{width:140px;height:140px;margin:0 auto;border:3px solid #00d4ff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:30px;font-weight:900;color:#00d4ff;overflow:hidden;background:#000;position:relative;box-shadow:0 0 25px #7b2ff7}
 .hero-logo img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block}
-.hero-logo span{position:absolute;z-index:2;background:rgba(0,0,0,0.4);width:100%;height:100%;display:flex;align-items:center;justify-content:center;border-radius:50%}
+.hero-logo span{position:absolute;z-index:2;background:rgba(0,0,0,.4);width:100%;height:100%;display:flex;align-items:center;justify-content:center;border-radius:50%}
 .hero-logo.has-photo span{display:none}
 h1{font-size:32px;margin:15px 0 5px;background:linear-gradient(90deg,#c084fc,#00d4ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
 .btn{padding:10px 20px;margin:5px;border:1px solid #00d4ff;background:transparent;color:#00d4ff;cursor:pointer;border-radius:25px}
-.btn-gold{background:linear-gradient(90deg,#7b2ff7,#00d4ff);color:#fff;font-weight:bold;border:none;box-shadow:0 0 15px #7b2ff7}
+.btn-gold{background:linear-gradient(90deg,#7b2ff7,#00d4ff);color:#fff;font-weight:bold;border:none}
 .section{padding:30px 20px;text-align:left;max-width:800px;margin:0 auto;position:relative;z-index:5}
 h2{color:#00d4ff;font-size:24px;margin-bottom:10px}
 .grid{display:grid;grid-template-columns:1fr 1fr;gap:15px;margin-top:15px}
-.card{border:1px solid rgba(0,212,255,0.4);padding:20px;border-radius:15px;background:rgba(0,0,0,0.55)}
+.card{border:1px solid rgba(0,212,255,.4);padding:20px;border-radius:15px;background:rgba(0,0,0,.55)}
 .card b{color:#fff;font-size:18px}
 .card p{color:#a5f3fc;font-size:13px;margin-top:5px}
-.rule,.school-box{border:1px solid rgba(0,212,255,0.4);padding:20px;border-radius:15px;margin-top:15px;background:rgba(0,0,0,0.55)}
-footer{padding:20px;color:#a5f3fc;font-size:12px;border-top:1px solid #00d4ff;background:rgba(0,0,0,0.5);position:relative;z-index:5}
+.rule,.school-box{border:1px solid rgba(0,212,255,.4);padding:20px;border-radius:15px;margin-top:15px;background:rgba(0,0,0,.55)}
+footer{padding:20px;color:#a5f3fc;font-size:12px;border-top:1px solid #00d4ff;background:rgba(0,0,0,.5)}
 .music-box{position:fixed;bottom:15px;right:15px;background:linear-gradient(90deg,#7b2ff7,#00d4ff);color:#fff;padding:12px 16px;border-radius:30px;font-weight:bold;cursor:pointer;z-index:99}
 .sound-btn{position:fixed;bottom:15px;left:15px;background:#ffcc00;color:#000;padding:12px 16px;border-radius:30px;font-weight:bold;cursor:pointer;z-index:99;border:none}
-.follow-box{margin:18px auto 5px;background:rgba(0,0,0,0.55);border:1px solid rgba(0,212,255,0.5);padding:14px;border-radius:15px;max-width:320px}
+.follow-box{margin:18px auto 5px;background:rgba(0,0,0,.55);border:1px solid rgba(0,212,255,.5);padding:14px;border-radius:15px;max-width:320px}
 .follow-count{font-size:19px;font-weight:bold;margin-bottom:10px}
 .follow-count span{color:#00d4ff;font-size:24px}
 .follow-btn{background:#0095f6;color:#fff;border:none;padding:11px 35px;font-size:16px;border-radius:50px;font-weight:bold;cursor:pointer}
 .follow-btn.followed{background:#333;border:1px solid #555}
-.game-zone{background:rgba(0,0,0,0.6);padding:30px 15px;margin:20px;border-radius:20px;border:1px solid rgba(0,212,255,0.4);position:relative;z-index:5}
+.game-zone{background:rgba(0,0,0,.65);padding:30px 15px;margin:20px;border-radius:20px;border:1px solid rgba(0,212,255,.4);position:relative;z-index:5}
 .game-zone h2{text-align:center}
 .game-zone p{text-align:center;color:#a5f3fc;font-size:13px;margin:8px 0 15px}
-#gameBox,#marioBox,#zombieBox,#raceBox,#fruitBox{margin:0 auto;border-radius:15px;position:relative;overflow:hidden}
+#gameBox,#marioBox,#zombieBox,#raceBox,#fruitBox{margin:0 auto;border-radius:15px;position:relative;overflow:hidden;background:#87CEEB}
 #gameBox{max-width:600px;height:200px;border:3px solid #fff}
-#marioBox{max-width:850px;height:380px;border:3px solid #ffcc00}
-#zombieBox{max-width:850px;height:420px;border:3px solid #ff0055}
-#raceBox{max-width:850px;height:420px;border:3px solid #ff0000}
-#fruitBox{max-width:850px;height:420px;border:3px solid #ff0055;cursor:crosshair}
-canvas{width:100%;height:100%;display:block}
-#score{position:absolute;top:8px;right:12px;color:#333;font-weight:bold;z-index:5;background:rgba(255,255,255,0.9);padding:4px 10px;border-radius:20px}
-#gameOver{position:absolute;inset:0;display:none;flex-direction:column;justify-content:center;align-items:center;background:rgba(255,255,255,0.92);color:#111;z-index:20}
+#marioBox{max-width:850px;height:380px;border:3px solid #ffcc00;background:#5cb6ff}
+#zombieBox{max-width:850px;height:420px;border:3px solid #ff0055;background:#1a0a2a}
+#raceBox{max-width:850px;height:420px;border:3px solid #ff0000;background:#222}
+#fruitBox{max-width:850px;height:420px;border:3px solid #ff0055;background:#ffcc80;cursor:crosshair}
+canvas{width:100%;height:100%;display:block;background:transparent}
+#score{position:absolute;top:8px;right:12px;color:#333;font-weight:bold;z-index:5;background:rgba(255,255,255,.9);padding:4px 10px;border-radius:20px}
+#gameOver{position:absolute;inset:0;display:none;flex-direction:column;justify-content:center;align-items:center;background:rgba(255,255,255,.92);color:#111;z-index:20}
 .jump-btn{margin-top:15px;background:linear-gradient(90deg,#00ff88,#00cc6a);color:#000;border:none;padding:12px 30px;font-size:16px;border-radius:50px;font-weight:bold;cursor:pointer}
 .ctrl{display:flex;justify-content:center;gap:10px;margin-top:12px}
 .ctrl button{background:linear-gradient(90deg,#ffcc00,#ff9900);border:none;width:90px;height:65px;font-size:28px;border-radius:15px;font-weight:bold;cursor:pointer}
-.play-overlay{position:absolute;inset:0;background:rgba(0,0,0,0.78);display:flex;flex-direction:column;justify-content:center;align-items:center;z-index:30}
+.play-overlay{position:absolute;inset:0;background:rgba(0,0,0,.85);display:flex;flex-direction:column;justify-content:center;align-items:center;z-index:30;cursor:pointer}
 .play-overlay b{font-size:26px;margin-bottom:12px;color:#fff}
 .play-big{color:#fff;border:none;width:90px;height:90px;font-size:38px;border-radius:50%;cursor:pointer;background:#ff0055;box-shadow:0 0 25px #ff0055}
 .mario-play{background:#ffcc00;color:#000;width:110px;height:110px;font-size:48px}
@@ -79,47 +74,37 @@ canvas{width:100%;height:100%;display:block}
 .speed-box{background:#000;border:2px solid #ff0000;padding:12px;border-radius:15px;max-width:500px;margin:10px auto;display:flex;justify-content:space-around;align-items:center}
 .speed-num{font-size:32px;font-weight:900;color:#ff0000}
 .speed-label{font-size:12px;color:#fff}
-.eq-mini{display:flex;gap:3px;align-items:flex-end;height:18px;justify-content:center;margin-top:8px}
-.eq-mini span{width:4px;background:#00d4ff;border-radius:2px;display:none}
-body.beat-on .eq-mini span{display:block;animation:barJump 0.4s infinite alternate}
-/* === RA AI CHAT BOX === */
-.ai-zone{background:linear-gradient(180deg,rgba(123,47,247,0.25),rgba(0,0,0,0.6));padding:30px 15px;margin:20px;border-radius:20px;border:2px solid #7b2ff7;position:relative;z-index:5;box-shadow:0 0 30px rgba(123,47,247,0.5)}
-.ai-header{display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:5px}
-.ai-avatar{width:60px;height:60px;border-radius:50%;background:linear-gradient(135deg,#7b2ff7,#00d4ff);display:flex;align-items:center;justify-content:center;font-size:30px;border:3px solid #fff;box-shadow:0 0 20px #7b2ff7}
-.ai-box{max-width:650px;margin:15px auto;background:#fff;border-radius:20px;overflow:hidden;text-align:left;box-shadow:0 10px 30px rgba(0,0,0,0.5)}
+.ai-zone{background:linear-gradient(180deg,rgba(123,47,247,.25),rgba(0,0,0,.6));padding:30px 15px;margin:20px;border-radius:20px;border:2px solid #7b2ff7;position:relative;z-index:5}
+.ai-header{display:flex;align-items:center;justify-content:center;gap:10px}
+.ai-avatar{width:60px;height:60px;border-radius:50%;background:linear-gradient(135deg,#7b2ff7,#00d4ff);display:flex;align-items:center;justify-content:center;font-size:30px;border:3px solid #fff}
+.ai-box{max-width:650px;margin:15px auto;background:#fff;border-radius:20px;overflow:hidden;text-align:left}
 .ai-top{background:linear-gradient(90deg,#7b2ff7,#00d4ff);color:#fff;padding:12px 15px;display:flex;align-items:center;gap:10px}
-.ai-dot{width:10px;height:10px;background:#00ff88;border-radius:50%;box-shadow:0 0 8px #00ff88}
+.ai-dot{width:10px;height:10px;background:#00ff88;border-radius:50%}
 .ai-messages{height:320px;overflow-y:auto;padding:15px;background:#f0f2f5;display:flex;flex-direction:column;gap:10px}
 .msg{max-width:80%;padding:10px 14px;border-radius:18px;font-size:14px;line-height:1.5;word-wrap:break-word;color:#111}
-.msg-ai{background:#fff;border:1px solid #ddd;border-bottom-left-radius:4px;align-self:flex-start;box-shadow:0 2px 5px rgba(0,0,0,0.1)}
+.msg-ai{background:#fff;border:1px solid #ddd;border-bottom-left-radius:4px;align-self:flex-start}
 .msg-user{background:linear-gradient(90deg,#7b2ff7,#00d4ff);color:#fff;border-bottom-right-radius:4px;align-self:flex-end}
-.msg-time{font-size:10px;opacity:0.6;margin-top:4px}
+.msg-time{font-size:10px;opacity:.6;margin-top:4px}
 .typing{display:flex;gap:4px;padding:10px 14px;background:#fff;border-radius:18px;width:60px}
-.typing span{width:8px;height:8px;background:#7b2ff7;border-radius:50%;animation:typing 0.8s infinite}
-.typing span:nth-child(2){animation-delay:0.2s}
-.typing span:nth-child(3){animation-delay:0.4s}
-@keyframes typing{0%,100%{opacity:0.3;transform:translateY(0)}50%{opacity:1;transform:translateY(-4px)}}
+.typing span{width:8px;height:8px;background:#7b2ff7;border-radius:50%;animation:typing .8s infinite}
+@keyframes typing{0%,100%{opacity:.3}50%{opacity:1}}
 .ai-input-area{display:flex;align-items:center;gap:8px;padding:10px;background:#fff;border-top:1px solid #eee}
 .emoji-btn{background:none;border:none;font-size:24px;cursor:pointer;padding:5px}
 .ai-input{flex:1;border:1px solid #ddd;border-radius:25px;padding:12px 15px;font-size:14px;outline:none}
-.ai-input:focus{border-color:#7b2ff7}
-.send-btn{background:linear-gradient(90deg,#7b2ff7,#00d4ff);color:#fff;border:none;width:48px;height:48px;border-radius:50%;font-size:20px;cursor:pointer;box-shadow:0 3px 10px rgba(123,47,247,0.5);flex-shrink:0}
-.send-btn:active{transform:scale(0.9)}
+.send-btn{background:linear-gradient(90deg,#7b2ff7,#00d4ff);color:#fff;border:none;width:48px;height:48px;border-radius:50%;font-size:20px;cursor:pointer;flex-shrink:0}
 .emoji-panel{display:none;flex-wrap:wrap;gap:5px;padding:10px;background:#f9f9f9;border-top:1px solid #eee;max-height:120px;overflow-y:auto}
 .emoji-panel.show{display:flex}
-.emoji-item{font-size:24px;cursor:pointer;padding:4px;border-radius:8px}
-.emoji-item:hover{background:#e0e0e0}
+.emoji-item{font-size:24px;cursor:pointer;padding:4px}
 .quick-btns{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:10px 0}
-.quick-btn{background:rgba(255,255,255,0.15);border:1px solid #00d4ff;color:#fff;padding:8px 14px;border-radius:20px;font-size:12px;cursor:pointer}
-.quick-btn:hover{background:#00d4ff;color:#000}
-@media(max-width:600px){.grid{grid-template-columns:1fr}h1{font-size:26px}#marioBox{height:300px}#zombieBox{height:340px}#raceBox{height:340px}#fruitBox{height:340px}.hero-logo{width:120px;height:120px}.ai-messages{height:280px}}
+.quick-btn{background:rgba(255,255,255,.15);border:1px solid #00d4ff;color:#fff;padding:8px 14px;border-radius:20px;font-size:12px;cursor:pointer}
+@media(max-width:600px){.grid{grid-template-columns:1fr}h1{font-size:26px}#marioBox{height:300px}#zombieBox{height:340px}#raceBox{height:340px}#fruitBox{height:340px}.hero-logo{width:120px;height:120px}}
 </style>
 </head>
 <body>
 <div id="beatBg"></div>
-<div id="beatBars"><div class="beat-bar" style="height:30px"></div><div class="beat-bar" style="height:60px"></div><div class="beat-bar" style="height:40px"></div><div class="beat-bar" style="height:80px"></div><div class="beat-bar" style="height:35px"></div><div class="beat-bar" style="height:70px"></div><div class="beat-bar" style="height:45px"></div><div class="beat-bar" style="height:85px"></div><div class="beat-bar" style="height:30px"></div><div class="beat-bar" style="height:65px"></div><div class="beat-bar" style="height:50px"></div><div class="beat-bar" style="height:75px"></div></div>
+<div id="beatBars"><div class="beat-bar" style="height:30px"></div><div class="beat-bar" style="height:60px"></div><div class="beat-bar" style="height:40px"></div><div class="beat-bar" style="height:80px"></div><div class="beat-bar" style="height:35px"></div><div class="beat-bar" style="height:70px"></div><div class="beat-bar" style="height:45px"></div><div class="beat-bar" style="height:85px"></div></div>
 
-<nav><div class="logo"><img src="bg.jpg" onerror="this.style.display='none'"><span>RA</span></div><div><a href="#">HOME</a><a href="#goals">GOALS</a><a href="#games">GAMES</a><a href="#raai">RA AI</a></div></nav>
+<nav><div class="logo"><img src="bg.jpg" onerror="this.style.display='none'"><span>RA</span></div><div><a href="#">HOME</a><a href="#games">GAMES</a><a href="#raai">RA AI</a></div></nav>
 
 <div class="hero" id="heroBox">
 <div class="hero-logo" id="heroLogo"><img src="bg.jpg" onload="document.getElementById('heroLogo').classList.add('has-photo')" onerror="this.style.display='none'"><span>RA</span></div>
@@ -128,7 +113,7 @@ body.beat-on .eq-mini span{display:block;animation:barJump 0.4s infinite alterna
 <div style="margin:10px 0;color:#a5f3fc;font-size:13px">DRIVEN BY CURIOSITY • BUILDING THE FUTURE</div>
 <div>📍 Bheramara, Kushtia, Bangladesh</div>
 <div>🎓 P.D.B High School</div>
-<div id="nowPlaying" style="display:none;margin-top:12px;background:rgba(255,0,85,0.2);border:1px solid #ff0055;padding:8px;border-radius:20px;font-size:13px">🎵 XTALI CHOLTASE... <div class="eq-mini"><span></span><span></span><span></span><span></span><span></span></div></div>
+<div id="nowPlaying" style="display:none;margin-top:12px;background:rgba(255,0,85,.2);border:1px solid #ff0055;padding:8px;border-radius:20px;font-size:13px">🎵 XTALI CHOLTASE...</div>
 <div class="follow-box">
 <div class="follow-count">👥 <span id="followCount">0</span> Followers</div>
 <button id="followBtn" class="follow-btn" onclick="doFollow()">+ Follow</button>
@@ -138,8 +123,7 @@ body.beat-on .eq-mini span{display:block;animation:barJump 0.4s infinite alterna
 <button class="btn btn-gold">CONTACT ME</button>
 </div>
 
-<div class="section" id="goals"><h2>MY GOALS</h2><p>✓ Become a scientist<br>✓ Build my own programming language, as powerful as Swift or Kotlin</p></div>
-
+<div class="section"><h2>MY GOALS</h2><p>✓ Become a scientist<br>✓ Build my own programming language, as powerful as Swift or Kotlin</p></div>
 <div class="section"><h2 style="text-align:center">SPORTS GAMES & MORE</h2>
 <div class="grid">
 <div class="card"><b>⚽ Outdoor</b><p>Football • Badminton • Cricket</p></div>
@@ -148,52 +132,45 @@ body.beat-on .eq-mini span{display:block;animation:barJump 0.4s infinite alterna
 <div class="card"><b>💪 Fitness</b><p>Gym • Build an Aesthetic Body</p></div>
 <div class="card"><b>💰 For You: Money Follow bro !</b><p>Money! Money! Money! Follow koro bro!</p></div>
 </div></div>
-
 <div class="section"><h2>🎓 EDUCATION</h2><div class="school-box"><b style="color:#fff;font-size:18px">P.D.B High School</b><p>Class 8 • Science Group<br>Bheramara, Kushtia</p></div></div>
 
-<!-- RA AI BOX -->
 <div class="ai-zone" id="raai">
-<div class="ai-header"><div class="ai-avatar">🤖</div><div style="text-align:left"><h2 style="margin:0;font-size:28px;background:linear-gradient(90deg,#c084fc,#00d4ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent">RA AI</h2><div style="font-size:13px;color:#a5f3fc">Riyan Ahmed er Nijer AI • Sotti Kotha Bole • Emoji Diye Kotha Bole 😎</div></div></div>
-<p style="text-align:center;color:#fff">Ja khusi ask kor! Ami mittha bolbo na, ja jani na bolbo "jani na"! 👇</p>
+<div class="ai-header"><div class="ai-avatar">🤖</div><div style="text-align:left"><h2 style="margin:0;font-size:28px">RA AI</h2><div style="font-size:13px;color:#a5f3fc">Riyan Ahmed er Nijer AI • Sotti Kotha Bole 😎</div></div></div>
 <div class="quick-btns">
-<button class="quick-btn" onclick="askQuick('Tumi ke?')">🤖 Tumi ke?</button>
-<button class="quick-btn" onclick="askQuick('Riyan ke?')">👦 Riyan ke?</button>
-<button class="quick-btn" onclick="askQuick('Riyan kon school e pore?')">🎓 School?</button>
-<button class="quick-btn" onclick="askQuick('Amake ekta joke bolo')">😂 Joke bolo</button>
-<button class="quick-btn" onclick="askQuick('Amake motivate koro')">🔥 Motivate koro</button>
-<button class="quick-btn" onclick="askQuick('Math e help koro')">🧮 Math Help</button>
+<button type="button" class="quick-btn" onclick="askQuick('Tumi ke?')">🤖 Tumi ke?</button>
+<button type="button" class="quick-btn" onclick="askQuick('Riyan ke?')">👦 Riyan ke?</button>
+<button type="button" class="quick-btn" onclick="askQuick('Amake ekta joke bolo')">😂 Joke bolo</button>
+<button type="button" class="quick-btn" onclick="askQuick('Amake motivate koro')">🔥 Motivate koro</button>
+<button type="button" class="quick-btn" onclick="askQuick('2+2 koto?')">🧮 2+2 koto?</button>
 </div>
 <div class="ai-box">
-<div class="ai-top"><div class="ai-dot"></div><div><b>RA AI</b><div style="font-size:11px;opacity:0.8">Online • Sotti Kotha Bole ✅</div></div><div style="margin-left:auto;font-size:20px">🤖✨</div></div>
-<div class="ai-messages" id="aiMessages">
-<div class="msg msg-ai">Assalamu Alaikum! 🙏 Ami <b>RA AI</b>! Riyan Ahmed er nijer AI! 😎<br><br>Ami tor moto sotti kotha boli, mittha boli na! Ja jani na, bole dibo "ami jani na"! � honest!<br><br>Amake ja khusi ask kor - Riyan, Science, Math, Game, Joke, Motivate - sob parbo! 👇<br><div style="margin-top:5px">Try kor: "Riyan ke?" / "Ekta joke bolo" / "2+2 koto?"</div><div class="msg-time">RA AI • Ekhon</div></div>
-</div>
+<div class="ai-top"><div class="ai-dot"></div><div><b>RA AI</b><div style="font-size:11px;opacity:.8">Online • Sotti Kotha Bole ✅</div></div></div>
+<div class="ai-messages" id="aiMessages"><div class="msg msg-ai">Assalamu Alaikum! 🙏 Ami <b>RA AI</b>! Riyan Ahmed er nijer AI! 😎<br><br>Ami sotti kotha boli! Ja khusi ask koro! 👇<div class="msg-time">RA AI • Ekhon</div></div></div>
 <div class="emoji-panel" id="emojiPanel"></div>
 <div class="ai-input-area">
-<button class="emoji-btn" onclick="toggleEmoji()">😀</button>
-<input type="text" id="aiInput" class="ai-input" placeholder="RA AI ke kisu ask koro... 😊" onkeypress="if(event.key==='Enter') sendAI()">
-<button class="send-btn" onclick="sendAI()">➡️</button>
+<button type="button" class="emoji-btn" onclick="toggleEmoji()">😀</button>
+<input type="text" id="aiInput" class="ai-input" placeholder="RA AI ke kisu ask koro... 😊" autocomplete="off">
+<button type="button" class="send-btn" onclick="sendAI()">➡️</button>
 </div>
 </div>
-<p style="text-align:center;font-size:12px;color:#a5f3fc;margin-top:10px">RA AI kokhono mittha bole na • Sotti tai bole ja proman ase ✅</p>
 </div>
 
 <div class="game-zone" id="games">
 <h2>🎮 GAME 1 - DINO PRO HD ✨</h2>
-<div id="gameBox"><canvas id="game" width="600" height="200"></canvas><div id="score">Score: 0</div>
-<div id="gameOver"><b>Game Over! 😭</b><span id="finalScore"></span><br><button class="jump-btn" onclick="restartGame()">🔁 Abar Khel</button></div>
-<div id="dinoPlay" class="play-overlay"><b>🦖 DINO PRO HD</b><button class="play-big" onclick="startDino()">▶</button><span style="margin-top:10px">Khelte PLAY chap de!</span></div></div>
-<div style="text-align:center"><button class="jump-btn" onclick="jump()">🦖 JUMP!</button></div>
+<div id="gameBox" onclick="startDino()"><canvas id="game" width="600" height="200"></canvas><div id="score">Score: 0</div>
+<div id="gameOver"><b>Game Over! 😭</b><span id="finalScore"></span><br><button class="jump-btn" onclick="event.stopPropagation();restartGame()">🔁 Abar Khel</button></div>
+<div id="dinoPlay" class="play-overlay" onclick="startDino()"><b>🦖 DINO PRO HD</b><button type="button" class="play-big" onclick="event.stopPropagation();startDino()">▶</button><span style="margin-top:10px">Khelte PLAY chap de! Box er jekhane khusi chap de!</span></div></div>
+<div style="text-align:center"><button type="button" class="jump-btn" onclick="jump()">🦖 JUMP!</button></div>
 </div>
 
 <div class="game-zone">
 <h2>🍄 GAME 2 - SUPER RIYAN HD - 20 LEVELS! ✨</h2>
 <p>LEVEL: <span id="lvText" style="color:#ffcc00;font-weight:bold">1 / 20</span> | Coin: <span id="coinCount">0</span> | <span id="lvName">Level 1</span></p>
 <div class="lv-bar" id="lvBar"></div>
-<div id="marioBox"><canvas id="mario" width="850" height="380"></canvas>
-<div id="marioPlay" class="play-overlay"><b>🍄 SUPER RIYAN HD</b><button class="play-big mario-play" onclick="startMario()">▶</button><span style="margin-top:10px">Khelte PLAY chap de!</span></div></div>
-<div class="ctrl"><button onclick="mLeft=true;setTimeout(function(){mLeft=false},300)">⬅️</button><button onclick="mJump()">⬆️</button><button onclick="mRight=true;setTimeout(function(){mRight=false},300)">➡️</button></div>
-<div style="text-align:center"><button class="jump-btn" style="background:#ffcc00" onclick="restartMario()">🔁 Abar Khel</button><button id="nextLvBtn" class="next-btn" onclick="nextLevel()">⏭️ Next Level ➡️</button></div>
+<div id="marioBox" onclick="startMario()"><canvas id="mario" width="850" height="380"></canvas>
+<div id="marioPlay" class="play-overlay" onclick="startMario()"><b>🍄 SUPER RIYAN HD</b><button type="button" class="play-big mario-play" onclick="event.stopPropagation();startMario()">▶</button><span style="margin-top:10px">Khelte PLAY chap de!</span></div></div>
+<div class="ctrl"><button type="button" onclick="mLeft=true;setTimeout(function(){mLeft=false},300)">⬅️</button><button type="button" onclick="mJump()">⬆️</button><button type="button" onclick="mRight=true;setTimeout(function(){mRight=false},300)">➡️</button></div>
+<div style="text-align:center"><button type="button" class="jump-btn" style="background:#ffcc00" onclick="restartMario()">🔁 Abar Khel</button><button type="button" id="nextLvBtn" class="next-btn" onclick="nextLevel()">⏭️ Next Level ➡️</button></div>
 <p id="marioMsg" style="color:#ffcc00;font-weight:bold"></p>
 </div>
 
@@ -201,10 +178,10 @@ body.beat-on .eq-mini span{display:block;animation:barJump 0.4s infinite alterna
 <h2>🔫🧟 GAME 3 - ZOMBIE SHOOTER HD - 20 LEVELS! ✨</h2>
 <p>LEVEL: <span id="zLvText" style="color:#ff0055;font-weight:bold">1 / 20</span> | Kill: <span id="zKill">0</span> | ❤️ HP: <span id="zHP">100</span> | <span id="zLvName">Level 1</span></p>
 <div class="lv-bar" id="zLvBar"></div>
-<div id="zombieBox"><canvas id="zombie" width="850" height="420"></canvas>
-<div id="zombiePlay" class="play-overlay"><b>🧟 ZOMBIE SHOOTER HD</b><button class="play-big zombie-play" onclick="startZombie()">▶</button><span style="margin-top:10px">Khelte PLAY chap de!</span></div></div>
-<div class="ctrl"><button onclick="zUp=true;setTimeout(function(){zUp=false},250)">⬆️</button><button class="shoot-btn" onclick="zShoot()">🔫 SHOOT!</button><button onclick="zDown=true;setTimeout(function(){zDown=false},250)">⬇️</button></div>
-<div style="text-align:center"><button class="jump-btn" style="background:#9900ff;color:#fff" onclick="restartZombie()">🔁 Abar Khel</button><button id="zNextBtn" class="next-btn" onclick="zNextLevel()">⏭️ Next Level ➡️</button></div>
+<div id="zombieBox" onclick="startZombie()"><canvas id="zombie" width="850" height="420"></canvas>
+<div id="zombiePlay" class="play-overlay" onclick="startZombie()"><b>🧟 ZOMBIE SHOOTER HD</b><button type="button" class="play-big zombie-play" onclick="event.stopPropagation();startZombie()">▶</button><span style="margin-top:10px">Khelte PLAY chap de!</span></div></div>
+<div class="ctrl"><button type="button" onclick="zUp=true;setTimeout(function(){zUp=false},250)">⬆️</button><button type="button" class="shoot-btn" onclick="zShoot()">🔫 SHOOT!</button><button type="button" onclick="zDown=true;setTimeout(function(){zDown=false},250)">⬇️</button></div>
+<div style="text-align:center"><button type="button" class="jump-btn" style="background:#9900ff;color:#fff" onclick="restartZombie()">🔁 Abar Khel</button><button type="button" id="zNextBtn" class="next-btn" onclick="zNextLevel()">⏭️ Next Level ➡️</button></div>
 <p id="zMsg" style="color:#ff0055;font-weight:bold"></p>
 </div>
 
@@ -212,10 +189,10 @@ body.beat-on .eq-mini span{display:block;animation:barJump 0.4s infinite alterna
 <h2>🔴🏎️ GAME 4 - RED RACING HD ✨</h2>
 <p>Score: <span id="rScore" style="color:#ff0000;font-weight:bold">0</span> | Best: <span id="rBest">0</span></p>
 <div class="speed-box"><div><div class="speed-num"><span id="rSpeed">0</span></div><div class="speed-label">KM/H</div></div><div style="font-size:30px">🏎️</div><div><div class="speed-num" style="color:#ffcc00"><span id="rScore2">0</span></div><div class="speed-label">SCORE</div></div><div><div class="speed-num" style="color:#00ff88"><span id="rGear">1</span></div><div class="speed-label">GEAR</div></div></div>
-<div id="raceBox"><canvas id="race" width="850" height="420"></canvas>
-<div id="racePlay" class="play-overlay"><b>🔴 RED RACING HD</b><button class="play-big race-play" onclick="startRace()">▶</button><span style="margin-top:10px">Khelte PLAY chap de!</span></div></div>
-<div class="ctrl"><button onclick="rLeft=true;setTimeout(function(){rLeft=false},300)">⬅️</button><button class="race-btn" onclick="rBoost()">🚀 BOOST!</button><button onclick="rRight=true;setTimeout(function(){rRight=false},300)">➡️</button></div>
-<div style="text-align:center"><button class="jump-btn" style="background:#ff0000;color:#fff" onclick="restartRace()">🔁 Abar Khel</button></div>
+<div id="raceBox" onclick="startRace()"><canvas id="race" width="850" height="420"></canvas>
+<div id="racePlay" class="play-overlay" onclick="startRace()"><b>🔴 RED RACING HD</b><button type="button" class="play-big race-play" onclick="event.stopPropagation();startRace()">▶</button><span style="margin-top:10px">Khelte PLAY chap de!</span></div></div>
+<div class="ctrl"><button type="button" onclick="rLeft=true;setTimeout(function(){rLeft=false},300)">⬅️</button><button type="button" class="race-btn" onclick="rBoost()">🚀 BOOST!</button><button type="button" onclick="rRight=true;setTimeout(function(){rRight=false},300)">➡️</button></div>
+<div style="text-align:center"><button type="button" class="jump-btn" style="background:#ff0000;color:#fff" onclick="restartRace()">🔁 Abar Khel</button></div>
 <p id="rMsg" style="color:#ff0000;font-weight:bold"></p>
 </div>
 
@@ -223,9 +200,9 @@ body.beat-on .eq-mini span{display:block;animation:barJump 0.4s infinite alterna
 <h2>🍉🔪 GAME 5 - FRUIT NINJA HD ✨</h2>
 <p>Score: <span id="fScore" style="color:#ff0055;font-weight:bold">0</span> | Miss: <span id="fMiss">0</span>/3 | Best: <span id="fBest">0</span> | Combo: <span id="fCombo">x1</span></p>
 <p>👆 Fol er upor tap kore kat! 💣 Bomb katle ses!</p>
-<div id="fruitBox"><canvas id="fruit" width="850" height="420"></canvas>
-<div id="fruitPlay" class="play-overlay"><b>🍉 FRUIT NINJA HD</b><button class="play-big fruit-play" onclick="startFruit()">▶</button><span style="margin-top:10px">Khelte PLAY chap de!</span></div></div>
-<div style="text-align:center"><button class="jump-btn" style="background:#ffcc00;color:#000" onclick="restartFruit()">🔁 Abar Khel</button></div>
+<div id="fruitBox" onclick="startFruit()"><canvas id="fruit" width="850" height="420"></canvas>
+<div id="fruitPlay" class="play-overlay" onclick="startFruit()"><b>🍉 FRUIT NINJA HD</b><button type="button" class="play-big fruit-play" onclick="event.stopPropagation();startFruit()">▶</button><span style="margin-top:10px">Khelte PLAY chap de!</span></div></div>
+<div style="text-align:center"><button type="button" class="jump-btn" style="background:#ffcc00;color:#000" onclick="restartFruit()">🔁 Abar Khel</button></div>
 <p id="fMsg" style="color:#ff0055;font-weight:bold"></p>
 </div>
 
@@ -236,52 +213,272 @@ body.beat-on .eq-mini span{display:block;animation:barJump 0.4s infinite alterna
 <button class="sound-btn" id="soundBtn" onclick="toggleSound()">🔊 SOUND: ON</button>
 
 <script>
-// === RA AI - SOTTI KOTHA BOLE ===
-var aiEmojis=['😀','😂','😍','😎','🤔','👍','❤️','🔥','🎮','🤖','😊','😢','😡','🥳','😅','🙏','💪','🎉','🍉','🏎️','🧟','🦖','🍄','⚽','📚','💡','✨','😴','🤯','😇'];
-function buildEmoji(){
-  var panel=document.getElementById('emojiPanel');
-  var html='';
-  for(var i=0;i<aiEmojis.length;i++){ html+='<span class="emoji-item" onclick="addEmoji(\''+aiEmojis[i]+'\')">'+aiEmojis[i]+'</span>'; }
-  panel.innerHTML=html;
-}
+// SAFE - jodi kono error ase, tao onno button cholbe
+function safe(fn){ try{ fn(); }catch(e){ console.log(e); } }
+var soundOn=true, audioCtx=null;
+function getCtx(){ if(!audioCtx){ try{ audioCtx=new (window.AudioContext||window.webkitAudioContext)(); }catch(e){ return null; } } if(audioCtx&&audioCtx.state==='suspended'){ audioCtx.resume(); } return audioCtx; }
+function playTone(f,d,type,v,slide){ if(!soundOn) return; try{ var ac=getCtx(); if(!ac) return; var o=ac.createOscillator(), g=ac.createGain(); o.type=type||'square'; o.frequency.setValueAtTime(f,ac.currentTime); if(slide) o.frequency.exponentialRampToValueAtTime(slide,ac.currentTime+d); g.gain.setValueAtTime(v||0.12,ac.currentTime); g.gain.exponentialRampToValueAtTime(0.001,ac.currentTime+d); o.connect(g); g.connect(ac.destination); o.start(); o.stop(ac.currentTime+d); }catch(e){} }
+function sJump(){ playTone(300,0.2,'sine',0.2,700); }
+function sCoin(){ playTone(900,0.1,'sine',0.2,1400); setTimeout(function(){ playTone(1400,0.15,'sine',0.2,1800); },80); }
+function sShoot(){ playTone(1200,0.08,'square',0.12,200); }
+function sBoom(){ playTone(200,0.3,'sawtooth',0.2,50); }
+function sCrash(){ playTone(150,0.5,'sawtooth',0.25,30); }
+function sBoost(){ playTone(200,0.4,'sawtooth',0.15,900); }
+function sSlice(){ playTone(800,0.12,'sawtooth',0.18,200); }
+function sBomb(){ playTone(100,0.6,'sawtooth',0.3,20); }
+function sGameOver(){ playTone(400,0.2,'square',0.15,300); setTimeout(function(){ playTone(200,0.4,'square',0.15,100); },300); }
+function sWin(){ playTone(600,0.12,'sine',0.2,800); setTimeout(function(){ playTone(1000,0.2,'sine',0.2,1400); },200); }
+function toggleSound(){ soundOn=!soundOn; document.getElementById('soundBtn').innerText=soundOn?'🔊 SOUND: ON':'🔇 SOUND: OFF'; if(soundOn) sCoin(); }
+var beatTimer=null;
+function startBeat(){ document.body.classList.add('beat-on'); document.getElementById('nowPlaying').style.display='block'; if(beatTimer) clearInterval(beatTimer); beatTimer=setInterval(function(){ var bars=document.querySelectorAll('.beat-bar'); for(var i=0;i<bars.length;i++){ bars[i].style.height=(20+Math.random()*80)+'px'; } },400); }
+function stopBeat(){ document.body.classList.remove('beat-on'); document.getElementById('nowPlaying').style.display='none'; if(beatTimer) clearInterval(beatTimer); }
+function toggleMusic(){ var m=document.getElementById('bgMusic'); var b=document.getElementById('musicBtn'); try{ if(m.paused){ var p=m.play(); if(p) p.catch(function(){}); b.innerText='⏸ XTALI - PAUSE'; startBeat(); } else { m.pause(); b.innerText='▶ PLAY XTALI'; stopBeat(); } }catch(e){} }
+var followCount=0, myFollow=false;
+function doFollow(){ if(!myFollow){ myFollow=true; followCount++; sCoin(); } else { myFollow=false; followCount=Math.max(0,followCount-1); } var btn=document.getElementById('followBtn'); document.getElementById('followCount').innerText=followCount; if(myFollow){ btn.innerText='✓ Following'; btn.className='follow-btn followed'; document.getElementById('followMsg').innerText='Thanks for following! ❤️'; } else { btn.innerText='+ Follow'; btn.className='follow-btn'; document.getElementById('followMsg').innerText=''; } }
+// RA AI
+var aiEmojis=['😀','😂','😍','😎','🤔','👍','❤️','🔥','🎮','🤖','😊','🥳','🙏','💪','🎉','🍉','🏎️','🧟','🦖','🍄','⚽','📚','💡','✨','😴','🤯','😇','👋'];
+function buildEmoji(){ var panel=document.getElementById('emojiPanel'); if(!panel) return; var html=''; for(var i=0;i<aiEmojis.length;i++){ html+='<span class="emoji-item" onclick="addEmoji(\''+aiEmojis[i]+'\')">'+aiEmojis[i]+'</span>'; } panel.innerHTML=html; }
 function toggleEmoji(){ document.getElementById('emojiPanel').classList.toggle('show'); }
 function addEmoji(e){ var inp=document.getElementById('aiInput'); inp.value+=e; inp.focus(); }
 function askQuick(q){ document.getElementById('aiInput').value=q; sendAI(); }
-function addMsg(text,isUser){
-  var box=document.getElementById('aiMessages');
-  var d=document.createElement('div');
-  d.className='msg '+(isUser?'msg-user':'msg-ai');
-  d.innerHTML=text+'<div class="msg-time">'+(isUser?'Tumi':'RA AI')+' • Ekhon</div>';
-  box.appendChild(d);
-  box.scrollTop=box.scrollHeight;
-}
-function showTyping(){
-  var box=document.getElementById('aiMessages');
-  var t=document.createElement('div');
-  t.id='aiTyping'; t.className='typing'; t.innerHTML='<span></span><span></span><span></span>';
-  box.appendChild(t); box.scrollTop=box.scrollHeight;
-}
+function addMsg(text,isUser){ var box=document.getElementById('aiMessages'); var d=document.createElement('div'); d.className='msg '+(isUser?'msg-user':'msg-ai'); d.innerHTML=text+'<div class="msg-time">'+(isUser?'Tumi':'RA AI')+' • Ekhon</div>'; box.appendChild(d); box.scrollTop=box.scrollHeight; }
+function showTyping(){ var box=document.getElementById('aiMessages'); var t=document.createElement('div'); t.id='aiTyping'; t.className='typing'; t.innerHTML='<span></span><span></span><span></span>'; box.appendChild(t); box.scrollTop=box.scrollHeight; }
 function hideTyping(){ var t=document.getElementById('aiTyping'); if(t) t.remove(); }
 function getRAAnswer(q){
   var s=q.toLowerCase();
-  // Riyan
-  if(s.indexOf('tumi ke')!==-1 || s.indexOf('tui ke')!==-1 || s.indexOf('tomar nam')!==-1 || s.indexOf('tor nam')!==-1) return "Ami <b>RA AI</b>! 🤖 Riyan Ahmed er nijer AI! Amake Riyan banaise, jeno sobai ke sotti kotha bolte pari! 😎 Ami mittha boli na, ja jani na bole dei 'jani na'! ✅";
-  if(s.indexOf('riyan ke')!==-1 || s.indexOf('riyan')!==-1 && s.indexOf('ke')!==-1) return "Riyan Ahmed holo ei website er malik! 👦 O Bheramara, Kushtia te thake! O P.D.B High School e Class 8 e pore, Science group! 🎓 Or sopno holo Scientist howa ar nijer programming language banano - Swift / Kotlin er moto powerful! 🔥💪";
-  if(s.indexOf('school')!==-1 || s.indexOf('kon class')!==-1 || s.indexOf('class')!==-1) return "Riyan <b>P.D.B High School</b> e pore! 🎓 Class 8, Science Group! School ta Bheramara, Kushtia te! 📍";
-  if(s.indexOf('kothay')!==-1 || s.indexOf('basa')!==-1 || s.indexOf('thake')!==-1) return "Riyan <b>Bheramara, Kushtia, Bangladesh</b> e thake! 🇧🇩📍";
-  if(s.indexOf('boyos')!==-1 || s.indexOf('age')!==-1 || s.indexOf('koto bochor')!==-1) return "Riyan er boyos ta ami sure jani na, karon o amake bole nai! 😅 Kintu o Class 8 e pore, tai 13-14 bochor hobe bole amar dharona! Sotti ta Riyan kei ask koro! 😊";
-  if(s.indexOf('sopno')!==-1 || s.indexOf('goal')!==-1 || s.indexOf('swapno')!==-1) return "Riyan er 2 ta boro sopno! 🎯<br>1. Scientist howa 🧪<br>2. Nijer programming language banano - Swift / Kotlin er moto powerful! 💻<br>O protidin discipline ar consistency diye kaj kore! 🔥";
-  if(s.indexOf('game')!==-1 || s.indexOf('khela')!==-1) return "Ei site e 5 ta game ase! 🎮<br>1. 🦖 Dino Pro<br>2. 🍄 Super Riyan - 20 Levels<br>3. 🧟 Zombie Shooter - 20 Levels<br>4. 🏎️ Red Racing<br>5. 🍉 Fruit Ninja<br>Sob gula khelte PLAY chap de! 🔥";
-  if(s.indexOf('joke')!==-1 || s.indexOf('moja')!==-1 || s.indexOf('hasao')!==-1){
-    var jokes=["Teacher: 2+2 koto? 😅 Student: 22! Teacher: Kemne? Student: 2 er pashe 2 bosale 22 hoy! 😂","Ekdin ekta computer bollo - 'Ami tired!' 💻 Arek computer bollo - 'Tui to charger e lagano!' 😂","Riyan: Ma, ami Scientist hobo! Ma: Age vat kha, tarpor prithibi bodla! 😂🍚","Ekta mach arek mach ke bollo - 'Tui pani te thakis keno?' Mach: 'Tui hawai thakis?' 🐟😂","Ami ekta joke bolte giye nijei hese felsi! 😂🤣"];
-    return jokes[Math.floor(Math.random()*jokes.length)];
-  }
-  if(s.indexOf('motivate')!==-1 || s.indexOf('mon kharap')!==-1 || s.indexOf('harta')!==-1 || s.indexOf('parbo na')!==-1) return "Sun bhai! 🔥 Tui parbi! Riyan o Class 8 theke suru korse, ekhon nije website, game, AI banay felse! 💪<br><br>Discipline + Consistency + Growth = Success! 🎯<br>Ajke 1% valo ho, kalke aro 1%! Har manis na! ❤️";
-  if(s.indexOf('valo asi')!==-1 || s.indexOf('kemon aso')!==-1 || s.indexOf('kemon acho')!==-1 || s.indexOf('hi')===0 || s.indexOf('hello')!==-1 || s.indexOf('assalam')!==-1) return "Alhamdulillah ami valo asi! 😊❤️ Tumi kemon aso? 🥰 Amake ja khusi ask koro! Ami sotti ans dibo! 🤖✨";
-  if(s.indexOf('love')!==-1 || s.indexOf('prem')!==-1 || s.indexOf('valobasa')!==-1) return "Valobasa sundor jinis! ❤️ Kintu ekhon tor focus howa uchit poralekha ar career e - Riyan er moto! 🎯 Age nijeke boro kor, valobasa pore amnei asbe! 😎💪";
-  if(s.indexOf('porasona')!==-1 || s.indexOf('exam')!==-1 || s.indexOf('porikha')!==-1) return "Porasona te valo korte 3 ta jinis lagbe! 📚<br>1. Roj ektu ektu poro, exam er age sob ek sathe na! ⏰<br>2. Na bujhle bar bar ask koro! 🤔<br>3. Phone kom, boi besi! 😅<br>Tui parbi! 🔥";
-  if(s.indexOf('2+2')!==-1 || s.indexOf('2 + 2')!==-1) return "2+2 = <b>4</b>! ✅ Eita 100% sotti! Gonit e kono mittha nai! 😎";
+  if(s.indexOf('tumi ke')!==-1||s.indexOf('tui ke')!==-1||s.indexOf('tomar nam')!==-1) return "Ami <b>RA AI</b>! 🤖 Riyan Ahmed er nijer AI! Ami mittha boli na, ja jani na bole dei 'jani na'! ✅";
+  if(s.indexOf('riyan ke')!==-1) return "Riyan Ahmed holo ei website er malik! 👦 O Bheramara, Kushtia te thake! P.D.B High School e Class 8 e pore, Science group! 🎓 Or sopno Scientist howa ar nijer programming language banano! 🔥";
+  if(s.indexOf('school')!==-1) return "Riyan <b>P.D.B High School</b> e pore! 🎓 Class 8, Science Group! Bheramara, Kushtia! 📍";
+  if(s.indexOf('kothay')!==-1||s.indexOf('thake')!==-1) return "Riyan <b>Bheramara, Kushtia, Bangladesh</b> e thake! 🇧🇩";
+  if(s.indexOf('sopno')!==-1||s.indexOf('goal')!==-1) return "Riyan er 2 ta sopno! 🎯 1. Scientist howa 🧪 2. Nijer programming language banano! 💻";
+  if(s.indexOf('game')!==-1) return "Ei site e 5 ta game ase! 🎮 Dino, Super Riyan, Zombie, Racing, Fruit Ninja! Sob PLAY chap de! 🔥";
+  if(s.indexOf('joke')!==-1||s.indexOf('hasao')!==-1){ var j=["Teacher: 2+2 koto? Student: 22! 😂","Computer bollo Ami tired! Arek ta bollo Tui to charger e lagano! 😂","Riyan: Ma ami Scientist hobo! Ma: Age vat kha! 😂🍚"]; return j[Math.floor(Math.random()*j.length)]; }
+  if(s.indexOf('motivate')!==-1||s.indexOf('mon kharap')!==-1) return "Sun bhai! 🔥 Tui parbi! Riyan o Class 8 theke suru korse! Discipline + Consistency = Success! 🎯 Har manis na! ❤️";
+  if(s.indexOf('kemon aso')!==-1||s.indexOf('hello')!==-1||s.indexOf('assalam')!==-1||s==='hi') return "Alhamdulillah valo asi! 😊❤️ Tumi kemon aso? Amake ja khusi ask koro! 🤖";
+  if(s.indexOf('2+2')!==-1) return "2+2 = <b>4</b>! ✅ 100% sotti!";
   if(s.indexOf('1+1')!==-1) return "1+1 = <b>2</b>! ✅";
-  if(s.indexOf('10+10')!==-1) return "10+10 = <b>20</b>! ✅";
-  if(s.indexOf('100+100')!==-1) return "100+100 = <b>200</b>! ✅";
-  if
+  if(s.indexOf('+')!==-1){ var mm=s.match(/(\d+)\s*\+\s*(\d+)/); if(mm) return mm[1]+" + "+mm[2]+" = <b>"+(parseInt(mm[1])+parseInt(mm[2]))+"</b>! ✅"; }
+  if(s.indexOf('prithibi')!==-1) return "Prithibi gol! 🌍 100% sotti! Surjo ke kendro kore ghure! ☀️";
+  if(s.indexOf('chad')!==-1) return "Chad prithibir upogroho! 🌙 Nije alo dey na, surjer alo reflect kore! ✨";
+  if(s.indexOf('gaan')!==-1||s.indexOf('xtali')!==-1) return "XTALI gaan niche PLAY button e ase! 🎵 PLAY chap dile beat er sathe nachbe! 💃";
+  if(s.indexOf('dhonnobad')!==-1||s.indexOf('thank')!==-1) return "Welcome! 🥰❤️ Abar ask koro!";
+  if(s.indexOf('bye')!==-1) return "Bye bye! 👋 Abar asis! Game khelte vulis na! 🎮";
+  return "Eita ami sure jani na! 😅 Mittha bolbo na! Riyan ke ask koro! 🤔<br><br>Try koro: 'Riyan ke?' / 'Joke bolo' / '2+2 koto?'";
+}
+function sendAI(){
+  var inp=document.getElementById('aiInput'); if(!inp) return;
+  var q=inp.value.trim(); if(!q) return;
+  addMsg(q,true); inp.value='';
+  var ep=document.getElementById('emojiPanel'); if(ep) ep.classList.remove('show');
+  showTyping();
+  setTimeout(function(){ hideTyping(); addMsg(getRAAnswer(q),false); },600);
+}
+buildEmoji();
+// DINO
+var canvas=document.getElementById('game'), ctx=canvas.getContext('2d');
+var dinoY=135, dinoV=0, dinoJumping=false, dinoObs=[], dinoScore=0, dinoRun=false, dinoSpeed=5, dinoClouds=[{x:100,y:30},{x:300,y:50},{x:500,y:25}], legAnim=0;
+function dinoDraw(){
+  ctx.clearRect(0,0,600,200);
+  var sky=ctx.createLinearGradient(0,0,0,200); sky.addColorStop(0,'#4facfe'); sky.addColorStop(1,'#fef9c3'); ctx.fillStyle=sky; ctx.fillRect(0,0,600,200);
+  ctx.fillStyle='#ffeb3b'; ctx.beginPath(); ctx.arc(520,35,22,0,Math.PI*2); ctx.fill();
+  ctx.fillStyle='rgba(255,255,255,0.95)';
+  for(var c=0;c<dinoClouds.length;c++){ ctx.beginPath(); ctx.arc(dinoClouds[c].x,dinoClouds[c].y,18,0,Math.PI*2); ctx.arc(dinoClouds[c].x+22,dinoClouds[c].y,22,0,Math.PI*2); ctx.fill(); }
+  ctx.fillStyle='#66bb6a'; ctx.fillRect(0,182,600,18);
+  legAnim+=0.3; var lm=Math.sin(legAnim)*4;
+  ctx.fillStyle='#2e7d32'; ctx.fillRect(15,dinoY+20,30,10); ctx.fillRect(40,dinoY+10,42,38); ctx.fillRect(68,dinoY-12,30,24);
+  ctx.fillStyle='#fff'; ctx.beginPath(); ctx.arc(88,dinoY-2,8,0,Math.PI*2); ctx.fill();
+  ctx.fillStyle='#000'; ctx.beginPath(); ctx.arc(90,dinoY-2,4,0,Math.PI*2); ctx.fill();
+  ctx.strokeStyle='#000'; ctx.lineWidth=2; ctx.beginPath(); ctx.arc(85,dinoY+6,7,0.2,Math.PI*0.8); ctx.stroke();
+  ctx.fillStyle='#1b5e20'; ctx.fillRect(48,dinoY+48,10,14+lm); ctx.fillRect(66,dinoY+48,10,14-lm);
+  ctx.fillStyle='#ff5722'; ctx.fillRect(45,dinoY+5,6,6); ctx.fillRect(55,dinoY+3,6,6);
+  for(var i=0;i<dinoObs.length;i++){ var ox=dinoObs[i].x; ctx.fillStyle='#1b5e20'; ctx.fillRect(ox,145,22,37); ctx.fillStyle='#fff'; ctx.fillRect(ox+5,150,12,5); }
+}
+function dinoLoop(){
+  if(!dinoRun) return;
+  for(var c=0;c<dinoClouds.length;c++){ dinoClouds[c].x-=1; if(dinoClouds[c].x<-40) dinoClouds[c].x=620; }
+  if(dinoJumping){ dinoV+=0.9; dinoY+=dinoV; if(dinoY>=135){ dinoY=135; dinoJumping=false; dinoV=0; } }
+  if(Math.random()<0.025) dinoObs.push({x:600});
+  for(var i=0;i<dinoObs.length;i++) dinoObs[i].x-=dinoSpeed;
+  dinoObs=dinoObs.filter(function(o){ return o.x>-30; });
+  for(var j=0;j<dinoObs.length;j++){ var o=dinoObs[j]; if(o.x<82 && o.x+22>40 && dinoY+48>143){ dinoRun=false; sGameOver(); document.getElementById('finalScore').innerText='Score: '+Math.floor(dinoScore/10); document.getElementById('gameOver').style.display='flex'; dinoDraw(); return; } }
+  dinoScore++; if(dinoScore%400===0) dinoSpeed+=0.4;
+  document.getElementById('score').innerText='Score: '+Math.floor(dinoScore/10);
+  dinoDraw(); requestAnimationFrame(dinoLoop);
+}
+function startDino(){
+  var el=document.getElementById('dinoPlay'); if(el) el.style.display='none';
+  var go=document.getElementById('gameOver'); if(go) go.style.display='none';
+  dinoObs=[]; dinoScore=0; dinoSpeed=5; dinoY=135; dinoRun=true; dinoDraw(); dinoLoop();
+}
+function jump(){ if(!dinoRun) return; if(!dinoJumping){ dinoJumping=true; dinoV=-14; sJump(); } }
+function restartGame(){ document.getElementById('gameOver').style.display='none'; startDino(); }
+dinoDraw();
+// MARIO
+var mc=document.getElementById('mario'), mctx=mc.getContext('2d');
+var px=40, py=260, pvy=0, onGround=true, coins=0, mLeft=false, mRight=false, marioOver=false, marioWin=false, marioStarted=false, curLevel=1, completedLevels=[], mCoins=[], mEnemies=[], mPlatforms=[], flagX=780, GROUND_Y=260, enemySpeed=2;
+var ALL_LEVELS=[];
+for(var li2=1; li2<=20; li2++){ ALL_LEVELS.push({name:'Level '+li2, speed:1.5+li2*0.2, platforms:[{x:300,y:230,w:140,h:22},{x:560,y:190,w:130,h:22}], coins:[{x:200,y:200},{x:360,y:200},{x:620,y:160}], enemies:[{x:400,y:280},{x:600,y:280}]}); }
+function buildLevel(n){
+  var L=ALL_LEVELS[n-1]; enemySpeed=L.speed; mPlatforms=L.platforms;
+  mCoins=L.coins.map(function(c){ return {x:c.x,y:c.y}; });
+  mEnemies=L.enemies.map(function(e){ return {x:e.x,y:280,w:38,h:42,dir:1,min:Math.max(150,e.x-60),max:Math.min(720,e.x+60),alive:true}; });
+  document.getElementById('lvText').innerText=n+' / 20'; document.getElementById('lvName').innerText=L.name;
+  var bar=''; for(var d=1;d<=20;d++){ var cls='lv-dot'; if(completedLevels.indexOf(d)!==-1) cls+=' done'; if(d===curLevel) cls+=' active'; bar+='<div class="'+cls+'">'+d+'</div>'; }
+  document.getElementById('lvBar').innerHTML=bar;
+}
+function loadLevel(n){ curLevel=n; px=40; py=260; pvy=0; coins=0; marioOver=false; marioWin=false; document.getElementById('marioMsg').innerText=''; document.getElementById('nextLvBtn').style.display='none'; document.getElementById('coinCount').innerText='0'; buildLevel(n); }
+function drawRiyan(x,y){
+  mctx.fillStyle='#1e40af'; mctx.fillRect(x+4,y+40,12,18); mctx.fillRect(x+24,y+40,12,18);
+  mctx.fillStyle='#111'; mctx.fillRect(x+2,y+56,16,7); mctx.fillRect(x+22,y+56,16,7);
+  mctx.fillStyle='#ff0000'; mctx.fillRect(x,y+10,40,32); mctx.fillStyle='#fff'; mctx.fillRect(x+15,y+14,10,22);
+  mctx.fillStyle='#ffcc99'; mctx.fillRect(x-8,y+14,8,18); mctx.fillRect(x+40,y+14,8,18); mctx.fillRect(x+2,y-18,36,28);
+  mctx.fillStyle='#111'; mctx.fillRect(x+2,y-22,36,9); mctx.fillStyle='#ff0000'; mctx.fillRect(x,y-30,40,10);
+  mctx.fillStyle='#fff'; mctx.beginPath(); mctx.arc(x+12,y-6,5.5,0,Math.PI*2); mctx.arc(x+28,y-6,5.5,0,Math.PI*2); mctx.fill();
+  mctx.fillStyle='#000'; mctx.beginPath(); mctx.arc(x+13,y-6,2.8,0,Math.PI*2); mctx.arc(x+29,y-6,2.8,0,Math.PI*2); mctx.fill();
+  mctx.strokeStyle='#000'; mctx.lineWidth=1.5; mctx.beginPath(); mctx.arc(x+20,y+3,7,0.2,Math.PI*0.8); mctx.stroke();
+}
+function drawEnemy(x,y){ mctx.fillStyle='#7f1d1d'; mctx.fillRect(x,y+10,38,28); mctx.fillStyle='#ffcc99'; mctx.fillRect(x+4,y-8,30,18); mctx.fillStyle='#000'; mctx.fillRect(x+4,y-10,30,5); mctx.fillStyle='#fff'; mctx.beginPath(); mctx.arc(x+12,y,4.5,0,Math.PI*2); mctx.arc(x+26,y,4.5,0,Math.PI*2); mctx.fill(); mctx.fillStyle='#ff0000'; mctx.beginPath(); mctx.arc(x+12,y,2.2,0,Math.PI*2); mctx.arc(x+26,y,2.2,0,Math.PI*2); mctx.fill(); }
+function mDraw(){
+  mctx.clearRect(0,0,850,380);
+  var bg=mctx.createLinearGradient(0,0,0,380); bg.addColorStop(0,'#60a5fa'); bg.addColorStop(1,'#fef9c3'); mctx.fillStyle=bg; mctx.fillRect(0,0,850,380);
+  mctx.fillStyle='#fde047'; mctx.beginPath(); mctx.arc(720,50,22,0,Math.PI*2); mctx.fill();
+  mctx.fillStyle='rgba(255,255,255,0.95)'; mctx.beginPath(); mctx.arc(150,60,25,0,Math.PI*2); mctx.arc(180,60,30,0,Math.PI*2); mctx.fill();
+  mctx.fillStyle='#4ade80'; mctx.fillRect(0,320,850,60); mctx.fillStyle='#92400e'; mctx.fillRect(0,320,850,12);
+  for(var p=0;p<mPlatforms.length;p++){ var pl=mPlatforms[p]; mctx.fillStyle='#78350f'; mctx.fillRect(pl.x,pl.y,pl.w,pl.h); mctx.fillStyle='#22c55e'; mctx.fillRect(pl.x,pl.y,pl.w,8); }
+  mctx.fillStyle='#fff'; mctx.fillRect(flagX,90,6,230); mctx.fillStyle='#ff0055'; mctx.fillRect(flagX+6,90,50,32);
+  mctx.fillStyle='#fff'; mctx.font='bold 20px Arial'; mctx.fillText('GOAL',flagX+2,80);
+  for(var i=0;i<mCoins.length;i++){ mctx.fillStyle='#facc15'; mctx.beginPath(); mctx.arc(mCoins[i].x,mCoins[i].y,15,0,Math.PI*2); mctx.fill(); mctx.fillStyle='#fff'; mctx.beginPath(); mctx.arc(mCoins[i].x,mCoins[i].y,6,0,Math.PI*2); mctx.fill(); }
+  for(var e=0;e<mEnemies.length;e++){ if(!mEnemies[e].alive) continue; drawEnemy(mEnemies[e].x,mEnemies[e].y); }
+  drawRiyan(px,py);
+}
+function mLoop(){
+  if(!marioStarted) return;
+  if(!marioOver && !marioWin){
+    if(mLeft) px-=6; if(mRight) px+=6; pvy+=0.8; py+=pvy;
+    var gy=GROUND_Y;
+    for(var pi=0;pi<mPlatforms.length;pi++){ var pl=mPlatforms[pi]; if(px+30>pl.x && px<pl.x+pl.w && py+60>=pl.y && py+60<=pl.y+25 && pvy>0) gy=pl.y-60; }
+    if(py>=gy){ py=gy; pvy=0; onGround=true; } else onGround=false;
+    if(py>380){ marioOver=true; sGameOver(); document.getElementById('marioMsg').innerText='Pore gesos!'; }
+    for(var ei=0;ei<mEnemies.length;ei++){ var en=mEnemies[ei]; if(!en.alive) continue; en.x+=en.dir*enemySpeed; if(en.x>en.max||en.x<en.min) en.dir*=-1; }
+    for(var ci=mCoins.length-1;ci>=0;ci--){ if(Math.abs(mCoins[ci].x-(px+19))<28 && Math.abs(mCoins[ci].y-(py+15))<35){ mCoins.splice(ci,1); coins++; sCoin(); document.getElementById('coinCount').innerText=coins; } }
+    for(var ej=0;ej<mEnemies.length;ej++){ var en2=mEnemies[ej]; if(!en2.alive) continue; if(px+38>en2.x && px<en2.x+en2.w && py+60>en2.y && py<en2.y+en2.h){ if(pvy>0){ en2.alive=false; pvy=-14; sBoom(); } else { marioOver=true; sGameOver(); document.getElementById('marioMsg').innerText='Shotru kheye felse!'; } } }
+    if(px+38>=flagX){ marioWin=true; sWin(); if(completedLevels.indexOf(curLevel)===-1) completedLevels.push(curLevel); if(curLevel===20){ document.getElementById('marioMsg').innerText='🏆 LEGEND!'; } else { document.getElementById('marioMsg').innerText='🎉 Level '+curLevel+' SES!'; document.getElementById('nextLvBtn').style.display='inline-block'; } buildLevel(curLevel); }
+    if(px<0) px=0; if(px>810) px=810;
+  }
+  mDraw(); requestAnimationFrame(mLoop);
+}
+function startMario(){ document.getElementById('marioPlay').style.display='none'; marioStarted=true; marioOver=false; marioWin=false; loadLevel(curLevel); mLoop(); }
+function nextLevel(){ if(curLevel<20){ loadLevel(curLevel+1); marioWin=false; marioOver=false; document.getElementById('nextLvBtn').style.display='none'; } }
+function mJump(){ if(!marioStarted||marioOver) return; if(onGround){ pvy=-16; onGround=false; sJump(); } }
+function restartMario(){ completedLevels=[]; loadLevel(1); marioStarted=false; document.getElementById('marioPlay').style.display='flex'; mDraw(); }
+loadLevel(1); mDraw();
+// ZOMBIE
+var zc=document.getElementById('zombie'), zctx=zc.getContext('2d');
+var zy=200, zUp=false, zDown=false, zStarted=false, zOver=false, zWin=false, zBullets=[], zZombies=[], zParticles=[], zLevel=1, zKill=0, zHP=100, zKillsNeeded=5, zSpawnTimer=0;
+function zBuildLevel(n){ zKillsNeeded=2+n; document.getElementById('zLvText').innerText=n+' / 20'; document.getElementById('zLvName').innerText='Level '+n; var bar=''; for(var d=1;d<=20;d++){ var cls='lv-dot'; if(d<zLevel) cls+=' done'; if(d===zLevel) cls+=' active'; bar+='<div class="'+cls+'">'+d+'</div>'; } document.getElementById('zLvBar').innerHTML=bar; }
+function zLoadLevel(n){ zLevel=n; zy=200; zBullets=[]; zZombies=[]; zParticles=[]; zKill=0; zHP=100; zOver=false; zWin=false; zSpawnTimer=0; document.getElementById('zMsg').innerText=''; document.getElementById('zNextBtn').style.display='none'; document.getElementById('zKill').innerText='0'; document.getElementById('zHP').innerText='100'; zBuildLevel(n); }
+function drawZombiePlayer(x,y){ zctx.fillStyle='#1e40af'; zctx.fillRect(x+6,y+42,12,18); zctx.fillRect(x+26,y+42,12,18); zctx.fillStyle='#00ff88'; zctx.fillRect(x,y+10,45,34); zctx.fillStyle='#ffcc99'; zctx.fillRect(x-8,y+14,8,16); zctx.fillRect(x+4,y-18,37,28); zctx.fillStyle='#222'; zctx.fillRect(x+50,y+16,38,9); zctx.fillStyle='#000'; zctx.fillRect(x+4,y-20,37,8); zctx.fillStyle='#fff'; zctx.beginPath(); zctx.arc(x+16,y-6,5,0,Math.PI*2); zctx.arc(x+32,y-6,5,0,Math.PI*2); zctx.fill(); zctx.fillStyle='#000'; zctx.beginPath(); zctx.arc(x+17,y-6,2.5,0,Math.PI*2); zctx.arc(x+33,y-6,2.5,0,Math.PI*2); zctx.fill(); }
+function drawZombieChar(x,y){ zctx.fillStyle='#166534'; zctx.fillRect(x,y+10,40,34); zctx.fillRect(x-12,y+12,12,8); zctx.fillRect(x+40,y+12,12,8); zctx.fillRect(x+4,y-16,32,26); zctx.fillStyle='#ffff00'; zctx.beginPath(); zctx.arc(x+12,y-6,5,0,Math.PI*2); zctx.arc(x+28,y-6,5,0,Math.PI*2); zctx.fill(); zctx.fillStyle='#ff0000'; zctx.beginPath(); zctx.arc(x+12,y-6,2,0,Math.PI*2); zctx.arc(x+28,y-6,2,0,Math.PI*2); zctx.fill(); }
+function zDraw(){ zctx.clearRect(0,0,850,420); var zg=zctx.createLinearGradient(0,0,0,420); zg.addColorStop(0,'#0f172a'); zg.addColorStop(1,'#2a0a2a'); zctx.fillStyle=zg; zctx.fillRect(0,0,850,420); zctx.fillStyle='#fef08a'; zctx.beginPath(); zctx.arc(750,60,32,0,Math.PI*2); zctx.fill(); zctx.fillStyle='#166534'; zctx.fillRect(0,330,850,90); drawZombiePlayer(40,zy); zctx.fillStyle='#333'; zctx.fillRect(20,20,200,18); zctx.fillStyle='#00ff88'; zctx.fillRect(20,20,200*(zHP/100),18); zctx.fillStyle='#fff'; zctx.font='bold 14px Arial'; zctx.fillText('HP: '+zHP,230,35); zctx.fillStyle='#ff0055'; zctx.fillText('KILL: '+zKill+' / '+zKillsNeeded,350,35); for(var b=0;b<zBullets.length;b++){ zctx.fillStyle='#ffff00'; zctx.fillRect(zBullets[b].x,zBullets[b].y,20,6); } for(var zi=0;zi<zZombies.length;zi++) drawZombieChar(zZombies[zi].x,zZombies[zi].y); for(var pi=0;pi<zParticles.length;pi++){ zctx.fillStyle=zParticles[pi].color; zctx.fillRect(zParticles[pi].x,zParticles[pi].y,6,6); } }
+function zLoop(){
+  if(!zStarted) return;
+  if(!zOver && !zWin){
+    if(zUp) zy-=7; if(zDown) zy+=7; if(zy<80) zy=80; if(zy>270) zy=270;
+    zSpawnTimer++; if(zSpawnTimer>50 && zZombies.length<6){ zSpawnTimer=0; var yy=100+Math.floor(Math.random()*3)*80; zZombies.push({x:850,y:yy}); }
+    for(var bi=zBullets.length-1;bi>=0;bi--){ zBullets[bi].x+=14; if(zBullets[bi].x>850) zBullets.splice(bi,1); }
+    for(var zi=zZombies.length-1;zi>=0;zi--){ zZombies[zi].x-=2; if(zZombies[zi].x<90){ zZombies.splice(zi,1); zHP-=15; sBoom(); document.getElementById('zHP').innerText=zHP; if(zHP<=0){ zOver=true; sGameOver(); document.getElementById('zMsg').innerText='Zombie kheye felse!'; } } }
+    for(var b2=zBullets.length-1;b2>=0;b2--){ for(var z2=zZombies.length-1;z2>=0;z2--){ var zb=zBullets[b2], zz=zZombies[z2]; if(zb && zb.x+18>zz.x && zb.x<zz.x+40 && zb.y>zz.y-15 && zb.y<zz.y+55){ zBullets.splice(b2,1); zZombies.splice(z2,1); zKill++; sBoom(); document.getElementById('zKill').innerText=zKill; for(var pp=0;pp<10;pp++) zParticles.push({x:zz.x+20,y:zz.y+20,color:pp%2?'#ff0055':'#ffcc00'}); break; } } }
+    for(var p3=zParticles.length-1;p3>=0;p3--){ zParticles[p3].x+=2; if(zParticles[p3].x>850) zParticles.splice(p3,1); }
+    if(zKill>=zKillsNeeded){ zWin=true; sWin(); if(zLevel===20) document.getElementById('zMsg').innerText='🏆 ZOMBIE KING!'; else { document.getElementById('zMsg').innerText='🎉 Level '+zLevel+' SES!'; document.getElementById('zNextBtn').style.display='inline-block'; } zBuildLevel(zLevel); }
+  }
+  zDraw(); requestAnimationFrame(zLoop);
+}
+function startZombie(){ document.getElementById('zombiePlay').style.display='none'; zStarted=true; zLoadLevel(zLevel); zLoop(); }
+function zShoot(){ if(!zStarted||zOver||zWin) return; zBullets.push({x:128,y:zy+20}); sShoot(); }
+function zNextLevel(){ if(zLevel<20){ zLoadLevel(zLevel+1); zWin=false; zOver=false; } }
+function restartZombie(){ zLoadLevel(1); zStarted=false; document.getElementById('zombiePlay').style.display='flex'; zDraw(); }
+zLoadLevel(1); zDraw();
+// RACING
+var rc=document.getElementById('race'), rctx=rc.getContext('2d');
+var rx=425, rLeft=false, rRight=false, rStarted=false, rOver=false, rScore=0, rBest=0, rSpeed=5, rEnemies=[], rCoins=[], rRoadY=0, rSpawn=0, rBoostTime=0;
+function drawCar(x,y,color,isPlayer){
+  rctx.fillStyle='#111'; rctx.fillRect(x-34,y+10,14,25); rctx.fillRect(x+20,y+10,14,25); rctx.fillRect(x-34,y+55,14,25); rctx.fillRect(x+20,y+55,14,25);
+  var bg=rctx.createLinearGradient(x-25,y,x+25,y+90); bg.addColorStop(0,color); bg.addColorStop(1,'#111'); rctx.fillStyle=bg; rctx.fillRect(x-25,y,50,90);
+  rctx.fillStyle='rgba(255,255,255,0.5)'; rctx.fillRect(x-20,y+5,8,80);
+  rctx.fillStyle='#e0f2fe'; rctx.fillRect(x-15,y+15,30,18); rctx.fillStyle='#111'; rctx.fillRect(x-15,y+38,30,12);
+  rctx.fillStyle='#ffff00'; rctx.fillRect(x-20,y+2,8,6); rctx.fillRect(x+12,y+2,8,6);
+  rctx.fillStyle='#ff0000'; rctx.fillRect(x-20,y+82,8,6); rctx.fillRect(x+12,y+82,8,6); rctx.fillStyle='#111'; rctx.fillRect(x-28,y+85,56,6);
+  if(isPlayer){ rctx.fillStyle='#fff'; rctx.font='bold 12px Arial'; rctx.fillText('RA',x-8,y+50); } else { rctx.fillStyle='#fff'; rctx.font='bold 10px Arial'; rctx.fillText('ENEMY',x-18,y+50); }
+}
+function rDraw(){
+  rctx.clearRect(0,0,850,420);
+  rctx.fillStyle='#166534'; rctx.fillRect(0,0,120,420); rctx.fillRect(730,0,120,420);
+  rctx.fillStyle='#475569'; rctx.fillRect(120,0,610,420);
+  rctx.fillStyle='#fff'; rctx.fillRect(120,0,6,420); rctx.fillRect(724,0,6,420);
+  rctx.fillStyle='#facc15'; for(var ly=-40;ly<420;ly+=80){ rctx.fillRect(310,ly+rRoadY,8,40); rctx.fillRect(525,ly+rRoadY,8,40); }
+  for(var ci=0;ci<rCoins.length;ci++){ rctx.fillStyle='#ffcc00'; rctx.beginPath(); rctx.arc(rCoins[ci].x,rCoins[ci].y,12,0,Math.PI*2); rctx.fill(); }
+  for(var ei=0;ei<rEnemies.length;ei++) drawCar(rEnemies[ei].x,rEnemies[ei].y,rEnemies[ei].color,false);
+  drawCar(rx,300,'#ff0000',true);
+  var kmh=Math.floor(rSpeed*22);
+  rctx.fillStyle='rgba(0,0,0,0.85)'; rctx.fillRect(10,10,230,70); rctx.strokeStyle='#ff0000'; rctx.lineWidth=3; rctx.strokeRect(10,10,230,70);
+  rctx.fillStyle='#ff0000'; rctx.font='900 30px Arial'; rctx.fillText(kmh,20,48);
+  rctx.fillStyle='#fff'; rctx.font='bold 14px Arial'; rctx.fillText('KM/H',85,48); rctx.fillStyle='#ffcc00'; rctx.fillText('SCORE: '+rScore,20,68);
+  if(rBoostTime>0){ rctx.fillStyle='#00ff88'; rctx.fillText('🚀 BOOST!',620,40); }
+  var gear=kmh<60?1:kmh<110?2:kmh<160?3:kmh<210?4:5; rctx.fillText('GEAR: '+gear,620,65); document.getElementById('rGear').innerText=gear;
+}
+function rLoop(){
+  if(!rStarted) return;
+  if(!rOver){
+    if(rLeft) rx-=8; if(rRight) rx+=8; if(rx<150) rx=150; if(rx>700) rx=700;
+    if(rBoostTime>0){ rBoostTime--; rSpeed=11; } else { rSpeed=5+Math.floor(rScore/200); if(rSpeed>9) rSpeed=9; }
+    rRoadY+=rSpeed*2; if(rRoadY>80) rRoadY=0;
+    rSpawn++; if(rSpawn>45){ rSpawn=0; var lanes=[215,420,620]; var lx=lanes[Math.floor(Math.random()*3)]; var cols=['#00ff88','#ffcc00','#0095f6','#9900ff','#ff6600','#ffffff']; rEnemies.push({x:lx,y:-100,color:cols[Math.floor(Math.random()*cols.length)]}); if(Math.random()<0.4) rCoins.push({x:lanes[Math.floor(Math.random()*3)],y:-50}); }
+    for(var ei=rEnemies.length-1;ei>=0;ei--){ rEnemies[ei].y+=rSpeed+2; if(rEnemies[ei].y>450) rEnemies.splice(ei,1); }
+    for(var ci=rCoins.length-1;ci>=0;ci--){ rCoins[ci].y+=rSpeed+2; if(rCoins[ci].y>450) rCoins.splice(ci,1); }
+    for(var c2=rCoins.length-1;c2>=0;c2--){ if(Math.abs(rCoins[c2].x-rx)<35 && Math.abs(rCoins[c2].y-340)<50){ rCoins.splice(c2,1); rScore+=20; sCoin(); } }
+    for(var e2=0;e2<rEnemies.length;e2++){ var en=rEnemies[e2]; if(Math.abs(en.x-rx)<45 && Math.abs(en.y-300)<80){ rOver=true; sCrash(); if(rScore>rBest) rBest=rScore; document.getElementById('rBest').innerText=rBest; document.getElementById('rMsg').innerText='💥 CRASH! Score: '+rScore; } }
+    rScore++; document.getElementById('rScore').innerText=rScore; document.getElementById('rScore2').innerText=rScore; document.getElementById('rSpeed').innerText=Math.floor(rSpeed*22);
+  }
+  rDraw(); requestAnimationFrame(rLoop);
+}
+function startRace(){ document.getElementById('racePlay').style.display='none'; rStarted=true; rOver=false; rx=425; rEnemies=[]; rCoins=[]; rScore=0; rSpeed=5; document.getElementById('rMsg').innerText=''; document.getElementById('rScore').innerText='0'; document.getElementById('rScore2').innerText='0'; rDraw(); rLoop(); }
+function rBoost(){ if(!rStarted||rOver) return; rBoostTime=60; sBoost(); }
+function restartRace(){ rStarted=false; document.getElementById('racePlay').style.display='flex'; rDraw(); }
+rDraw();
+// FRUIT
+var fc=document.getElementById('fruit'), fctx=fc.getContext('2d');
+var fFruits=[], fParts=[], fStarted=false, fOver=false, fScore=0, fBest=0, fMiss=0, fSpawn=0, fCombo=1, fComboTimer=0, fBlade=[];
+var FRUIT_TYPES=[{name:'Tormuj',main:'#ff0055',inner:'#ff6b8a',r:38,score:10},{name:'Komola',main:'#ff8c00',inner:'#ffb347',r:34,score:10},{name:'Lebu',main:'#ffeb00',inner:'#fff176',r:32,score:10},{name:'Apple',main:'#ff0000',inner:'#ff6b6b',r:34,score:10},{name:'Angur',main:'#8e00ff',inner:'#c084fc',r:30,score:15},{name:'Kiwi',main:'#7cb342',inner:'#a5d66d',r:30,score:15},{name:'Strawberry',main:'#ff1744',inner:'#ff8a80',r:28,score:20},{name:'Aam',main:'#ffcc00',inner:'#ffe082',r:36,score:15}];
+function spawnFruit(){ var isBomb=Math.random()<0.14; var t=FRUIT_TYPES[Math.floor(Math.random()*FRUIT_TYPES.length)]; fFruits.push({x:80+Math.random()*690,y:430,vx:(Math.random()-0.5)*3,vy:-13-Math.random()*3,type:isBomb?null:t,bomb:isBomb,rot:Math.random()*6,vr:(Math.random()-0.5)*0.2}); }
+function drawFruitObj(f){ fctx.save(); fctx.translate(f.x,f.y); fctx.rotate(f.rot); if(f.bomb){ fctx.fillStyle='#111'; fctx.beginPath(); fctx.arc(0,0,32,0,Math.PI*2); fctx.fill(); fctx.fillStyle='#fff'; fctx.font='bold 20px Arial'; fctx.fillText('💣',-11,7); } else { var t=f.type; var g=fctx.createRadialGradient(-10,-10,5,0,0,t.r+5); g.addColorStop(0,'#ffffff'); g.addColorStop(0.25,t.inner); g.addColorStop(1,t.main); fctx.fillStyle=g; fctx.beginPath(); fctx.arc(0,0,t.r,0,Math.PI*2); fctx.fill(); fctx.fillStyle='rgba(255,255,255,0.85)'; fctx.beginPath(); fctx.ellipse(-t.r*0.35,-t.r*0.4,9,5,-0.5,0,Math.PI*2); fctx.fill(); fctx.fillStyle='#22c55e'; fctx.fillRect(-3,-t.r-8,6,10); } fctx.restore(); }
+function fDraw(){ fctx.clearRect(0,0,850,420); var bg=fctx.createLinearGradient(0,0,0,420); bg.addColorStop(0,'#fef3c7'); bg.addColorStop(1,'#fdba74'); fctx.fillStyle=bg; fctx.fillRect(0,0,850,420); fctx.fillStyle='#a16207'; fctx.fillRect(0,360,850,60); fctx.strokeStyle='rgba(255,255,255,0.95)'; fctx.lineWidth=4; fctx.lineCap='round'; if(fBlade.length>1){ fctx.beginPath(); fctx.moveTo(fBlade[0].x,fBlade[0].y); for(var bi=1;bi<fBlade.length;bi++){ fctx.lineTo(fBlade[bi].x,fBlade[bi].y); } fctx.stroke(); } for(var i=0;i<fParts.length;i++){ var p=fParts[i]; fctx.fillStyle=p.color; fctx.beginPath(); fctx.arc(p.x,p.y,p.r,0,Math.PI*2); fctx.fill(); } for(var j=0;j<fFruits.length;j++) drawFruitObj(fFruits[j]); fctx.fillStyle='rgba(0,0,0,0.75)'; fctx.fillRect(10,10,260,50); fctx.fillStyle='#ff0055'; fctx.font='bold 18px Arial'; fctx.fillText('🍉 SCORE: '+fScore,20,32); fctx.fillStyle='#fff'; fctx.font='bold 14px Arial'; fctx.fillText('MISS: '+fMiss+'/3 COMBO x'+fCombo,20,52); }
+function fLoop(){
+  if(!fStarted) return;
+  if(!fOver){
+    fSpawn++; if(fSpawn>50){ fSpawn=0; spawnFruit(); if(Math.random()<0.4) spawnFruit(); }
+    if(fComboTimer>0){ fComboTimer--; if(fComboTimer===0) fCombo=1; document.getElementById('fCombo').innerText='x'+fCombo; }
+    for(var i=fFruits.length-1;i>=0;i--){ var f=fFruits[i]; f.x+=f.vx; f.y+=f.vy; f.vy+=0.45; f.rot+=f.vr; if(f.y>450){ if(!f.bomb){ fMiss++; document.getElementById('fMiss').innerText=fMiss; if(fMiss>=3){ fOver=true; sGameOver(); if(fScore>fBest) fBest=fScore; document.getElementById('fBest').innerText=fBest; document.getElementById('fMsg').innerText='Game Over! Score: '+fScore; } } fFruits.splice(i,1); } }
+    for(var pi=fParts.length-1;pi>=0;pi--){ var p=fParts[pi]; p.x+=p.vx; p.y+=p.vy; p.vy+=0.4; p.r-=0.3; if(p.r<=0) fParts.splice(pi,1); }
+    if(fBlade.length>8) fBlade.shift();
+  }
+  fDraw(); requestAnimationFrame(fLoop);
+}
+function sliceAt(x,y){
+  if(!fStarted||fOver) return; fBlade.push({x:x,y:y});
+  for(var i=fFruits.length-1;i>=0;i--){ var f=fFruits[i]; var d=Math.sqrt((f.x-x)*(f.x-x)+(f.y-y)*(f.y-y)); var rr=f.bomb?32:(f.type?f.type.r:30); if(d<rr+15){ if(f.bomb){ fFruits.splice(i,1); sBomb(); fOver=true; if(fScore>fBest) fBest=fScore; document.getElementById('fBest').innerText=fBest; document.getElementById('fMsg').innerText='💣 BOOM! Bomb katsos! Score: '+fScore; return; } else { fFruits.splice(i,1); sSlice(); fCombo++; fComboTimer=90; document.getElementById('fCombo').innerText='x'+fCombo; var pts=f.type.score*(fCombo>3?2:1); fScore+=pts; document.getElementById('fScore').innerText=fScore; var cols=[f.type.main,f.type.inner,'#ff0000','#ffff00']; for(var pp=0;pp<14;pp++) fParts.push({x:f.x,y:f.y,vx:(Math.random()-0.5)*8,vy:(Math.random()-0.5)*8-2,r:5+Math.random()*5,color:cols[pp%cols.length]}); } } }
+}
+function startFruit(){ document.getElementById('fruitPlay').style.display='none'; fStarted=true; fOver=false; fFruits=[]; fParts=[]; fScore=0; fMiss=0; fCombo=1; document.getElementById('fScore').innerText='0'; document.getElementById('fMiss').innerText='0'; document.getElementById('fCombo').innerText='x1'; document.getElementById('fMsg').innerText=''; fDraw(); fLoop(); }
+function restartFruit(){ fStarted=false; document.getElementById('fruitPlay').style.display='flex'; fDraw(); }
+var fruitCanvas=document.getElementById('fruit');
+function getFruitPos(e){ var r=fruitCanvas.getBoundingClientRect(); var cx=e.touches?e.touches[0].clientX:e.clientX; var cy=e.touches?e.touches[0].clientY:e.clientY; return {x:(cx-r.left)*(850/r.width), y:(cy-r.top)*(420/r.height)}; }
+fruitCanvas.addEventListener('mousemove', function(e){ if(fStarted && !fOver){ var p=getFruitPos(e); sliceAt(p.x,p.y); } });
+fruitCanvas.addEventListener('touchmove', function(e){ e.preventDefault(); if(fStarted && !fOver){ var p=getFruitPos(e); sliceAt(p.x,p.y); } }, {passive:false});
+fruitCanvas.addEventListener('click', function(e){ var p=getFruitPos(e); sliceAt(p.x,p.y); });
+document.getElementById('aiInput').addEventListener('keypress', function(e){ if(e.key==='Enter'){ sendAI(); } });
+document.getElementById('bgMusic').addEventListener('ended', function(){ stopBeat(); document.getElementById('musicBtn').innerText='▶ PLAY XTALI'; });
+document.addEventListener('keydown', function(e){ if(e.code==='Space'){ e.preventDefault(); jump(); } if(e.key==='ArrowLeft'){ mLeft=true; rLeft=true; } if(e.key==='ArrowRight'){ mRight=true; rRight=true; } if(e.key==='ArrowUp'){ mJump(); zUp=true; } if(e.key==='ArrowDown'){ zDown=true; } if(e.key==='w'||e.key==='W'){ zShoot(); } if(e.key==='Shift'){ rBoost(); } });
+document.addEventListener('keyup', function(e){ if(e.key==='ArrowLeft'){ mLeft=false; rLeft=false; } if(e.key==='ArrowRight'){ mRight=false; rRight=false; } if(e.key==='ArrowUp'){ zUp=false; } if(e.key==='ArrowDown'){ zDown=false; } });
+fDraw();
+</script>
+</body>
+</html>
