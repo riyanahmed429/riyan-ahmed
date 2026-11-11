@@ -1,111 +1,280 @@
 <!DOCTYPE html>
-<html lang="bn">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Riyan Ahmed - XTALI</title>
+<title>RA - Riyan Ahmed | P.D.B High School</title>
 <style>
-* { margin:0; padding:0; box-sizing:border-box; font-family: Arial, sans-serif; }
-body { background:#000; color:white; text-align:center; overflow-x:hidden; }
-.hero { min-height:100vh; background: url('bg.jpg') no-repeat center center/cover; display:flex; flex-direction:column; justify-content:center; align-items:center; position:relative; }
-.hero::before { content:''; position:absolute; inset:0; background:rgba(0,0,0,0.45); }
-.hero > * { position:relative; z-index:2; }
-h1 { font-size:48px; text-shadow:0 0 20px #ff0055; }
-p { margin:10px 0 20px; font-size:18px; }
-.btn { background:#ff0055; color:white; border:none; padding:14px 30px; font-size:18px; border-radius:50px; cursor:pointer; font-weight:bold; box-shadow:0 0 20px #ff0055; }
-.follow-box { background:rgba(0,0,0,0.6); border:1px solid rgba(255,255,255,0.3); padding:15px 20px; border-radius:20px; margin:15px 0; }
-.follow-count { font-size:22px; font-weight:bold; margin-bottom:10px; }
-.follow-count span { color:#ff0055; font-size:26px; }
-.follow-btn { background:#0095f6; color:white; border:none; padding:12px 35px; font-size:18px; border-radius:50px; cursor:pointer; font-weight:bold; }
-.follow-btn.followed { background:#333; border:1px solid #555; }
-.game-zone { background:#111; padding:30px 10px 40px; }
-.game-zone h2 { font-size:28px; margin-bottom:5px; color:#00ff88; }
-.game-zone p { font-size:14px; opacity:0.7; margin-bottom:15px; }
-#gameBox { background:white; max-width:600px; height:180px; margin:0 auto; border-radius:12px; position:relative; overflow:hidden; }
-canvas { width:100%; height:100%; display:block; }
-#score { position:absolute; top:8px; right:12px; color:#333; font-weight:bold; }
-#gameOver { position:absolute; inset:0; display:none; flex-direction:column; justify-content:center; align-items:center; background:rgba(255,255,255,0.85); color:#111; }
-.jump-btn { margin-top:15px; background:#00ff88; color:#000; border:none; padding:12px 30px; font-size:18px; border-radius:50px; font-weight:bold; cursor:pointer; margin:5px; }
-.mario-zone { background:#0a1a2e; padding:30px 10px 40px; }
-.mario-zone h2 { color:#ffcc00; font-size:28px; }
-#marioBox { background:#5cb6ff; max-width:600px; height:220px; margin:0 auto; border-radius:12px; position:relative; overflow:hidden; }
-.ctrl { display:flex; justify-content:center; gap:10px; margin-top:12px; }
-.ctrl button { background:#ffcc00; border:none; width:70px; height:55px; font-size:24px; border-radius:12px; font-weight:bold; }
-/* PLAY OVERLAY */
-.play-overlay { position:absolute; inset:0; background:rgba(0,0,0,0.65); display:flex; flex-direction:column; justify-content:center; align-items:center; z-index:10; }
-.play-overlay b { font-size:24px; margin-bottom:12px; color:white; }
-.play-big { background:#ff0055; color:white; border:none; width:80px; height:80px; font-size:35px; border-radius:50%; cursor:pointer; box-shadow:0 0 25px #ff0055; }
-.play-big:active { transform:scale(0.9); }
-.mario-play { background:#ffcc00; color:#000; box-shadow:0 0 25px #ffcc00; }
+  *{margin:0;padding:0;box-sizing:border-box;font-family:Arial, sans-serif}
+  body{background:url('bg.jpg') center/cover fixed no-repeat; color:#fff;text-align:center;min-height:100vh}
+  body::before{content:"";position:fixed;inset:0;background:rgba(0,0,0,0.55);z-index:-1}
+  nav{display:flex;justify-content:space-between;align-items:center;padding:15px 25px;background:rgba(0,0,0,0.5);border-bottom:1px solid #00d4ff}
+  .logo{width:55px;height:55px;border:2px solid #00d4ff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:22px;color:#00d4ff;box-shadow:0 0 15px #7b2ff7}
+  nav a{color:#00d4ff;text-decoration:none;margin:0 10px;font-size:13px;letter-spacing:1px}
+  .hero{padding:50px 20px;margin:20px;border-radius:15px;background:rgba(0,0,0,0.45);border:1px solid rgba(0,212,255,0.4)}
+  .hero-logo{width:90px;height:90px;margin:0 auto;border:2px solid #00d4ff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:32px;font-weight:900;color:#00d4ff;box-shadow:0 0 25px #7b2ff7}
+  h1{font-size:32px;margin:15px 0 5px;background:linear-gradient(90deg,#c084fc,#00d4ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:2px}
+  .sub{color:#fff;font-size:16px}
+  .tag{margin:15px 0;color:#a5f3fc;font-size:13px;letter-spacing:1px}
+  .btn{padding:10px 20px;margin:5px;border:1px solid #00d4ff;background:transparent;color:#00d4ff;cursor:pointer;border-radius:25px}
+  .btn-gold{background:linear-gradient(90deg,#7b2ff7,#00d4ff);color:#fff;font-weight:bold;border:none;box-shadow:0 0 15px #7b2ff7}
+  .section{padding:30px 20px;text-align:left;max-width:800px;margin:0 auto}
+  h2{color:#00d4ff;font-size:24px;margin-bottom:10px}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:15px;margin-top:15px}
+  .card{border:1px solid rgba(0,212,255,0.4);padding:20px;border-radius:15px;background:rgba(0,0,0,0.55)}
+  .card b{color:#fff;font-size:18px}
+  .card p{color:#a5f3fc;font-size:13px;margin-top:5px}
+  .rule{border:1px solid rgba(0,212,255,0.4);padding:20px;border-radius:15px;margin-top:15px;background:rgba(0,0,0,0.55)}
+  .loc{color:#fff;font-size:15px;margin-top:8px}
+  .school-box{border:1px solid rgba(0,212,255,0.4);background:rgba(0,0,0,0.55);padding:20px;border-radius:15px;margin-top:15px}
+  footer{padding:20px;color:#a5f3fc;font-size:12px;border-top:1px solid #00d4ff;background:rgba(0,0,0,0.5)}
+  .music-box{position:fixed;bottom:15px;right:15px;background:linear-gradient(90deg,#7b2ff7,#00d4ff);color:#fff;padding:12px 16px;border-radius:30px;font-weight:bold;cursor:pointer;z-index:99}
+
+  /* FOLLOW */
+  .follow-box{margin:18px auto 5px; background:rgba(0,0,0,0.55); border:1px solid rgba(0,212,255,0.5); padding:14px; border-radius:15px; max-width:320px;}
+  .follow-count{font-size:19px; font-weight:bold; margin-bottom:10px;}
+  .follow-count span{color:#00d4ff; font-size:24px;}
+  .follow-btn{background:#0095f6; color:#fff; border:none; padding:11px 35px; font-size:16px; border-radius:50px; font-weight:bold; cursor:pointer;}
+  .follow-btn.followed{background:#333; border:1px solid #555;}
+
+  /* GAMES */
+  .game-zone{background:rgba(0,0,0,0.6); padding:30px 15px; margin:20px; border-radius:15px; border:1px solid rgba(0,212,255,0.4);}
+  .game-zone h2{text-align:center;}
+  .game-zone p{text-align:center; color:#a5f3fc; font-size:13px; margin:8px 0 15px;}
+  #gameBox{background:#fff; max-width:600px; height:180px; margin:0 auto; border-radius:12px; position:relative; overflow:hidden; touch-action:manipulation;}
+  #marioBox{background:#5cb6ff; max-width:600px; height:220px; margin:0 auto; border-radius:12px; position:relative; overflow:hidden; touch-action:manipulation;}
+  canvas{width:100%; height:100%; display:block;}
+  #score{position:absolute; top:8px; right:12px; color:#333; font-weight:bold; z-index:5;}
+  #gameOver{position:absolute; inset:0; display:none; flex-direction:column; justify-content:center; align-items:center; background:rgba(255,255,255,0.92); color:#111; z-index:20;}
+  .jump-btn{margin-top:15px; background:#00ff88; color:#000; border:none; padding:12px 30px; font-size:16px; border-radius:50px; font-weight:bold; cursor:pointer;}
+  .ctrl{display:flex; justify-content:center; gap:10px; margin-top:12px;}
+  .ctrl button{background:#ffcc00; border:none; width:70px; height:55px; font-size:24px; border-radius:12px; font-weight:bold; cursor:pointer;}
+  .play-overlay{position:absolute; inset:0; background:rgba(0,0,0,0.7); display:flex; flex-direction:column; justify-content:center; align-items:center; z-index:30;}
+  .play-overlay b{font-size:22px; margin-bottom:12px; color:#fff;}
+  .play-big{background:#ff0055; color:#fff; border:none; width:90px; height:90px; font-size:38px; border-radius:50%; cursor:pointer; box-shadow:0 0 25px #ff0055; z-index:31;}
+  .mario-play{background:#ffcc00; color:#000; box-shadow:0 0 25px #ffcc00;}
+  @media(max-width:600px){.grid{grid-template-columns:1fr} h1{font-size:26px}}
 </style>
 </head>
 <body>
 
+<nav>
+  <div class="logo">RA</div>
+  <div><a href="#">HOME</a><a href="#goals">GOALS</a><a href="#sports">SPORTS</a><a href="#life">MY LIFE</a><a href="#games">GAMES</a></div>
+</nav>
+
 <div class="hero">
+  <div class="hero-logo">RA</div>
   <h1>RIYAN AHMED</h1>
-  <p>Welcome To My World ❤️</p>
+  <div class="sub">Aspiring Scientist • P.D.B High School</div>
+  <div class="tag">DRIVEN BY CURIOSITY • BUILDING THE FUTURE THROUGH SCIENCE & INNOVATION</div>
+  <div class="loc">📍 Location: Bheramara, Kushtia, Bangladesh</div>
+  <div class="loc">🎓 School: P.D.B High School</div>
+
   <div class="follow-box">
-    <div class="follow-count">👥 <span id="followCount">1,250</span> Followers</div>
+    <div class="follow-count">👥 <span id="followCount">0</span> Followers</div>
     <button id="followBtn" class="follow-btn" onclick="doFollow()">+ Follow</button>
     <div id="followMsg" style="font-size:13px; margin-top:8px; opacity:0.8;"></div>
   </div>
-  <button class="btn" onclick="playMusic()">▶ PLAY XTALI</button>
-  <audio id="myAudio" loop><source src="music.mp3" type="audio/mpeg"></audio>
-  <p style="margin-top:20px; font-size:14px;">👇 Niche 2 ta Game Ase 👇</p>
+
+  <button class="btn">DOWNLOAD CV</button>
+  <button class="btn btn-gold">CONTACT ME</button>
 </div>
 
-<!-- GAME 1 DINO -->
-<div class="game-zone">
+<div class="section" id="goals">
+  <h2>MY GOALS</h2>
+  <p>Focusing on scientific research, continuous learning, and creating impact through innovation and discipline.</p>
+  <p style="margin-top:10px">✓ Become a scientist<br>✓ Build my own programming language, as powerful as Swift or Kotlin</p>
+</div>
+
+<div class="section" id="sports">
+  <h2 style="text-align:center">SPORTS GAMES & MORE</h2>
+  <div class="grid">
+    <div class="card"><b>⚽ Outdoor</b><p>Football • Badminton • Cricket</p></div>
+    <div class="card"><b>🧩 Indoor</b><p>Free Fire • Minecraft • Roblox</p></div>
+    <div class="card"><b>🎬 Watching</b><p>Anime: True Love, Love Forever, Your Name</p></div>
+    <div class="card"><b>💪 Fitness</b><p>Gym • Build an Aesthetic Body</p></div>
+    <div class="card"><b>❤️ Tomar Jonno</b><p>I Love N....!</p></div>
+  </div>
+</div>
+
+<div class="section">
+  <h2>🎓 EDUCATION</h2>
+  <div class="school-box">
+    <p><b style="color:#fff;font-size:18px">P.D.B High School</b></p>
+    <p style="margin-top:5px">Class 8 • Science Group</p>
+    <p>Bheramara, Kushtia</p>
+  </div>
+</div>
+
+<!-- GAME 1 -->
+<div class="game-zone" id="games">
   <h2>🎮 GAME 1 - DINO 🎮</h2>
-  <p>PLAY chap diye suru kor!</p>
+  <p>PLAY chap diye suru kor! JUMP chap diye laf de!</p>
   <div id="gameBox">
     <canvas id="game" width="600" height="180"></canvas>
     <div id="score">Score: 0</div>
-    <div id="gameOver"><b>Game Over! 😭</b><span id="finalScore"></span><button class="jump-btn" onclick="restartGame()">🔁 Abar Khel</button></div>
-    <!-- DINO PLAY -->
+    <div id="gameOver"><b>Game Over! 😭</b><span id="finalScore"></span><br><button class="jump-btn" onclick="restartGame()">🔁 Abar Khel</button></div>
     <div id="dinoPlay" class="play-overlay">
       <b>🦖 DINO GAME</b>
-      <button class="play-big" onclick="startDino()">▶</button>
-      <span style="margin-top:10px; font-size:14px; opacity:0.9;">Khelte PLAY chap de!</span>
+      <button class="play-big" id="dinoPlayBtn">▶</button>
+      <span style="margin-top:10px; font-size:14px;">Khelte PLAY chap de!</span>
     </div>
   </div>
-  <button class="jump-btn" onclick="jump()">🦖 JUMP!</button>
+  <div style="text-align:center;"><button class="jump-btn" onclick="jump()">🦖 JUMP!</button></div>
 </div>
 
-<!-- GAME 2 MARIO -->
-<div class="mario-zone">
+<!-- GAME 2 -->
+<div class="game-zone">
   <h2>🍄 GAME 2 - SUPER RIYAN 🍄</h2>
-  <p>PLAY chap diye suru kor! | Coin: <span id="coinCount">0</span></p>
+  <p>PLAY chap diye suru kor! Coin kha, Shotru mar, Flag e ja! | Coin: <span id="coinCount">0</span></p>
   <div id="marioBox">
     <canvas id="mario" width="600" height="220"></canvas>
-    <!-- MARIO PLAY -->
     <div id="marioPlay" class="play-overlay">
       <b>🍄 SUPER RIYAN</b>
-      <button class="play-big mario-play" onclick="startMario()">▶</button>
+      <button class="play-big mario-play" id="marioPlayBtn">▶</button>
       <span style="margin-top:10px; font-size:14px;">Khelte PLAY chap de!</span>
     </div>
   </div>
   <div class="ctrl">
-    <button onclick="mLeft=true; setTimeout(()=>mLeft=false,200)">⬅️</button>
+    <button onclick="mLeft=true; setTimeout(()=>mLeft=false,250)">⬅️</button>
     <button onclick="mJump()">⬆️</button>
-    <button onclick="mRight=true; setTimeout(()=>mRight=false,200)">➡️</button>
+    <button onclick="mRight=true; setTimeout(()=>mRight=false,250)">➡️</button>
   </div>
-  <button class="jump-btn" style="background:#ffcc00;" onclick="restartMario()">🔁 Abar Khel</button>
-  <p id="marioMsg" style="margin-top:10px; color:#ffcc00; font-weight:bold;"></p>
+  <div style="text-align:center;"><button class="jump-btn" style="background:#ffcc00;" onclick="restartMario()">🔁 Abar Khel</button></div>
+  <p id="marioMsg" style="color:#ffcc00; font-weight:bold;"></p>
 </div>
 
-<script>
-function playMusic(){ var a=document.getElementById('myAudio'); if(a.paused) a.play(); else a.pause(); }
-// FOLLOW
-var baseFollowers = 1250;
-var myFollow = localStorage.getItem('riyan_follow') === 'yes';
-var extra = parseInt(localStorage.getItem('riyan_extra') || '0');
-async function loadFollowers(){ try{ let res = await fetch('https://api.countapi.xyz/get/riyan-ahmed-xtali/followers'); let data = await res.json(); if(data.value){ baseFollowers = data.value; } }catch(e){} updateFollowUI(); }
-function updateFollowUI(){ var total = baseFollowers + extra; document.getElementById('followCount').innerText = total.toLocaleString('en-IN'); var btn = document.getElementById('followBtn'); if(myFollow){ btn.innerText='✓ Following'; btn.classList.add('followed'); document.getElementById('followMsg').innerText='Thanks for following! ❤️'; } else { btn.innerText='+ Follow'; btn.classList.remove('followed'); document.getElementById('followMsg').innerText=''; } }
-async function doFollow(){ if(!myFollow){ myFollow=true; extra++; localStorage.setItem('riyan_follow','yes'); localStorage.setItem('riyan_extra', extra); try{ await fetch('https://api.countapi.xyz/hit/riyan-ahmed-xtali/followers'); }catch(e){} updateFollowUI(); } else { myFollow=false; extra=Math.max(0,extra-1); localStorage.setItem('riyan_follow','no'); localStorage.setItem('riyan_extra', extra); updateFollowUI(); } }
-loadFollowers(); updateFollowUI();
+<div class="section" id="life">
+  <h2 style="text-align:center">MY LIFE MY RULE</h2>
+  <div class="rule">
+    <p>I am Riyan Ahmed from Bheramara, Kushtia, Bangladesh.</p><br>
+    <p>I study at P.D.B High School. I am currently in Class 8 (Science group).</p><br>
+    <p>My main focus now is my career and building a solid future in the tech world. I love coding, AI and math.</p><br>
+    <p>Discipline. Consistency. Growth. Living by my own principles.</p>
+  </div>
+</div>
 
-// --- DINO WITH PLAY ---
-var canvas=document.getElementById('game'); var ctx=canvas.getContext('2d');
-var dinoY=120, velocity=0, jumping=false, obstacles=[], score=0, gameRunning=false, dinoStarted=false, speed=4;
-function drawDino(){ ctx.fillStyle='#333'; ctx.fillRect(40,dinoY,35,40); ctx.fillRect(68,dinoY-8,18,15); ctx.fillStyle='white'; ctx.fillRect
+<footer>© 2024 RIYAN AHMED • P.D.B HIGH SCHOOL • BHERAMARA, KUSHTIA • RA</footer>
+
+<audio id="bgMusic" loop><source src="music.mp3" type="audio/mpeg"></audio>
+<div class="music-box" id="musicBtn">▶ PLAY XTALI</div>
+
+<script>
+// ---------- MUSIC ----------
+var musicBtn = document.getElementById('musicBtn');
+var bgMusic = document.getElementById('bgMusic');
+musicBtn.addEventListener('click', function(){
+  if(bgMusic.paused){ bgMusic.play(); musicBtn.innerText='⏸ XTALI - PAUSE'; }
+  else { bgMusic.pause(); musicBtn.innerText='▶ PLAY XTALI'; }
+});
+
+// ---------- FOLLOW - 0 THEKE SURU ----------
+var followCount = 0;
+var myFollow = false;
+function updateFollowUI(){
+  document.getElementById('followCount').innerText = followCount;
+  var btn = document.getElementById('followBtn');
+  if(myFollow){ btn.innerText='✓ Following'; btn.classList.add('followed'); document.getElementById('followMsg').innerText='Thanks for following! ❤️'; }
+  else { btn.innerText='+ Follow'; btn.classList.remove('followed'); document.getElementById('followMsg').innerText=''; }
+}
+function doFollow(){
+  if(!myFollow){ myFollow=true; followCount++; }
+  else { myFollow=false; followCount=Math.max(0, followCount-1); }
+  updateFollowUI();
+}
+updateFollowUI();
+
+// ---------- DINO GAME ----------
+var canvas = document.getElementById('game');
+var ctx = canvas.getContext('2d');
+var dinoY = 120, dinoV = 0, dinoJumping = false;
+var dinoObs = [], dinoScore = 0, dinoRun = false, dinoSpeed = 5;
+function dinoDraw(){
+  ctx.clearRect(0,0,600,180);
+  ctx.strokeStyle='#999'; ctx.lineWidth=2;
+  ctx.beginPath(); ctx.moveTo(0,162); ctx.lineTo(600,162); ctx.stroke();
+  ctx.fillStyle='#222';
+  ctx.fillRect(40, dinoY, 35, 40);
+  ctx.fillRect(65, dinoY-10, 20, 16);
+  ctx.fillStyle='#fff'; ctx.fillRect(78, dinoY-5, 5, 5);
+  ctx.fillStyle='#222'; ctx.fillRect(45, dinoY+40, 8, 12); ctx.fillRect(60, dinoY+40, 8, 12);
+  ctx.fillStyle='#00aa55';
+  for(var i=0;i<dinoObs.length;i++){ ctx.fillRect(dinoObs[i].x, 127, 20, 35); }
+}
+function dinoLoop(){
+  if(!dinoRun) return;
+  if(dinoJumping){ dinoV+=0.9; dinoY+=dinoV; if(dinoY>=120){ dinoY=120; dinoJumping=false; dinoV=0; } }
+  if(Math.random()<0.025){ dinoObs.push({x:600}); }
+  for(var i=0;i<dinoObs.length;i++){ dinoObs[i].x-=dinoSpeed; }
+  dinoObs = dinoObs.filter(function(o){ return o.x>-30; });
+  for(var j=0;j<dinoObs.length;j++){ var o=dinoObs[j]; if(o.x<75 && o.x+20>40 && dinoY+40>125){ dinoRun=false; document.getElementById('finalScore').innerText='Score: '+Math.floor(dinoScore/10); document.getElementById('gameOver').style.display='flex'; dinoDraw(); return; } }
+  dinoScore++; if(dinoScore%400===0) dinoSpeed+=0.4;
+  document.getElementById('score').innerText='Score: '+Math.floor(dinoScore/10);
+  dinoDraw();
+  requestAnimationFrame(dinoLoop);
+}
+function startDino(){ document.getElementById('dinoPlay').style.display='none'; document.getElementById('gameOver').style.display='none'; dinoObs=[]; dinoScore=0; dinoSpeed=5; dinoY=120; dinoRun=true; dinoDraw(); dinoLoop(); }
+function jump(){ if(!dinoRun) return; if(!dinoJumping){ dinoJumping=true; dinoV=-14; } }
+function restartGame(){ document.getElementById('gameOver').style.display='none'; startDino(); }
+document.getElementById('dinoPlayBtn').addEventListener('click', function(e){ e.stopPropagation(); startDino(); });
+document.getElementById('dinoPlayBtn').addEventListener('touchstart', function(e){ e.stopPropagation(); startDino(); });
+document.getElementById('gameBox').addEventListener('touchstart', function(){ if(dinoRun) jump(); });
+dinoDraw();
+
+// ---------- MARIO GAME ----------
+var mc = document.getElementById('mario');
+var mctx = mc.getContext('2d');
+var px=30, py=155, pvy=0, onGround=true, coins=0;
+var mLeft=false, mRight=false, marioOver=false, marioWin=false, marioStarted=false;
+var mCoins=[{x:150,y:120},{x:200,y:120},{x:350,y:90},{x:400,y:90},{x:500,y:120}];
+var mEnemy={x:300,y:160,w:25,h:25,dir:1};
+var flagX=560;
+function mDraw(){
+  mctx.clearRect(0,0,600,220);
+  mctx.fillStyle='#5aa832'; mctx.fillRect(0,185,600,35);
+  mctx.fillStyle='#8B4513'; mctx.fillRect(0,185,600,8);
+  mctx.fillRect(240,140,80,15); mctx.fillRect(430,120,70,15);
+  mctx.fillStyle='#fff'; mctx.fillRect(flagX,60,3,125);
+  mctx.fillStyle='#ff0055'; mctx.fillRect(flagX+3,60,30,20);
+  mctx.fillStyle='#333'; mctx.font='bold 12px Arial'; mctx.fillText('GOAL',flagX+3,55);
+  mctx.fillStyle='#ffcc00';
+  for(var i=0;i<mCoins.length;i++){ mctx.beginPath(); mctx.arc(mCoins[i].x,mCoins[i].y,10,0,Math.PI*2); mctx.fill(); }
+  mctx.fillStyle='#8B0000'; mctx.fillRect(mEnemy.x,mEnemy.y,25,25);
+  mctx.fillStyle='#fff'; mctx.fillRect(mEnemy.x+4,mEnemy.y+5,5,5); mctx.fillRect(mEnemy.x+16,mEnemy.y+5,5,5);
+  mctx.fillStyle='red'; mctx.fillRect(px,py,25,30);
+  mctx.fillStyle='#ffcc99'; mctx.fillRect(px,py-12,25,12);
+  mctx.fillStyle='red'; mctx.fillRect(px,py-20,25,8);
+  mctx.fillStyle='blue'; mctx.fillRect(px,py+30,10,10); mctx.fillRect(px+15,py+30,10,10);
+}
+function mLoop(){
+  if(!marioStarted) return;
+  if(!marioOver && !marioWin){
+    if(mLeft) px-=4; if(mRight) px+=4;
+    pvy+=0.6; py+=pvy;
+    var gy=155;
+    if(px>230 && px<320 && py>95 && py<140 && pvy>0) gy=110;
+    if(px>420 && px<500 && py>75 && py<120 && pvy>0) gy=90;
+    if(py>=gy){ py=gy; pvy=0; onGround=true; } else onGround=false;
+    if(py>220){ marioOver=true; document.getElementById('marioMsg').innerText='Pore gesos! 😭 Abar Khel'; }
+    mEnemy.x+=mEnemy.dir*1.2; if(mEnemy.x>380||mEnemy.x<260) mEnemy.dir*=-1;
+    for(var i=mCoins.length-1;i>=0;i--){ if(Math.abs(mCoins[i].x-(px+12))<20 && Math.abs(mCoins[i].y-(py+10))<25){ mCoins.splice(i,1); coins++; document.getElementById('coinCount').innerText=coins; } }
+    if(px+25>mEnemy.x && px<mEnemy.x+25 && py+40>mEnemy.y && py<mEnemy.y+25){ if(pvy>0){ mEnemy.x=-100; pvy=-10; } else { marioOver=true; document.getElementById('marioMsg').innerText='Shotru kheye felse! 😭 Abar Khel'; } }
+    if(px+25>=flagX){ marioWin=true; document.getElementById('marioMsg').innerText='🎉 TUI JITSA! SUPER RIYAN! Coin: '+coins; }
+    if(px<0) px=0; if(px>575) px=575;
+  }
+  mDraw();
+  requestAnimationFrame(mLoop);
+}
+function startMario(){ document.getElementById('marioPlay').style.display='none'; marioStarted=true; marioOver=false; marioWin=false; mLoop(); }
+function mJump(){ if(!marioStarted || marioOver) return; if(onGround){ pvy=-12; onGround=false; } }
+function restartMario(){ px=30; py=155; pvy=0; coins=0; mCoins=[{x:150,y:120},{x:200,y:120},{x:350,y:90},{x:400,y:90},{x:500,y:120}]; mEnemy.x=300; marioOver=false; marioWin=false; marioStarted=false; document.getElementById('marioMsg').innerText=''; document.getElementById('coinCount').innerText='0'; document.getElementById('marioPlay').style.display='flex'; mDraw(); }
+document.getElementById('marioPlayBtn').addEventListener('click', function(e){ e.stopPropagation(); startMario(); });
+document.getElementById('marioPlayBtn').addEventListener('touchstart', function(e){ e.stopPropagation(); startMario(); });
+document.addEventListener('keydown', function(e){ if(e.code==='Space'){ e.preventDefault(); jump(); } if(e.key==='ArrowLeft') mLeft=true; if(e.key==='ArrowRight') mRight=true; if(e.key==='ArrowUp') mJump(); });
+document.addEventListener('keyup', function(e){ if(e.key==='ArrowLeft') mLeft=false; if(e.key==='ArrowRight') mRight=false; });
+mDraw();
+</script>
+
+</body>
+</html>
