@@ -3,239 +3,255 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>RA - Riyan Ahmed | P.D.B High School</title>
+<title>RA - Riyan Ahmed</title>
 <style>
-  *{margin:0;padding:0;box-sizing:border-box;font-family:Arial, sans-serif}
-  body{background: #0f0c29 url('bg.jpg') center/cover fixed no-repeat; color:#fff;text-align:center;min-height:100vh}
-  body::before{content:"";position:fixed;inset:0;background:rgba(0,0,0,0.65);z-index:-1}
-  nav{display:flex;justify-content:space-between;align-items:center;padding:15px 25px;background:rgba(0,0,0,0.6);border-bottom:1px solid #00d4ff}
-  .logo{width:55px;height:55px;border:2px solid #00d4ff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:22px;color:#00d4ff;box-shadow:0 0 15px #7b2ff7;overflow:hidden;background:#000}
-  .logo img{width:100%;height:100%;object-fit:cover}
-  nav a{color:#00d4ff;text-decoration:none;margin:0 10px;font-size:13px;letter-spacing:1px}
-  .hero{padding:50px 20px;margin:20px;border-radius:20px;background:rgba(0,0,0,0.45);border:1px solid rgba(0,212,255,0.4)}
-  .hero-logo{width:120px;height:120px;margin:0 auto;border:3px solid #00d4ff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:32px;font-weight:900;color:#00d4ff;box-shadow:0 0 25px #7b2ff7;overflow:hidden;background:#000;position:relative}
-  .hero-logo img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
-  .hero-logo span{position:relative;z-index:1}
-  h1{font-size:32px;margin:15px 0 5px;background:linear-gradient(90deg,#c084fc,#00d4ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:2px}
-  .sub{color:#fff;font-size:16px}
-  .tag{margin:15px 0;color:#a5f3fc;font-size:13px;letter-spacing:1px}
-  .btn{padding:10px 20px;margin:5px;border:1px solid #00d4ff;background:transparent;color:#00d4ff;cursor:pointer;border-radius:25px}
-  .btn-gold{background:linear-gradient(90deg,#7b2ff7,#00d4ff);color:#fff;font-weight:bold;border:none;box-shadow:0 0 15px #7b2ff7}
-  .section{padding:30px 20px;text-align:left;max-width:800px;margin:0 auto}
-  h2{color:#00d4ff;font-size:24px;margin-bottom:10px}
-  .grid{display:grid;grid-template-columns:1fr 1fr;gap:15px;margin-top:15px}
-  .card{border:1px solid rgba(0,212,255,0.4);padding:20px;border-radius:15px;background:rgba(0,0,0,0.55)}
-  .card b{color:#fff;font-size:18px}
-  .card p{color:#a5f3fc;font-size:13px;margin-top:5px}
-  .rule{border:1px solid rgba(0,212,255,0.4);padding:20px;border-radius:15px;margin-top:15px;background:rgba(0,0,0,0.55)}
-  .loc{color:#fff;font-size:15px;margin-top:8px}
-  .school-box{border:1px solid rgba(0,212,255,0.4);background:rgba(0,0,0,0.55);padding:20px;border-radius:15px;margin-top:15px}
-  footer{padding:20px;color:#a5f3fc;font-size:12px;border-top:1px solid #00d4ff;background:rgba(0,0,0,0.5)}
-  .music-box{position:fixed;bottom:15px;right:15px;background:linear-gradient(90deg,#7b2ff7,#00d4ff);color:#fff;padding:12px 16px;border-radius:30px;font-weight:bold;cursor:pointer;z-index:99}
-  .follow-box{margin:18px auto 5px; background:rgba(0,0,0,0.55); border:1px solid rgba(0,212,255,0.5); padding:14px; border-radius:15px; max-width:320px;}
-  .follow-count{font-size:19px; font-weight:bold; margin-bottom:10px;}
-  .follow-count span{color:#00d4ff; font-size:24px;}
-  .follow-btn{background:#0095f6; color:#fff; border:none; padding:11px 35px; font-size:16px; border-radius:50px; font-weight:bold; cursor:pointer;}
-  .follow-btn.followed{background:#333; border:1px solid #555;}
-  .game-zone{background:rgba(0,0,0,0.6); padding:30px 15px; margin:20px; border-radius:20px; border:1px solid rgba(0,212,255,0.4);}
-  .game-zone h2{text-align:center;}
-  .game-zone p{text-align:center; color:#a5f3fc; font-size:13px; margin:8px 0 15px;}
-  #gameBox{background:linear-gradient(180deg,#87CEEB,#e0f6ff); max-width:600px; height:200px; margin:0 auto; border-radius:15px; position:relative; overflow:hidden; touch-action:manipulation; border:3px solid #fff;}
-  #marioBox{background:linear-gradient(180deg,#5cb6ff,#aee2ff); max-width:850px; height:380px; margin:0 auto; border-radius:15px; position:relative; overflow:hidden; touch-action:manipulation; border:3px solid #ffcc00;}
-  #zombieBox{background:linear-gradient(180deg,#0a0a1a,#1a0a2a); max-width:850px; height:420px; margin:0 auto; border-radius:15px; position:relative; overflow:hidden; touch-action:manipulation; border:3px solid #ff0055;}
-  canvas{width:100%; height:100%; display:block;}
-  #score{position:absolute; top:8px; right:12px; color:#333; font-weight:bold; z-index:5; background:rgba(255,255,255,0.8); padding:4px 10px; border-radius:20px;}
-  #gameOver{position:absolute; inset:0; display:none; flex-direction:column; justify-content:center; align-items:center; background:rgba(255,255,255,0.92); color:#111; z-index:20;}
-  .jump-btn{margin-top:15px; background:linear-gradient(90deg,#00ff88,#00cc6a); color:#000; border:none; padding:12px 30px; font-size:16px; border-radius:50px; font-weight:bold; cursor:pointer;}
-  .ctrl{display:flex; justify-content:center; gap:10px; margin-top:12px;}
-  .ctrl button{background:linear-gradient(90deg,#ffcc00,#ff9900); border:none; width:90px; height:65px; font-size:28px; border-radius:15px; font-weight:bold; cursor:pointer;}
-  .play-overlay{position:absolute; inset:0; background:rgba(0,0,0,0.75); display:flex; flex-direction:column; justify-content:center; align-items:center; z-index:30;}
-  .play-overlay b{font-size:26px; margin-bottom:12px; color:#fff;}
-  .play-big{background:linear-gradient(90deg,#ff0055,#ff3366); color:#fff; border:none; width:90px; height:90px; font-size:38px; border-radius:50%; cursor:pointer;}
-  .mario-play{background:linear-gradient(90deg,#ffcc00,#ff9900); color:#000; width:110px; height:110px; font-size:48px;}
-  .zombie-play{background:linear-gradient(90deg,#ff0055,#9900ff); color:#fff; width:110px; height:110px; font-size:48px;}
-  .lv-bar{display:flex; justify-content:center; gap:5px; flex-wrap:wrap; margin:10px 0;}
-  .lv-dot{width:28px;height:28px;border-radius:50%;background:#333;color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:bold;border:1px solid #555}
-  .lv-dot.active{background:#ffcc00;color:#000;border-color:#fff;box-shadow:0 0 10px #ffcc00}
-  .lv-dot.done{background:#00ff88;color:#000}
-  .next-btn{background:linear-gradient(90deg,#00ff88,#00ccff);color:#000;border:none;padding:12px 30px;font-size:17px;border-radius:50px;font-weight:bold;cursor:pointer;margin-top:10px;display:none}
-  .shoot-btn{background:linear-gradient(90deg,#ff0055,#ff3366)!important; color:#fff!important;}
-  @media(max-width:600px){.grid{grid-template-columns:1fr} h1{font-size:26px} #marioBox{height:300px} #zombieBox{height:340px}}
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
+body{background:#0f0c29 url('bg.jpg') center/cover fixed no-repeat;color:#fff;text-align:center;min-height:100vh}
+body::before{content:"";position:fixed;inset:0;background:rgba(0,0,0,0.65);z-index:-1}
+nav{display:flex;justify-content:space-between;align-items:center;padding:15px 25px;background:rgba(0,0,0,0.6);border-bottom:1px solid #00d4ff}
+.logo{width:55px;height:55px;border:2px solid #00d4ff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:22px;color:#00d4ff;overflow:hidden;background:#000}
+.logo img{width:100%;height:100%;object-fit:cover}
+nav a{color:#00d4ff;text-decoration:none;margin:0 8px;font-size:12px}
+.hero{padding:40px 20px;margin:20px;border-radius:20px;background:rgba(0,0,0,0.45);border:1px solid rgba(0,212,255,0.4)}
+.hero-logo{width:120px;height:120px;margin:0 auto;border:3px solid #00d4ff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:30px;font-weight:900;color:#00d4ff;overflow:hidden;background:#000;position:relative}
+.hero-logo img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
+.hero-logo span{position:relative;z-index:1}
+h1{font-size:32px;margin:15px 0 5px;background:linear-gradient(90deg,#c084fc,#00d4ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.btn{padding:10px 20px;margin:5px;border:1px solid #00d4ff;background:transparent;color:#00d4ff;cursor:pointer;border-radius:25px}
+.btn-gold{background:linear-gradient(90deg,#7b2ff7,#00d4ff);color:#fff;font-weight:bold;border:none}
+.section{padding:30px 20px;text-align:left;max-width:800px;margin:0 auto}
+h2{color:#00d4ff;font-size:24px;margin-bottom:10px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:15px;margin-top:15px}
+.card{border:1px solid rgba(0,212,255,0.4);padding:20px;border-radius:15px;background:rgba(0,0,0,0.55)}
+.card b{color:#fff;font-size:18px}
+.card p{color:#a5f3fc;font-size:13px;margin-top:5px}
+.rule,.school-box{border:1px solid rgba(0,212,255,0.4);padding:20px;border-radius:15px;margin-top:15px;background:rgba(0,0,0,0.55)}
+footer{padding:20px;color:#a5f3fc;font-size:12px;border-top:1px solid #00d4ff;background:rgba(0,0,0,0.5)}
+.music-box{position:fixed;bottom:15px;right:15px;background:linear-gradient(90deg,#7b2ff7,#00d4ff);color:#fff;padding:12px 16px;border-radius:30px;font-weight:bold;cursor:pointer;z-index:99}
+.sound-btn{position:fixed;bottom:15px;left:15px;background:#ffcc00;color:#000;padding:12px 16px;border-radius:30px;font-weight:bold;cursor:pointer;z-index:99;border:none}
+.follow-box{margin:18px auto 5px;background:rgba(0,0,0,0.55);border:1px solid rgba(0,212,255,0.5);padding:14px;border-radius:15px;max-width:320px}
+.follow-count{font-size:19px;font-weight:bold;margin-bottom:10px}
+.follow-count span{color:#00d4ff;font-size:24px}
+.follow-btn{background:#0095f6;color:#fff;border:none;padding:11px 35px;font-size:16px;border-radius:50px;font-weight:bold;cursor:pointer}
+.follow-btn.followed{background:#333;border:1px solid #555}
+.game-zone{background:rgba(0,0,0,0.6);padding:30px 15px;margin:20px;border-radius:20px;border:1px solid rgba(0,212,255,0.4)}
+.game-zone h2{text-align:center}
+.game-zone p{text-align:center;color:#a5f3fc;font-size:13px;margin:8px 0 15px}
+#gameBox{background:#87CEEB;max-width:600px;height:200px;margin:0 auto;border-radius:15px;position:relative;overflow:hidden;border:3px solid #fff}
+#marioBox{background:#5cb6ff;max-width:850px;height:380px;margin:0 auto;border-radius:15px;position:relative;overflow:hidden;border:3px solid #ffcc00}
+#zombieBox{background:#1a0a2a;max-width:850px;height:420px;margin:0 auto;border-radius:15px;position:relative;overflow:hidden;border:3px solid #ff0055}
+#raceBox{background:#222;max-width:850px;height:420px;margin:0 auto;border-radius:15px;position:relative;overflow:hidden;border:3px solid #ff0000}
+#fruitBox{background:#ffcc80;max-width:850px;height:420px;margin:0 auto;border-radius:15px;position:relative;overflow:hidden;border:3px solid #ff0055;cursor:crosshair}
+canvas{width:100%;height:100%;display:block}
+#score{position:absolute;top:8px;right:12px;color:#333;font-weight:bold;z-index:5;background:rgba(255,255,255,0.8);padding:4px 10px;border-radius:20px}
+#gameOver{position:absolute;inset:0;display:none;flex-direction:column;justify-content:center;align-items:center;background:rgba(255,255,255,0.92);color:#111;z-index:20}
+.jump-btn{margin-top:15px;background:linear-gradient(90deg,#00ff88,#00cc6a);color:#000;border:none;padding:12px 30px;font-size:16px;border-radius:50px;font-weight:bold;cursor:pointer}
+.ctrl{display:flex;justify-content:center;gap:10px;margin-top:12px}
+.ctrl button{background:linear-gradient(90deg,#ffcc00,#ff9900);border:none;width:90px;height:65px;font-size:28px;border-radius:15px;font-weight:bold;cursor:pointer}
+.play-overlay{position:absolute;inset:0;background:rgba(0,0,0,0.75);display:flex;flex-direction:column;justify-content:center;align-items:center;z-index:30}
+.play-overlay b{font-size:26px;margin-bottom:12px;color:#fff}
+.play-big{color:#fff;border:none;width:90px;height:90px;font-size:38px;border-radius:50%;cursor:pointer;background:#ff0055}
+.mario-play{background:#ffcc00;color:#000;width:110px;height:110px;font-size:48px}
+.zombie-play{background:#9900ff;width:110px;height:110px;font-size:48px}
+.race-play{background:#ff0000;width:110px;height:110px;font-size:48px}
+.fruit-play{background:#ff0055;width:110px;height:110px;font-size:48px}
+.lv-bar{display:flex;justify-content:center;gap:5px;flex-wrap:wrap;margin:10px 0}
+.lv-dot{width:28px;height:28px;border-radius:50%;background:#333;color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:bold;border:1px solid #555}
+.lv-dot.active{background:#ffcc00;color:#000}
+.lv-dot.done{background:#00ff88;color:#000}
+.next-btn{background:#00ff88;color:#000;border:none;padding:12px 30px;font-size:17px;border-radius:50px;font-weight:bold;cursor:pointer;margin-top:10px;display:none}
+.shoot-btn{background:#ff0055!important;color:#fff!important}
+.race-btn{background:#ff0000!important;color:#fff!important}
+.speed-box{background:#000;border:2px solid #ff0000;padding:12px;border-radius:15px;max-width:500px;margin:10px auto;display:flex;justify-content:space-around;align-items:center}
+.speed-num{font-size:32px;font-weight:900;color:#ff0000}
+.speed-label{font-size:12px;color:#fff}
+@media(max-width:600px){.grid{grid-template-columns:1fr}h1{font-size:26px}#marioBox{height:300px}#zombieBox{height:340px}#raceBox{height:340px}#fruitBox{height:340px}}
 </style>
 </head>
 <body>
 
-<nav><div class="logo"><img src="bg.jpg" onerror="this.style.display='none'">RA</div><div><a href="#">HOME</a><a href="#goals">GOALS</a><a href="#sports">SPORTS</a><a href="#life">MY LIFE</a><a href="#games">GAMES</a></div></nav>
+<nav><div class="logo"><img src="bg.jpg" onerror="this.style.display='none'">RA</div><div><a href="#">HOME</a><a href="#goals">GOALS</a><a href="#games">GAMES</a></div></nav>
 
 <div class="hero">
-  <div class="hero-logo"><img src="bg.jpg" onerror="this.style.display='none'"><span>RA</span></div>
-  <h1>RIYAN AHMED</h1>
-  <div class="sub">Aspiring Scientist • P.D.B High School</div>
-  <div class="tag">DRIVEN BY CURIOSITY • BUILDING THE FUTURE THROUGH SCIENCE & INNOVATION</div>
-  <div class="loc">📍 Location: Bheramara, Kushtia, Bangladesh</div>
-  <div class="loc">🎓 School: P.D.B High School</div>
-  <div class="follow-box">
-    <div class="follow-count">👥 <span id="followCount">0</span> Followers</div>
-    <button id="followBtn" class="follow-btn" onclick="doFollow()">+ Follow</button>
-    <div id="followMsg" style="font-size:13px; margin-top:8px; opacity:0.8;"></div>
-  </div>
-  <button class="btn">DOWNLOAD CV</button>
-  <button class="btn btn-gold">CONTACT ME</button>
+<div class="hero-logo"><img src="bg.jpg" onerror="this.style.display='none'"><span>RA</span></div>
+<h1>RIYAN AHMED</h1>
+<div>Aspiring Scientist • P.D.B High School</div>
+<div style="margin:10px 0;color:#a5f3fc;font-size:13px">DRIVEN BY CURIOSITY • BUILDING THE FUTURE</div>
+<div>📍 Bheramara, Kushtia, Bangladesh</div>
+<div>🎓 P.D.B High School</div>
+<div class="follow-box">
+<div class="follow-count">👥 <span id="followCount">0</span> Followers</div>
+<button id="followBtn" class="follow-btn" onclick="doFollow()">+ Follow</button>
+<div id="followMsg" style="font-size:13px;margin-top:8px"></div>
+</div>
+<button class="btn">DOWNLOAD CV</button>
+<button class="btn btn-gold">CONTACT ME</button>
 </div>
 
-<div class="section" id="goals">
-  <h2>MY GOALS</h2>
-  <p>Focusing on scientific research, continuous learning, and creating impact through innovation and discipline.</p>
-  <p style="margin-top:10px">✓ Become a scientist<br>✓ Build my own programming language, as powerful as Swift or Kotlin</p>
-</div>
+<div class="section" id="goals"><h2>MY GOALS</h2><p>✓ Become a scientist<br>✓ Build my own programming language, as powerful as Swift or Kotlin</p></div>
 
-<div class="section" id="sports">
-  <h2 style="text-align:center">SPORTS GAMES & MORE</h2>
-  <div class="grid">
-    <div class="card"><b>⚽ Outdoor</b><p>Football • Badminton • Cricket</p></div>
-    <div class="card"><b>🧩 Indoor</b><p>Free Fire • Minecraft • Roblox</p></div>
-    <div class="card"><b>🎬 Watching</b><p>Anime: True Love, Love Forever, Your Name</p></div>
-    <div class="card"><b>💪 Fitness</b><p>Gym • Build an Aesthetic Body</p></div>
-    <div class="card"><b>💰 For You: Money Follow bro !</b><p>Money! Money! Money! Follow koro bro!</p></div>
-  </div>
-</div>
+<div class="section"><h2 style="text-align:center">SPORTS GAMES & MORE</h2>
+<div class="grid">
+<div class="card"><b>⚽ Outdoor</b><p>Football • Badminton • Cricket</p></div>
+<div class="card"><b>🧩 Indoor</b><p>Free Fire • Minecraft • Roblox</p></div>
+<div class="card"><b>🎬 Watching</b><p>Anime: True Love, Love Forever, Your Name</p></div>
+<div class="card"><b>💪 Fitness</b><p>Gym • Build an Aesthetic Body</p></div>
+<div class="card"><b>💰 For You: Money Follow bro !</b><p>Money! Money! Money! Follow koro bro!</p></div>
+</div></div>
 
-<div class="section">
-  <h2>🎓 EDUCATION</h2>
-  <div class="school-box"><p><b style="color:#fff;font-size:18px">P.D.B High School</b></p><p style="margin-top:5px">Class 8 • Science Group</p><p>Bheramara, Kushtia</p></div>
-</div>
+<div class="section"><h2>🎓 EDUCATION</h2><div class="school-box"><b style="color:#fff;font-size:18px">P.D.B High School</b><p>Class 8 • Science Group<br>Bheramara, Kushtia</p></div></div>
 
 <div class="game-zone" id="games">
-  <h2>🎮 GAME 1 - DINO PRO 🎮</h2>
-  <p>Chok, Muk, Hat, Pa sob ase!</p>
-  <div id="gameBox">
-    <canvas id="game" width="600" height="200"></canvas>
-    <div id="score">Score: 0</div>
-    <div id="gameOver"><b>Game Over! 😭</b><span id="finalScore"></span><br><button class="jump-btn" onclick="restartGame()">🔁 Abar Khel</button></div>
-    <div id="dinoPlay" class="play-overlay"><b>🦖 DINO PRO</b><button class="play-big" id="dinoPlayBtn">▶</button><span style="margin-top:10px; font-size:14px;">Khelte PLAY chap de!</span></div>
-  </div>
-  <div style="text-align:center;"><button class="jump-btn" onclick="jump()">🦖 JUMP!</button></div>
+<h2>🎮 GAME 1 - DINO PRO 🔊</h2>
+<div id="gameBox"><canvas id="game" width="600" height="200"></canvas><div id="score">Score: 0</div>
+<div id="gameOver"><b>Game Over! 😭</b><span id="finalScore"></span><br><button class="jump-btn" onclick="restartGame()">🔁 Abar Khel</button></div>
+<div id="dinoPlay" class="play-overlay"><b>🦖 DINO PRO</b><button class="play-big" onclick="startDino()">▶</button><span style="margin-top:10px">Khelte PLAY chap de!</span></div></div>
+<div style="text-align:center"><button class="jump-btn" onclick="jump()">🦖 JUMP!</button></div>
 </div>
 
 <div class="game-zone">
-  <h2>🍄 GAME 2 - SUPER RIYAN - 20 LEVELS! 🍄</h2>
-  <p>LEVEL: <span id="lvText" style="color:#ffcc00;font-size:18px;font-weight:bold;">1 / 20</span> | Coin: <span id="coinCount">0</span> | <span id="lvName">Level 1</span></p>
-  <div class="lv-bar" id="lvBar"></div>
-  <div id="marioBox">
-    <canvas id="mario" width="850" height="380"></canvas>
-    <div id="marioPlay" class="play-overlay"><b>🍄 SUPER RIYAN</b><div style="color:#ffcc00; margin-bottom:10px;">20 Levels - Sob Alada! Aste Aste Hard!</div><button class="play-big mario-play" id="marioPlayBtn">▶</button><span style="margin-top:10px; font-size:14px;">Khelte PLAY chap de!</span></div>
-  </div>
-  <div class="ctrl"><button onclick="mLeft=true; setTimeout(()=>mLeft=false,300)">⬅️</button><button onclick="mJump()">⬆️</button><button onclick="mRight=true; setTimeout(()=>mRight=false,300)">➡️</button></div>
-  <div style="text-align:center;"><button class="jump-btn" style="background:linear-gradient(90deg,#ffcc00,#ff9900);" onclick="restartMario()">🔁 Abar Khel</button><button id="nextLvBtn" class="next-btn" onclick="nextLevel()">⏭️ Next Level ➡️</button></div>
-  <p id="marioMsg" style="color:#ffcc00; font-weight:bold; font-size:18px;"></p>
+<h2>🍄 GAME 2 - SUPER RIYAN - 20 LEVELS! 🔊</h2>
+<p>LEVEL: <span id="lvText" style="color:#ffcc00;font-weight:bold">1 / 20</span> | Coin: <span id="coinCount">0</span> | <span id="lvName">Level 1</span></p>
+<div class="lv-bar" id="lvBar"></div>
+<div id="marioBox"><canvas id="mario" width="850" height="380"></canvas>
+<div id="marioPlay" class="play-overlay"><b>🍄 SUPER RIYAN</b><button class="play-big mario-play" onclick="startMario()">▶</button><span style="margin-top:10px">Khelte PLAY chap de!</span></div></div>
+<div class="ctrl"><button onclick="mLeft=true;setTimeout(function(){mLeft=false},300)">⬅️</button><button onclick="mJump()">⬆️</button><button onclick="mRight=true;setTimeout(function(){mRight=false},300)">➡️</button></div>
+<div style="text-align:center"><button class="jump-btn" style="background:#ffcc00" onclick="restartMario()">🔁 Abar Khel</button><button id="nextLvBtn" class="next-btn" onclick="nextLevel()">⏭️ Next Level ➡️</button></div>
+<p id="marioMsg" style="color:#ffcc00;font-weight:bold"></p>
 </div>
 
 <div class="game-zone">
-  <h2>🔫🧟 GAME 3 - ZOMBIE SHOOTER - 20 LEVELS! 🧟🔫</h2>
-  <p>LEVEL: <span id="zLvText" style="color:#ff0055;font-size:18px;font-weight:bold;">1 / 20</span> | Kill: <span id="zKill">0</span> | ❤️ HP: <span id="zHP">100</span> | <span id="zLvName">Level 1</span></p>
-  <div class="lv-bar" id="zLvBar"></div>
-  <div id="zombieBox">
-    <canvas id="zombie" width="850" height="420"></canvas>
-    <div id="zombiePlay" class="play-overlay"><b>🧟 ZOMBIE SHOOTER</b><div style="color:#ff0055; margin-bottom:10px;">Guli SOJHA Jabe! Zombie SOJHA Asbe!</div><button class="play-big zombie-play" id="zombiePlayBtn">▶</button><span style="margin-top:10px; font-size:14px;">Khelte PLAY chap de!</span></div>
-  </div>
-  <div class="ctrl"><button onclick="zUp=true; setTimeout(()=>zUp=false,250)">⬆️</button><button class="shoot-btn" onclick="zShoot()">🔫 SHOOT!</button><button onclick="zDown=true; setTimeout(()=>zDown=false,250)">⬇️</button></div>
-  <div style="text-align:center;"><button class="jump-btn" style="background:linear-gradient(90deg,#ff0055,#9900ff); color:#fff;" onclick="restartZombie()">🔁 Abar Khel</button><button id="zNextBtn" class="next-btn" onclick="zNextLevel()">⏭️ Next Level ➡️</button></div>
-  <p id="zMsg" style="color:#ff0055; font-weight:bold; font-size:18px;"></p>
+<h2>🔫🧟 GAME 3 - ZOMBIE SHOOTER - 20 LEVELS! 🔊</h2>
+<p>LEVEL: <span id="zLvText" style="color:#ff0055;font-weight:bold">1 / 20</span> | Kill: <span id="zKill">0</span> | ❤️ HP: <span id="zHP">100</span> | <span id="zLvName">Level 1</span></p>
+<div class="lv-bar" id="zLvBar"></div>
+<div id="zombieBox"><canvas id="zombie" width="850" height="420"></canvas>
+<div id="zombiePlay" class="play-overlay"><b>🧟 ZOMBIE SHOOTER</b><button class="play-big zombie-play" onclick="startZombie()">▶</button><span style="margin-top:10px">Khelte PLAY chap de!</span></div></div>
+<div class="ctrl"><button onclick="zUp=true;setTimeout(function(){zUp=false},250)">⬆️</button><button class="shoot-btn" onclick="zShoot()">🔫 SHOOT!</button><button onclick="zDown=true;setTimeout(function(){zDown=false},250)">⬇️</button></div>
+<div style="text-align:center"><button class="jump-btn" style="background:#9900ff;color:#fff" onclick="restartZombie()">🔁 Abar Khel</button><button id="zNextBtn" class="next-btn" onclick="zNextLevel()">⏭️ Next Level ➡️</button></div>
+<p id="zMsg" style="color:#ff0055;font-weight:bold"></p>
 </div>
 
-<div class="section" id="life">
-  <h2 style="text-align:center">MY LIFE MY RULE</h2>
-  <div class="rule"><p>I am Riyan Ahmed from Bheramara, Kushtia, Bangladesh.</p><br><p>I study at P.D.B High School. I am currently in Class 8 (Science group).</p><br><p>My main focus now is my career and building a solid future in the tech world. I love coding, AI and math.</p><br><p>Discipline. Consistency. Growth. Living by my own principles.</p></div>
+<div class="game-zone">
+<h2>🔴🏎️ GAME 4 - RED RACING 🔊</h2>
+<p>Score: <span id="rScore" style="color:#ff0000;font-weight:bold">0</span> | Best: <span id="rBest">0</span></p>
+<div class="speed-box"><div><div class="speed-num"><span id="rSpeed">0</span></div><div class="speed-label">KM/H</div></div><div style="font-size:30px">🏎️</div><div><div class="speed-num" style="color:#ffcc00"><span id="rScore2">0</span></div><div class="speed-label">SCORE</div></div><div><div class="speed-num" style="color:#00ff88"><span id="rGear">1</span></div><div class="speed-label">GEAR</div></div></div>
+<div id="raceBox"><canvas id="race" width="850" height="420"></canvas>
+<div id="racePlay" class="play-overlay"><b>🔴 RED RACING</b><button class="play-big race-play" onclick="startRace()">▶</button><span style="margin-top:10px">Khelte PLAY chap de!</span></div></div>
+<div class="ctrl"><button onclick="rLeft=true;setTimeout(function(){rLeft=false},300)">⬅️</button><button class="race-btn" onclick="rBoost()">🚀 BOOST!</button><button onclick="rRight=true;setTimeout(function(){rRight=false},300)">➡️</button></div>
+<div style="text-align:center"><button class="jump-btn" style="background:#ff0000;color:#fff" onclick="restartRace()">🔁 Abar Khel</button></div>
+<p id="rMsg" style="color:#ff0000;font-weight:bold"></p>
 </div>
 
+<div class="game-zone">
+<h2>🍉🔪 GAME 5 - FRUIT NINJA 🔊</h2>
+<p>Score: <span id="fScore" style="color:#ff0055;font-weight:bold">0</span> | Miss: <span id="fMiss">0</span>/3 | Best: <span id="fBest">0</span> | Combo: <span id="fCombo">x1</span></p>
+<p>👆 Fol er upor tap kore kat! 💣 Bomb katle ses!</p>
+<div id="fruitBox"><canvas id="fruit" width="850" height="420"></canvas>
+<div id="fruitPlay" class="play-overlay"><b>🍉 FRUIT NINJA</b><button class="play-big fruit-play" onclick="startFruit()">▶</button><span style="margin-top:10px">Khelte PLAY chap de!</span></div></div>
+<div style="text-align:center"><button class="jump-btn" style="background:#ffcc00;color:#000" onclick="restartFruit()">🔁 Abar Khel</button></div>
+<p id="fMsg" style="color:#ff0055;font-weight:bold"></p>
+</div>
+
+<div class="section"><h2 style="text-align:center">MY LIFE MY RULE</h2><div class="rule"><p>I am Riyan Ahmed from Bheramara, Kushtia, Bangladesh. I study at P.D.B High School, Class 8 Science. My focus is career, coding, AI and math. Discipline. Consistency. Growth.</p></div></div>
 <footer>© 2024 RIYAN AHMED • P.D.B HIGH SCHOOL • BHERAMARA, KUSHTIA • RA</footer>
 <audio id="bgMusic" loop><source src="music.mp3" type="audio/mpeg"></audio>
-<div class="music-box" id="musicBtn">▶ PLAY XTALI</div>
+<div class="music-box" id="musicBtn" onclick="toggleMusic()">▶ PLAY XTALI</div>
+<button class="sound-btn" id="soundBtn" onclick="toggleSound()">🔊 SOUND: ON</button>
 
 <script>
-var musicBtn = document.getElementById('musicBtn');
-var bgMusic = document.getElementById('bgMusic');
-musicBtn.addEventListener('click', function(){ if(bgMusic.paused){ bgMusic.play(); musicBtn.innerText='⏸ XTALI - PAUSE'; } else { bgMusic.pause(); musicBtn.innerText='▶ PLAY XTALI'; } });
-var followCount = 0; var myFollow = false;
-function updateFollowUI(){ document.getElementById('followCount').innerText = followCount; var btn = document.getElementById('followBtn'); if(myFollow){ btn.innerText='✓ Following'; btn.classList.add('followed'); document.getElementById('followMsg').innerText='Thanks for following! ❤️'; } else { btn.innerText='+ Follow'; btn.classList.remove('followed'); document.getElementById('followMsg').innerText=''; } }
-function doFollow(){ if(!myFollow){ myFollow=true; followCount++; } else { myFollow=false; followCount=Math.max(0, followCount-1); } updateFollowUI(); }
-updateFollowUI();
-var canvas = document.getElementById('game');
-var ctx = canvas.getContext('2d');
-var dinoY = 135, dinoV = 0, dinoJumping = false;
-var dinoObs = [], dinoScore = 0, dinoRun = false, dinoSpeed = 5, dinoClouds=[{x:100,y:30},{x:300,y:50},{x:500,y:25}];
-var legAnim=0;
-function dinoDraw(){
-  ctx.clearRect(0,0,600,200);
-  var grad = ctx.createLinearGradient(0,0,0,200); grad.addColorStop(0,'#87CEEB'); grad.addColorStop(1,'#e0f6ff'); ctx.fillStyle=grad; ctx.fillRect(0,0,600,200);
-  ctx.fillStyle='rgba(255,255,255,0.9)';
-  for(var c=0;c<dinoClouds.length;c++){ ctx.beginPath(); ctx.arc(dinoClouds[c].x, dinoClouds[c].y, 18,0,Math.PI*2); ctx.arc(dinoClouds[c].x+22, dinoClouds[c].y, 22,0,Math.PI*2); ctx.fill(); }
-  ctx.fillStyle='#4CAF50'; ctx.fillRect(0,182,600,18); ctx.fillStyle='#8B4513'; ctx.fillRect(0,182,600,5);
-  legAnim+=0.3; var legMove = Math.sin(legAnim)*4;
-  ctx.fillStyle='#2E7D32'; ctx.fillRect(15, dinoY+20, 30, 10); ctx.fillStyle='#1B5E20'; ctx.fillRect(10, dinoY+22, 10, 6);
-  ctx.fillStyle='#2E7D32'; ctx.fillRect(40, dinoY+10, 42, 38); ctx.fillStyle='#66BB6A'; ctx.fillRect(45, dinoY+18, 32, 22);
-  ctx.fillStyle='#2E7D32'; ctx.fillRect(68, dinoY-12, 30, 24); ctx.fillStyle='#66BB6A'; ctx.fillRect(70, dinoY-10, 26, 10);
-  ctx.fillStyle='#fff'; ctx.beginPath(); ctx.arc(88, dinoY-2, 7, 0, Math.PI*2); ctx.fill(); ctx.fillStyle='#000'; ctx.beginPath(); ctx.arc(90, dinoY-2, 3.5, 0, Math.PI*2); ctx.fill(); ctx.fillStyle='#fff'; ctx.beginPath(); ctx.arc(91, dinoY-4, 1.2, 0, Math.PI*2); ctx.fill(); ctx.fillStyle='#000'; ctx.fillRect(82, dinoY-12, 12, 3);
-  ctx.fillStyle='#000'; ctx.fillRect(92, dinoY+2, 3, 3); ctx.strokeStyle='#000'; ctx.lineWidth=2; ctx.beginPath(); ctx.arc(85, dinoY+6, 7, 0.2, Math.PI*0.8); ctx.stroke(); ctx.fillStyle='#fff'; ctx.fillRect(78, dinoY+8, 4, 4); ctx.fillRect(85, dinoY+9, 4, 4);
-  ctx.fillStyle='#1B5E20'; ctx.fillRect(65, dinoY+18, 14, 6); ctx.fillRect(78, dinoY+18, 5, 5);
-  ctx.fillStyle='#1B5E20'; ctx.fillRect(48, dinoY+48, 10, 14+legMove); ctx.fillRect(66, dinoY+48, 10, 14-legMove); ctx.fillStyle='#000'; ctx.fillRect(48, dinoY+60+legMove, 12, 4); ctx.fillRect(66, dinoY+60-legMove, 12, 4);
-  ctx.fillStyle='#FF5722'; ctx.fillRect(45, dinoY+5, 6, 6); ctx.fillRect(55, dinoY+3, 6, 6); ctx.fillRect(65, dinoY+5, 6, 6);
-  ctx.fillStyle='#FF5722'; for(var i=0;i<dinoObs.length;i++){ var ox=dinoObs[i].x; ctx.fillRect(ox, 145, 22, 37); ctx.fillStyle='#fff'; ctx.fillRect(ox+5, 150, 12, 5); ctx.fillStyle='#000'; ctx.fillRect(ox+8, 158, 3, 3); ctx.fillRect(ox+14, 158, 3, 3); ctx.fillStyle='#FF5722'; }
-}
-function dinoLoop(){ if(!dinoRun) return; for(var c=0;c<dinoClouds.length;c++){ dinoClouds[c].x-=1; if(dinoClouds[c].x<-40) dinoClouds[c].x=620; } if(dinoJumping){ dinoV+=0.9; dinoY+=dinoV; if(dinoY>=135){ dinoY=135; dinoJumping=false; dinoV=0; } } if(Math.random()<0.025){ dinoObs.push({x:600}); } for(var i=0;i<dinoObs.length;i++){ dinoObs[i].x-=dinoSpeed; } dinoObs = dinoObs.filter(function(o){ return o.x>-30; }); for(var j=0;j<dinoObs.length;j++){ var o=dinoObs[j]; if(o.x<82 && o.x+22>40 && dinoY+48>143){ dinoRun=false; document.getElementById('finalScore').innerText='Score: '+Math.floor(dinoScore/10); document.getElementById('gameOver').style.display='flex'; dinoDraw(); return; } } dinoScore++; if(dinoScore%400===0) dinoSpeed+=0.4; document.getElementById('score').innerText='Score: '+Math.floor(dinoScore/10); dinoDraw(); requestAnimationFrame(dinoLoop); }
+// === SOUND ===
+var soundOn=true, audioCtx=null;
+function getCtx(){ if(!audioCtx){ try{ audioCtx=new (window.AudioContext||window.webkitAudioContext)(); }catch(e){ return null; } } if(audioCtx && audioCtx.state==='suspended'){ audioCtx.resume(); } return audioCtx; }
+function playTone(f,d,type,v,slide){ if(!soundOn) return; try{ var ac=getCtx(); if(!ac) return; var o=ac.createOscillator(), g=ac.createGain(); o.type=type||'square'; o.frequency.setValueAtTime(f,ac.currentTime); if(slide) o.frequency.exponentialRampToValueAtTime(slide,ac.currentTime+d); g.gain.setValueAtTime(v||0.12,ac.currentTime); g.gain.exponentialRampToValueAtTime(0.001,ac.currentTime+d); o.connect(g); g.connect(ac.destination); o.start(); o.stop(ac.currentTime+d); }catch(e){} }
+function sJump(){ playTone(300,0.2,'sine',0.2,700); }
+function sCoin(){ playTone(900,0.1,'sine',0.2,1400); setTimeout(function(){ playTone(1400,0.15,'sine',0.2,1800); },80); }
+function sShoot(){ playTone(1200,0.08,'square',0.12,200); }
+function sBoom(){ playTone(200,0.3,'sawtooth',0.2,50); }
+function sCrash(){ playTone(150,0.5,'sawtooth',0.25,30); }
+function sBoost(){ playTone(200,0.4,'sawtooth',0.15,900); }
+function sSlice(){ playTone(800,0.12,'sawtooth',0.18,200); }
+function sBomb(){ playTone(100,0.6,'sawtooth',0.3,20); }
+function sGameOver(){ playTone(400,0.2,'square',0.15,300); setTimeout(function(){ playTone(200,0.4,'square',0.15,100); },300); }
+function sWin(){ playTone(600,0.12,'sine',0.2,800); setTimeout(function(){ playTone(1000,0.2,'sine',0.2,1400); },200); }
+function toggleSound(){ soundOn=!soundOn; document.getElementById('soundBtn').innerText=soundOn?'🔊 SOUND: ON':'🔇 SOUND: OFF'; if(soundOn) sCoin(); }
+function toggleMusic(){ var m=document.getElementById('bgMusic'); var b=document.getElementById('musicBtn'); try{ if(m.paused){ var p=m.play(); if(p) p.catch(function(){}); b.innerText='⏸ XTALI - PAUSE'; } else { m.pause(); b.innerText='▶ PLAY XTALI'; } }catch(e){ b.innerText='▶ PLAY XTALI'; } }
+
+// === FOLLOW ===
+var followCount=0, myFollow=false;
+function doFollow(){ if(!myFollow){ myFollow=true; followCount++; sCoin(); } else { myFollow=false; followCount=Math.max(0,followCount-1); } var btn=document.getElementById('followBtn'); document.getElementById('followCount').innerText=followCount; if(myFollow){ btn.innerText='✓ Following'; btn.className='follow-btn followed'; document.getElementById('followMsg').innerText='Thanks for following! ❤️'; } else { btn.innerText='+ Follow'; btn.className='follow-btn'; document.getElementById('followMsg').innerText=''; } }
+
+// === GAME 1 DINO ===
+var canvas=document.getElementById('game'), ctx=canvas.getContext('2d');
+var dinoY=135, dinoV=0, dinoJumping=false, dinoObs=[], dinoScore=0, dinoRun=false, dinoSpeed=5, dinoClouds=[{x:100,y:30},{x:300,y:50},{x:500,y:25}], legAnim=0;
+function dinoDraw(){ ctx.clearRect(0,0,600,200); var grad=ctx.createLinearGradient(0,0,0,200); grad.addColorStop(0,'#87CEEB'); grad.addColorStop(1,'#e0f6ff'); ctx.fillStyle=grad; ctx.fillRect(0,0,600,200); ctx.fillStyle='rgba(255,255,255,0.9)'; for(var c=0;c<dinoClouds.length;c++){ ctx.beginPath(); ctx.arc(dinoClouds[c].x,dinoClouds[c].y,18,0,Math.PI*2); ctx.arc(dinoClouds[c].x+22,dinoClouds[c].y,22,0,Math.PI*2); ctx.fill(); } ctx.fillStyle='#4CAF50'; ctx.fillRect(0,182,600,18); ctx.fillStyle='#8B4513'; ctx.fillRect(0,182,600,5); legAnim+=0.3; var lm=Math.sin(legAnim)*4; ctx.fillStyle='#2E7D32'; ctx.fillRect(15,dinoY+20,30,10); ctx.fillRect(40,dinoY+10,42,38); ctx.fillStyle='#66BB6A'; ctx.fillRect(45,dinoY+18,32,22); ctx.fillStyle='#2E7D32'; ctx.fillRect(68,dinoY-12,30,24); ctx.fillStyle='#fff'; ctx.beginPath(); ctx.arc(88,dinoY-2,7,0,Math.PI*2); ctx.fill(); ctx.fillStyle='#000'; ctx.beginPath(); ctx.arc(90,dinoY-2,3.5,0,Math.PI*2); ctx.fill(); ctx.fillStyle='#000'; ctx.fillRect(82,dinoY-12,12,3); ctx.fillRect(92,dinoY+2,3,3); ctx.strokeStyle='#000'; ctx.lineWidth=2; ctx.beginPath(); ctx.arc(85,dinoY+6,7,0.2,Math.PI*0.8); ctx.stroke(); ctx.fillStyle='#fff'; ctx.fillRect(78,dinoY+8,4,4); ctx.fillStyle='#1B5E20'; ctx.fillRect(65,dinoY+18,14,6); ctx.fillRect(48,dinoY+48,10,14+lm); ctx.fillRect(66,dinoY+48,10,14-lm); ctx.fillStyle='#FF5722'; ctx.fillRect(45,dinoY+5,6,6); ctx.fillRect(55,dinoY+3,6,6); for(var i=0;i<dinoObs.length;i++){ var ox=dinoObs[i].x; ctx.fillStyle='#FF5722'; ctx.fillRect(ox,145,22,37); ctx.fillStyle='#fff'; ctx.fillRect(ox+5,150,12,5); } }
+function dinoLoop(){ if(!dinoRun) return; for(var c=0;c<dinoClouds.length;c++){ dinoClouds[c].x-=1; if(dinoClouds[c].x<-40) dinoClouds[c].x=620; } if(dinoJumping){ dinoV+=0.9; dinoY+=dinoV; if(dinoY>=135){ dinoY=135; dinoJumping=false; dinoV=0; } } if(Math.random()<0.025) dinoObs.push({x:600}); for(var i=0;i<dinoObs.length;i++) dinoObs[i].x-=dinoSpeed; dinoObs=dinoObs.filter(function(o){return o.x>-30;}); for(var j=0;j<dinoObs.length;j++){ var o=dinoObs[j]; if(o.x<82 && o.x+22>40 && dinoY+48>143){ dinoRun=false; sGameOver(); document.getElementById('finalScore').innerText='Score: '+Math.floor(dinoScore/10); document.getElementById('gameOver').style.display='flex'; dinoDraw(); return; } } dinoScore++; if(dinoScore%400===0) dinoSpeed+=0.4; document.getElementById('score').innerText='Score: '+Math.floor(dinoScore/10); dinoDraw(); requestAnimationFrame(dinoLoop); }
 function startDino(){ document.getElementById('dinoPlay').style.display='none'; document.getElementById('gameOver').style.display='none'; dinoObs=[]; dinoScore=0; dinoSpeed=5; dinoY=135; dinoRun=true; dinoDraw(); dinoLoop(); }
-function jump(){ if(!dinoRun) return; if(!dinoJumping){ dinoJumping=true; dinoV=-14; } }
+function jump(){ if(!dinoRun) return; if(!dinoJumping){ dinoJumping=true; dinoV=-14; sJump(); } }
 function restartGame(){ document.getElementById('gameOver').style.display='none'; startDino(); }
-document.getElementById('dinoPlayBtn').addEventListener('click', function(e){ e.stopPropagation(); startDino(); }); document.getElementById('dinoPlayBtn').addEventListener('touchstart', function(e){ e.stopPropagation(); startDino(); }); document.getElementById('gameBox').addEventListener('touchstart', function(){ if(dinoRun) jump(); }); dinoDraw();
-var mc = document.getElementById('mario'); var mctx = mc.getContext('2d'); var px=40, py=260, pvy=0, onGround=true, coins=0, totalCoins=0; var mLeft=false, mRight=false, marioOver=false, marioWin=false, marioStarted=false; var curLevel=1, completedLevels=[]; var mCoins=[], mEnemies=[], mPlatforms=[]; var flagX=780, GROUND_Y=260, enemySpeed=2;
-var ALL_LEVELS = [
-  {name:"🌱 Level 1 - Suru", speed:1.5, platforms:[{x:300,y:230,w:140,h:22},{x:560,y:190,w:130,h:22}], coins:[{x:200,y:200},{x:250,y:200},{x:360,y:200},{x:620,y:160}], enemies:[{x:400,y:280}]},
-  {name:"🌿 Level 2 - Easy Road", speed:1.7, platforms:[{x:280,y:220,w:130,h:22},{x:520,y:180,w:140,h:22}], coins:[{x:180,y:200},{x:340,y:190},{x:580,y:150},{x:650,y:200}], enemies:[{x:380,y:280},{x:600,y:280}]},
-  {name:"🍀 Level 3 - Coin Valley", speed:1.9, platforms:[{x:320,y:235,w:120,h:22},{x:580,y:200,w:120,h:22}], coins:[{x:200,y:180},{x:280,y:180},{x:380,y:205},{x:640,y:170},{x:700,y:200}], enemies:[{x:420,y:280},{x:620,y:280}]},
-  {name:"🔥 Level 4 - First Fire", speed:2.1, platforms:[{x:250,y:220,w:120,h:22},{x:480,y:180,w:130,h:22},{x:650,y:230,w:90,h:22}], coins:[{x:200,y:200},{x:310,y:190},{x:540,y:150},{x:690,y:200}], enemies:[{x:360,y:280},{x:560,y:280}]},
-  {name:"🌉 Level 5 - Bridge", speed:2.3, platforms:[{x:200,y:210,w:110,h:22},{x:380,y:180,w:110,h:22},{x:560,y:210,w:110,h:22}], coins:[{x:250,y:180},{x:430,y:150},{x:610,y:180},{x:700,y:200}], enemies:[{x:340,y:280},{x:500,y:280},{x:650,y:280}]},
-  {name:"⚡ Level 6 - Speed Up", speed:2.5, platforms:[{x:300,y:225,w:130,h:22},{x:550,y:185,w:120,h:22}], coins:[{x:200,y:200},{x:360,y:195},{x:610,y:155},{x:680,y:200}], enemies:[{x:380,y:280},{x:520,y:280},{x:640,y:280}]},
-  {name:"🪨 Level 7 - Rock Zone", speed:2.7, platforms:[{x:260,y:230,w:110,h:22},{x:430,y:190,w:110,h:22},{x:600,y:220,w:110,h:22}], coins:[{x:310,y:200},{x:480,y:160},{x:650,y:190}], enemies:[{x:350,y:280},{x:500,y:280},{x:670,y:280}]},
-  {name:"👾 Level 8 - Enemy Attack", speed:2.9, platforms:[{x:300,y:220,w:120,h:22},{x:520,y:180,w:120,h:22},{x:400,y:140,w:90,h:20}], coins:[{x:200,y:200},{x:360,y:190},{x:450,y:110},{x:580,y:150},{x:700,y:200}], enemies:[{x:380,y:280},{x:480,y:280},{x:600,y:280}]},
-  {name:"🎯 Level 9 - Jump Master", speed:3.1, platforms:[{x:220,y:220,w:100,h:22},{x:380,y:180,w:100,h:22},{x:540,y:220,w:100,h:22},{x:680,y:180,w:80,h:22}], coins:[{x:270,y:190},{x:430,y:150},{x:590,y:190},{x:720,y:150}], enemies:[{x:340,y:280},{x:500,y:280},{x:640,y:280}]},
-  {name:"💀 Level 10 - Danger Zone", speed:3.3, platforms:[{x:280,y:230,w:110,h:22},{x:480,y:190,w:110,h:22},{x:650,y:230,w:90,h:22}], coins:[{x:200,y:200},{x:330,y:200},{x:530,y:160},{x:690,y:200},{x:120,y:150}], enemies:[{x:360,y:280},{x:450,y:280},{x:580,y:280},{x:680,y:280}]},
-  {name:"🌋 Level 11 - Lava Land", speed:3.5, platforms:[{x:250,y:220,w:120,h:22},{x:450,y:180,w:120,h:22},{x:620,y:220,w:100,h:22}], coins:[{x:300,y:190},{x:500,y:150},{x:670,y:190},{x:180,y:200}], enemies:[{x:350,y:280},{x:480,y:280},{x:600,y:280},{x:700,y:280}]},
-  {name:"🧊 Level 12 - Ice Slide", speed:3.7, platforms:[{x:200,y:210,w:100,h:22},{x:380,y:180,w:120,h:22},{x:580,y:210,w:110,h:22},{x:150,y:180,w:80,h:20}], coins:[{x:250,y:180},{x:430,y:150},{x:630,y:180},{x:190,y:150}], enemies:[{x:320,y:280},{x:470,y:280},{x:620,y:280},{x:700,y:280}]},
-  {name:"🌪️ Level 13 - Storm", speed:3.9, platforms:[{x:300,y:225,w:110,h:22},{x:500,y:185,w:110,h:22},{x:650,y:140,w:90,h:20}], coins:[{x:350,y:195},{x:550,y:155},{x:690,y:110},{x:200,y:200}], enemies:[{x:380,y:280},{x:480,y:280},{x:580,y:280},{x:680,y:280},{x:250,y:280}]},
-  {name:"🦁 Level 14 - Lion King", speed:4.1, platforms:[{x:260,y:220,w:120,h:22},{x:460,y:180,w:120,h:22},{x:640,y:220,w:100,h:22}], coins:[{x:310,y:190},{x:510,y:150},{x:690,y:190}], enemies:[{x:340,y:280},{x:440,y:280},{x:560,y:280},{x:660,y:280},{x:200,y:280}]},
-  {name:"🚀 Level 15 - Rocket", speed:4.3, platforms:[{x:220,y:210,w:100,h:22},{x:400,y:170,w:100,h:22},{x:580,y:210,w:100,h:22},{x:700,y:160,w:80,h:20}], coins:[{x:270,y:180},{x:450,y:140},{x:630,y:180},{x:740,y:130},{x:120,y:150}], enemies:[{x:330,y:280},{x:480,y:280},{x:640,y:280},{x:700,y:280},{x:200,y:280}]},
-  {name:"👑 Level 16 - King Zone", speed:4.5, platforms:[{x:280,y:230,w:110,h:22},{x:470,y:190,w:110,h:22},{x:640,y:230,w:90,h:22},{x:400,y:140,w:80,h:20}], coins:[{x:330,y:200},{x:520,y:160},{x:690,y:200},{x:440,y:110}], enemies:[{x:360,y:280},{x:460,y:280},{x:580,y:280},{x:680,y:280},{x:250,y:280}]},
-  {name:"💎 Level 17 - Diamond", speed:4.7, platforms:[{x:250,y:220,w:110,h:22},{x:430,y:180,w:110,h:22},{x:600,y:220,w:110,h:22}], coins:[{x:300,y:190},{x:480,y:150},{x:650,y:190},{x:180,y:180},{x:720,y:200}], enemies:[{x:340,y:280},{x:450,y:280},{x:560,y:280},{x:660,y:280},{x:200,y:280},{x:550,y:280}]},
-  {name:"🔥🔥 Level 18 - Hell Mode", speed:4.9, platforms:[{x:200,y:210,w:90,h:22},{x:360,y:180,w:90,h:22},{x:520,y:210,w:90,h:22},{x:670,y:180,w:80,h:22}], coins:[{x:240,y:180},{x:400,y:150},{x:560,y:180},{x:710,y:150}], enemies:[{x:320,y:280},{x:450,y:280},{x:580,y:280},{x:680,y:280},{x:250,y:280},{x:520,y:280}]},
-  {name:"😈 Level 19 - Devil", speed:5.1, platforms:[{x:280,y:225,w:100,h:22},{x:470,y:185,w:100,h:22},{x:640,y:225,w:90,h:22},{x:380,y:140,w:80,h:20}], coins:[{x:330,y:195},{x:520,y:155},{x:690,y:195},{x:420,y:110}], enemies:[{x:350,y:280},{x:460,y:280},{x:580,y:280},{x:680,y:280},{x:240,y:280},{x:520,y:280}]},
-  {name:"🏆 Level 20 - FINAL BOSS LEGEND", speed:5.5, platforms:[{x:250,y:220,w:110,h:22},{x:450,y:180,w:110,h:22},{x:620,y:220,w:100,h:22},{x:380,y:130,w:90,h:20}], coins:[{x:300,y:190},{x:500,y:150},{x:670,y:190},{x:420,y:100},{x:150,y:180}], enemies:[{x:340,y:280},{x:460,y:280},{x:580,y:280},{x:680,y:280},{x:220,y:280},{x:520,y:280},{x:600,y:260,boss:true}]}
-];
-function buildLevel(n){ var L = ALL_LEVELS[n-1]; enemySpeed = L.speed; mPlatforms = L.platforms; mCoins = L.coins.map(function(c){ return {x:c.x, y:c.y}; }); mEnemies = L.enemies.map(function(e){ if(e.boss) return {x:e.x,y:260,w:60,h:60,dir:1,min:500,max:720,alive:true,boss:true}; return {x:e.x,y:280,w:38,h:42,dir:1,min:Math.max(150,e.x-60),max:Math.min(720,e.x+60),alive:true}; }); document.getElementById('lvText').innerText = n+' / 20'; document.getElementById('lvName').innerText = L.name; var bar=''; for(var d=1; d<=20; d++){ var cls='lv-dot'; if(completedLevels.indexOf(d)!==-1) cls+=' done'; if(d===curLevel) cls+=' active'; bar+='<div class="'+cls+'">'+d+'</div>'; } document.getElementById('lvBar').innerHTML=bar; }
+dinoDraw();
+
+// === GAME 2 MARIO ===
+var mc=document.getElementById('mario'), mctx=mc.getContext('2d');
+var px=40, py=260, pvy=0, onGround=true, coins=0, totalCoins=0, mLeft=false, mRight=false, marioOver=false, marioWin=false, marioStarted=false, curLevel=1, completedLevels=[], mCoins=[], mEnemies=[], mPlatforms=[], flagX=780, GROUND_Y=260, enemySpeed=2;
+var ALL_LEVELS=[];
+for(var li2=1; li2<=20; li2++){ ALL_LEVELS.push({name:'Level '+li2, speed:1.5+li2*0.2, platforms:[{x:300,y:230,w:140,h:22},{x:560,y:190,w:130,h:22}], coins:[{x:200,y:200},{x:360,y:200},{x:620,y:160}], enemies:[{x:400,y:280},{x:600,y:280}]}); }
+function buildLevel(n){ var L=ALL_LEVELS[n-1]; enemySpeed=L.speed; mPlatforms=L.platforms; mCoins=L.coins.map(function(c){return {x:c.x,y:c.y};}); mEnemies=L.enemies.map(function(e){return {x:e.x,y:280,w:38,h:42,dir:1,min:Math.max(150,e.x-60),max:Math.min(720,e.x+60),alive:true};}); document.getElementById('lvText').innerText=n+' / 20'; document.getElementById('lvName').innerText=L.name; var bar=''; for(var d=1;d<=20;d++){ var cls='lv-dot'; if(completedLevels.indexOf(d)!==-1) cls+=' done'; if(d===curLevel) cls+=' active'; bar+='<div class="'+cls+'">'+d+'</div>'; } document.getElementById('lvBar').innerHTML=bar; }
 function loadLevel(n){ curLevel=n; px=40; py=260; pvy=0; coins=0; marioOver=false; marioWin=false; document.getElementById('marioMsg').innerText=''; document.getElementById('nextLvBtn').style.display='none'; document.getElementById('coinCount').innerText='0'; buildLevel(n); }
-function drawRiyan(x,y){ mctx.fillStyle='#0000ff'; mctx.fillRect(x+4, y+40, 12, 18); mctx.fillRect(x+24, y+40, 12, 18); mctx.fillStyle='#000'; mctx.fillRect(x+2, y+56, 16, 6); mctx.fillRect(x+22, y+56, 16, 6); mctx.fillStyle='#ff0000'; mctx.fillRect(x, y+10, 40, 32); mctx.fillStyle='#fff'; mctx.fillRect(x+15, y+14, 10, 22); mctx.fillStyle='#ffcc00'; mctx.fillRect(x+12, y+20, 16, 6); mctx.fillStyle='#ffcc99'; mctx.fillRect(x-8, y+14, 8, 18); mctx.fillRect(x+40, y+14, 8, 18); mctx.fillStyle='#ffcc99'; mctx.beginPath(); mctx.arc(x-4, y+34, 5, 0, Math.PI*2); mctx.arc(x+44, y+34, 5, 0, Math.PI*2); mctx.fill(); mctx.fillStyle='#ffcc99'; mctx.fillRect(x+2, y-18, 36, 28); mctx.fillStyle='#000'; mctx.fillRect(x+2, y-22, 36, 8); mctx.fillRect(x+2, y-18, 6, 12); mctx.fillStyle='#ff0000'; mctx.fillRect(x+0, y-30, 40, 10); mctx.fillStyle='#fff'; mctx.fillRect(x+15, y-28, 10, 6); mctx.fillStyle='#fff'; mctx.beginPath(); mctx.arc(x+12, y-6, 5, 0, Math.PI*2); mctx.arc(x+28, y-6, 5, 0, Math.PI*2); mctx.fill(); mctx.fillStyle='#000'; mctx.beginPath(); mctx.arc(x+13, y-6, 2.5, 0, Math.PI*2); mctx.arc(x+29, y-6, 2.5, 0, Math.PI*2); mctx.fill(); mctx.fillStyle='#000'; mctx.fillRect(x+7, y-13, 10, 2); mctx.fillRect(x+23, y-13, 10, 2); mctx.fillStyle='#e6a377'; mctx.fillRect(x+18, y-2, 4, 5); mctx.strokeStyle='#000'; mctx.lineWidth=1.5; mctx.beginPath(); mctx.arc(x+20, y+3, 7, 0.2, Math.PI*0.8); mctx.stroke(); mctx.fillStyle='#ffcc99'; mctx.fillRect(x-2, y-12, 4, 8); mctx.fillRect(x+38, y-12, 4, 8); }
-function drawEnemy(x,y,boss){ if(boss){ mctx.fillStyle='#4b0082'; mctx.fillRect(x, y, 60, 60); mctx.fillStyle='#fff'; mctx.beginPath(); mctx.arc(x+18, y+18, 7, 0, Math.PI*2); mctx.arc(x+42, y+18, 7, 0, Math.PI*2); mctx.fill(); mctx.fillStyle='#ff0000'; mctx.beginPath(); mctx.arc(x+18, y+18, 3, 0, Math.PI*2); mctx.arc(x+42, y+18, 3, 0, Math.PI*2); mctx.fill(); mctx.fillStyle='#fff'; mctx.fillRect(x+15, y+35, 8, 8); mctx.fillRect(x+30, y+35, 8, 8); mctx.fillRect(x+22, y+35, 8, 8); mctx.fillStyle='#000'; mctx.fillRect(x+10, y+50, 15, 12); mctx.fillRect(x+35, y+50, 15, 12); mctx.fillStyle='#ffcc00'; mctx.fillRect(x+5, y+8, 50, 6); return; } mctx.fillStyle='#8B0000'; mctx.fillRect(x, y+10, 38, 28); mctx.fillStyle='#ffcc99'; mctx.fillRect(x+4, y-8, 30, 18); mctx.fillStyle='#000'; mctx.fillRect(x+4, y-10, 30, 5); mctx.fillStyle='#fff'; mctx.beginPath(); mctx.arc(x+12, y+0, 4, 0, Math.PI*2); mctx.arc(x+26, y+0, 4, 0, Math.PI*2); mctx.fill(); mctx.fillStyle='#ff0000'; mctx.beginPath(); mctx.arc(x+12, y+0, 2, 0, Math.PI*2); mctx.arc(x+26, y+0, 2, 0, Math.PI*2); mctx.fill(); mctx.fillStyle='#000'; mctx.fillRect(x+12, y+6, 14, 3); mctx.fillStyle='#8B0000'; mctx.fillRect(x-6, y+12, 6, 14); mctx.fillRect(x+38, y+12, 6, 14); mctx.fillStyle='#000'; mctx.fillRect(x+5, y+38, 10, 8); mctx.fillRect(x+23, y+38, 10, 8); }
-function mDraw(){ mctx.clearRect(0,0,850,380); var bg = mctx.createLinearGradient(0,0,0,380); if(curLevel>=15){ bg.addColorStop(0,'#2b0a0a'); bg.addColorStop(1,'#ff5722'); } else if(curLevel>=10){ bg.addColorStop(0,'#1a1a3a'); bg.addColorStop(1,'#4a00e0'); } else { bg.addColorStop(0,'#5cb6ff'); bg.addColorStop(1,'#aee2ff'); } mctx.fillStyle=bg; mctx.fillRect(0,0,850,380); mctx.fillStyle='rgba(255,255,255,0.95)'; mctx.beginPath(); mctx.arc(150,60,25,0,Math.PI*2); mctx.arc(180,60,30,0,Math.PI*2); mctx.arc(210,60,25,0,Math.PI*2); mctx.fill(); mctx.fillStyle='#2E7D32'; mctx.fillRect(0,320,850,60); mctx.fillStyle='#8B4513'; mctx.fillRect(0,320,850,12); mctx.fillStyle='#FFD700'; for(var gx=0;gx<850;gx+=40){ mctx.fillRect(gx,322,20,4); } for(var p=0;p<mPlatforms.length;p++){ var pl=mPlatforms[p]; mctx.fillStyle='#8B4513'; mctx.fillRect(pl.x,pl.y,pl.w,pl.h); mctx.fillStyle='#4CAF50'; mctx.fillRect(pl.x,pl.y,pl.w,8); mctx.fillStyle='#FFD700'; mctx.fillRect(pl.x,pl.y+pl.h-4,pl.w,4); } mctx.fillStyle='#fff'; mctx.fillRect(flagX,90,6,230); var fGrad=mctx.createLinearGradient(flagX,90,flagX+50,120); fGrad.addColorStop(0,'#ff0055'); fGrad.addColorStop(1,'#ffcc00'); mctx.fillStyle=fGrad; mctx.fillRect(flagX+6,90,50,32); mctx.fillStyle='#fff'; mctx.font='bold 20px Arial'; mctx.fillText('GOAL',flagX+2,80); for(var i=0;i<mCoins.length;i++){ var cg=mctx.createRadialGradient(mCoins[i].x-4,mCoins[i].y-4,2,mCoins[i].x,mCoins[i].y,15); cg.addColorStop(0,'#fff176'); cg.addColorStop(1,'#ffcc00'); mctx.fillStyle=cg; mctx.beginPath(); mctx.arc(mCoins[i].x,mCoins[i].y,15,0,Math.PI*2); mctx.fill(); mctx.fillStyle='#fff'; mctx.beginPath(); mctx.arc(mCoins[i].x,mCoins[i].y,6,0,Math.PI*2); mctx.fill(); } for(var e=0;e<mEnemies.length;e++){ var en=mEnemies[e]; if(!en.alive) continue; drawEnemy(en.x, en.y, en.boss); } drawRiyan(px, py); }
-function mLoop(){ if(!marioStarted) return; if(!marioOver && !marioWin){ if(mLeft) px-=6; if(mRight) px+=6; pvy+=0.8; py+=pvy; var gy=GROUND_Y; for(var pi=0; pi<mPlatforms.length; pi++){ var pl=mPlatforms[pi]; if(px+30>pl.x && px<pl.x+pl.w && py+60>=pl.y && py+60<=pl.y+25 && pvy>0){ gy=pl.y-60; } } if(py>=gy){ py=gy; pvy=0; onGround=true; } else onGround=false; if(py>380){ marioOver=true; document.getElementById('marioMsg').innerText='Level '+curLevel+' e Pore gesos! 😭 Abar try kor'; } for(var ei=0; ei<mEnemies.length; ei++){ var en=mEnemies[ei]; if(!en.alive) continue; en.x+=en.dir*enemySpeed; if(en.x>en.max||en.x<en.min) en.dir*=-1; } for(var ci=mCoins.length-1; ci>=0; ci--){ if(Math.abs(mCoins[ci].x-(px+19))<28 && Math.abs(mCoins[ci].y-(py+15))<35){ mCoins.splice(ci,1); coins++; totalCoins++; document.getElementById('coinCount').innerText=coins; } } for(var ej=0; ej<mEnemies.length; ej++){ var en2=mEnemies[ej]; if(!en2.alive) continue; if(px+38>en2.x && px<en2.x+en2.w && py+60>en2.y && py<en2.y+en2.h){ if(pvy>0){ en2.alive=false; pvy=-14; } else { marioOver=true; document.getElementById('marioMsg').innerText='Level '+curLevel+' e Shotru kheye felse! 😭 Abar try kor'; } } } if(px+38>=flagX){ marioWin=true; if(completedLevels.indexOf(curLevel)===-1) completedLevels.push(curLevel); if(curLevel===20){ document.getElementById('marioMsg').innerText='🏆🏆 TUI LEGEND! 20 TA LEVEL SES! SUPER RIYAN! Total Coin: '+totalCoins; } else { document.getElementById('marioMsg').innerText='🎉 Level '+curLevel+' SES! Coin: '+coins+' - Next Level e ja!'; document.getElementById('nextLvBtn').style.display='inline-block'; } buildLevel(curLevel); } if(px<0) px=0; if(px>810) px=810; } mDraw(); requestAnimationFrame(mLoop); }
+function drawRiyan(x,y){ mctx.fillStyle='#0000ff'; mctx.fillRect(x+4,y+40,12,18); mctx.fillRect(x+24,y+40,12,18); mctx.fillStyle='#000'; mctx.fillRect(x+2,y+56,16,6); mctx.fillRect(x+22,y+56,16,6); mctx.fillStyle='#ff0000'; mctx.fillRect(x,y+10,40,32); mctx.fillStyle='#fff'; mctx.fillRect(x+15,y+14,10,22); mctx.fillStyle='#ffcc99'; mctx.fillRect(x-8,y+14,8,18); mctx.fillRect(x+40,y+14,8,18); mctx.beginPath(); mctx.arc(x-4,y+34,5,0,Math.PI*2); mctx.arc(x+44,y+34,5,0,Math.PI*2); mctx.fill(); mctx.fillStyle='#ffcc99'; mctx.fillRect(x+2,y-18,36,28); mctx.fillStyle='#000'; mctx.fillRect(x+2,y-22,36,8); mctx.fillStyle='#ff0000'; mctx.fillRect(x,y-30,40,10); mctx.fillStyle='#fff'; mctx.beginPath(); mctx.arc(x+12,y-6,5,0,Math.PI*2); mctx.arc(x+28,y-6,5,0,Math.PI*2); mctx.fill(); mctx.fillStyle='#000'; mctx.beginPath(); mctx.arc(x+13,y-6,2.5,0,Math.PI*2); mctx.arc(x+29,y-6,2.5,0,Math.PI*2); mctx.fill(); mctx.fillRect(x+7,y-13,10,2); mctx.fillRect(x+23,y-13,10,2); mctx.strokeStyle='#000'; mctx.lineWidth=1.5; mctx.beginPath(); mctx.arc(x+20,y+3,7,0.2,Math.PI*0.8); mctx.stroke(); }
+function drawEnemy(x,y){ mctx.fillStyle='#8B0000'; mctx.fillRect(x,y+10,38,28); mctx.fillStyle='#ffcc99'; mctx.fillRect(x+4,y-8,30,18); mctx.fillStyle='#000'; mctx.fillRect(x+4,y-10,30,5); mctx.fillStyle='#fff'; mctx.beginPath(); mctx.arc(x+12,y,4,0,Math.PI*2); mctx.arc(x+26,y,4,0,Math.PI*2); mctx.fill(); mctx.fillStyle='#ff0000'; mctx.beginPath(); mctx.arc(x+12,y,2,0,Math.PI*2); mctx.arc(x+26,y,2,0,Math.PI*2); mctx.fill(); mctx.fillStyle='#000'; mctx.fillRect(x+12,y+6,14,3); mctx.fillRect(x+5,y+38,10,8); mctx.fillRect(x+23,y+38,10,8); }
+function mDraw(){ mctx.clearRect(0,0,850,380); var bg=mctx.createLinearGradient(0,0,0,380); bg.addColorStop(0,'#5cb6ff'); bg.addColorStop(1,'#aee2ff'); mctx.fillStyle=bg; mctx.fillRect(0,0,850,380); mctx.fillStyle='#fff'; mctx.beginPath(); mctx.arc(150,60,25,0,Math.PI*2); mctx.arc(180,60,30,0,Math.PI*2); mctx.fill(); mctx.fillStyle='#2E7D32'; mctx.fillRect(0,320,850,60); mctx.fillStyle='#8B4513'; mctx.fillRect(0,320,850,12); for(var p=0;p<mPlatforms.length;p++){ var pl=mPlatforms[p]; mctx.fillStyle='#8B4513'; mctx.fillRect(pl.x,pl.y,pl.w,pl.h); mctx.fillStyle='#4CAF50'; mctx.fillRect(pl.x,pl.y,pl.w,8); } mctx.fillStyle='#fff'; mctx.fillRect(flagX,90,6,230); mctx.fillStyle='#ff0055'; mctx.fillRect(flagX+6,90,50,32); mctx.fillStyle='#fff'; mctx.font='bold 20px Arial'; mctx.fillText('GOAL',flagX+2,80); for(var i=0;i<mCoins.length;i++){ mctx.fillStyle='#ffcc00'; mctx.beginPath(); mctx.arc(mCoins[i].x,mCoins[i].y,15,0,Math.PI*2); mctx.fill(); mctx.fillStyle='#fff'; mctx.beginPath(); mctx.arc(mCoins[i].x,mCoins[i].y,6,0,Math.PI*2); mctx.fill(); } for(var e=0;e<mEnemies.length;e++){ if(!mEnemies[e].alive) continue; drawEnemy(mEnemies[e].x,mEnemies[e].y); } drawRiyan(px,py); }
+function mLoop(){ if(!marioStarted) return; if(!marioOver && !marioWin){ if(mLeft) px-=6; if(mRight) px+=6; pvy+=0.8; py+=pvy; var gy=GROUND_Y; for(var pi=0;pi<mPlatforms.length;pi++){ var pl=mPlatforms[pi]; if(px+30>pl.x && px<pl.x+pl.w && py+60>=pl.y && py+60<=pl.y+25 && pvy>0) gy=pl.y-60; } if(py>=gy){ py=gy; pvy=0; onGround=true; } else onGround=false; if(py>380){ marioOver=true; sGameOver(); document.getElementById('marioMsg').innerText='Pore gesos! Abar try kor'; } for(var ei=0;ei<mEnemies.length;ei++){ var en=mEnemies[ei]; if(!en.alive) continue; en.x+=en.dir*enemySpeed; if(en.x>en.max||en.x<en.min) en.dir*=-1; } for(var ci=mCoins.length-1;ci>=0;ci--){ if(Math.abs(mCoins[ci].x-(px+19))<28 && Math.abs(mCoins[ci].y-(py+15))<35){ mCoins.splice(ci,1); coins++; totalCoins++; sCoin(); document.getElementById('coinCount').innerText=coins; } } for(var ej=0;ej<mEnemies.length;ej++){ var en2=mEnemies[ej]; if(!en2.alive) continue; if(px+38>en2.x && px<en2.x+en2.w && py+60>en2.y && py<en2.y+en2.h){ if(pvy>0){ en2.alive=false; pvy=-14; sBoom(); } else { marioOver=true; sGameOver(); document.getElementById('marioMsg').innerText='Shotru kheye felse!'; } } } if(px+38>=flagX){ marioWin=true; sWin(); if(completedLevels.indexOf(curLevel)===-1) completedLevels.push(curLevel); if(curLevel===20){ document.getElementById('marioMsg').innerText='🏆 LEGEND! 20 LEVEL SES!'; } else { document.getElementById('marioMsg').innerText='🎉 Level '+curLevel+' SES! Next e ja!'; document.getElementById('nextLvBtn').style.display='inline-block'; } buildLevel(curLevel); } if(px<0) px=0; if(px>810) px=810; } mDraw(); requestAnimationFrame(mLoop); }
 function startMario(){ document.getElementById('marioPlay').style.display='none'; marioStarted=true; marioOver=false; marioWin=false; loadLevel(curLevel); mLoop(); }
 function nextLevel(){ if(curLevel<20){ loadLevel(curLevel+1); marioWin=false; marioOver=false; document.getElementById('nextLvBtn').style.display='none'; } }
-function mJump(){ if(!marioStarted || marioOver) return; if(onGround){ pvy=-16; onGround=false; } }
+function mJump(){ if(!marioStarted||marioOver) return; if(onGround){ pvy=-16; onGround=false; sJump(); } }
 function restartMario(){ totalCoins=0; completedLevels=[]; loadLevel(1); marioStarted=false; document.getElementById('marioPlay').style.display='flex'; mDraw(); }
-document.getElementById('marioPlayBtn').addEventListener('click', function(e){ e.stopPropagation(); startMario(); }); document.getElementById('marioPlayBtn').addEventListener('touchstart', function(e){ e.stopPropagation(); startMario(); }); loadLevel(1); mDraw();
-var zc = document.getElementById('zombie'); var zctx = zc.getContext('2d'); var zy=200, zUp=false, zDown=false, zStarted=false, zOver=false, zWin=false; var zBullets=[], zZombies=[], zParticles=[]; var zLevel=1, zKill=0, zTotalKill=0, zHP=100, zKillsNeeded=3, zSpawnTimer=0; var zLevels=[]; for(var li=1; li<=20; li++){ zLevels.push({name: li===20?"🏆 Level 20 - ZOMBIE KING BOSS": "🧟 Level "+li+" - Zombie Attack", need: 2+li, speed: 1.0+li*0.18, hp: 1+Math.floor(li/6), count: 3+li}); }
-function zBuildLevel(n){ var L = zLevels[n-1]; zKillsNeeded = L.need; document.getElementById('zLvText').innerText = n+' / 20'; document.getElementById('zLvName').innerText = L.name; var bar=''; for(var d=1; d<=20; d++){ var cls='lv-dot'; if(d<zLevel) cls+=' done'; if(d===zLevel) cls+=' active'; bar+='<div class="'+cls+'" style="background:'+(d===zLevel?'#ff0055':(d<zLevel?'#00ff88':'#333'))+'; color:#fff;">'+d+'</div>'; } document.getElementById('zLvBar').innerHTML=bar; }
+loadLevel(1); mDraw();
+
+// === GAME 3 ZOMBIE ===
+var zc=document.getElementById('zombie'), zctx=zc.getContext('2d');
+var zy=200, zUp=false, zDown=false, zStarted=false, zOver=false, zWin=false, zBullets=[], zZombies=[], zParticles=[], zLevel=1, zKill=0, zTotalKill=0, zHP=100, zKillsNeeded=5, zSpawnTimer=0;
+function zBuildLevel(n){ zKillsNeeded=2+n; document.getElementById('zLvText').innerText=n+' / 20'; document.getElementById('zLvName').innerText='Level '+n; var bar=''; for(var d=1;d<=20;d++){ var cls='lv-dot'; if(d<zLevel) cls+=' done'; if(d===zLevel) cls+=' active'; bar+='<div class="'+cls+'">'+d+'</div>'; } document.getElementById('zLvBar').innerHTML=bar; }
 function zLoadLevel(n){ zLevel=n; zy=200; zBullets=[]; zZombies=[]; zParticles=[]; zKill=0; zHP=100; zOver=false; zWin=false; zSpawnTimer=0; document.getElementById('zMsg').innerText=''; document.getElementById('zNextBtn').style.display='none'; document.getElementById('zKill').innerText='0'; document.getElementById('zHP').innerText='100'; zBuildLevel(n); }
-function drawZombiePlayer(x,y){ zctx.fillStyle='#0000ff'; zctx.fillRect(x+6, y+42, 12, 18); zctx.fillRect(x+26, y+42, 12, 18); zctx.fillStyle='#000'; zctx.fillRect(x+4, y+58, 16, 6); zctx.fillRect(x+24, y+58, 16, 6); zctx.fillStyle='#00ff88'; zctx.fillRect(x, y+10, 45, 34); zctx.fillStyle='#fff'; zctx.fillRect(x+15, y+16, 15, 20); zctx.fillStyle='#ffcc00'; zctx.fillRect(x+12, y+22, 20, 6); zctx.fillStyle='#ffcc99'; zctx.fillRect(x-8, y+14, 8, 16); zctx.fillStyle='#ffcc99'; zctx.beginPath(); zctx.arc(x-4, y+32, 5, 0, Math.PI*2); zctx.fill(); zctx.fillStyle='#ffcc99'; zctx.fillRect(x+40, y+16, 14, 8); zctx.fillStyle='#222'; zctx.fillRect(x+50, y+16, 38, 9); zctx.fillStyle='#ffcc00'; zctx.fillRect(x+82, y+18, 6, 5); zctx.fillStyle='#ffcc99'; zctx.fillRect(x+4, y-18, 37, 28); zctx.fillStyle='#000'; zctx.fillRect(x+4, y-20, 37, 8); zctx.fillStyle='#333'; zctx.fillRect(x+2, y-28, 41, 10); zctx.fillStyle='#00ff88'; zctx.fillRect(x+15, y-26, 14, 6); zctx.fillStyle='#fff'; zctx.beginPath(); zctx.arc(x+16, y-6, 5, 0, Math.PI*2); zctx.arc(x+32, y-6, 5, 0, Math.PI*2); zctx.fill(); zctx.fillStyle='#000'; zctx.beginPath(); zctx.arc(x+17, y-6, 2.5, 0, Math.PI*2); zctx.arc(x+33, y-6, 2.5, 0, Math.PI*2); zctx.fill(); zctx.fillStyle='#000'; zctx.fillRect(x+10, y-13, 11, 2); zctx.fillRect(x+27, y-13, 11, 2); zctx.fillStyle='#e6a377'; zctx.fillRect(x+22, y-2, 4, 5); zctx.strokeStyle='#000'; zctx.lineWidth=1.5; zctx.beginPath(); zctx.arc(x+24, y+5, 6, 0.2, Math.PI*0.8); zctx.stroke(); zctx.fillStyle='#ffcc99'; zctx.fillRect(x+0, y-10, 4, 8); zctx.fillRect(x+41, y-10, 4, 8); }
-function drawZombieChar(x,y,boss){ if(boss){ zctx.fillStyle='#4b0082'; zctx.fillRect(x, y, 70, 55); zctx.fillStyle='#ff0055'; zctx.fillRect(x, y-5, 70, 8); zctx.fillStyle='#4CAF50'; zctx.fillRect(x+10, y-25, 50, 30); zctx.fillStyle='#ffcc00'; zctx.fillRect(x+10, y-32, 50, 8); zctx.fillRect(x+18, y-40, 8, 10); zctx.fillRect(x+32, y-40, 8, 10); zctx.fillRect(x+46, y-40, 8, 10); zctx.fillStyle='#ff0000'; zctx.beginPath(); zctx.arc(x+24, y-12, 6, 0, Math.PI*2); zctx.arc(x+48, y-12, 6, 0, Math.PI*2); zctx.fill(); zctx.fillStyle='#000'; zctx.beginPath(); zctx.arc(x+24, y-12, 2, 0, Math.PI*2); zctx.arc(x+48, y-12, 2, 0, Math.PI*2); zctx.fill(); zctx.fillStyle='#fff'; zctx.fillRect(x+20, y+2, 8, 8); zctx.fillRect(x+32, y+2, 8, 8); zctx.fillRect(x+44, y+2, 8, 8); zctx.fillStyle='#4CAF50'; zctx.fillRect(x-10, y+5, 10, 25); zctx.fillRect(x+70, y+5, 10, 25); zctx.fillStyle='#fff'; zctx.fillRect(x-10, y+28, 10, 5); zctx.fillRect(x+70, y+28, 10, 5); zctx.fillStyle='#222'; zctx.fillRect(x+12, y+55, 18, 20); zctx.fillRect(x+40, y+55, 18, 20); zctx.fillStyle='#000'; zctx.fillRect(x+10, y+73, 22, 6); zctx.fillRect(x+38, y+73, 22, 6); return; } zctx.fillStyle='#333'; zctx.fillRect(x+6, y+42, 10, 16); zctx.fillRect(x+24, y+42, 10, 16); zctx.fillStyle='#000'; zctx.fillRect(x+4, y+56, 14, 5); zctx.fillRect(x+22, y+56, 14, 5); zctx.fillStyle='#4CAF50'; zctx.fillRect(x, y+10, 40, 34); zctx.fillStyle='#8B0000'; zctx.fillRect(x+10, y+18, 20, 12); zctx.fillStyle='#4CAF50'; zctx.fillRect(x-12, y+12, 12, 8); zctx.fillRect(x+40, y+12, 12, 8); zctx.fillStyle='#fff'; zctx.fillRect(x-14, y+12, 5, 5); zctx.fillRect(x+48, y+12, 5, 5); zctx.fillStyle='#4CAF50'; zctx.fillRect(x+4, y-16, 32, 26); zctx.fillStyle='#000'; zctx.fillRect(x+8, y-20, 6, 6); zctx.fillRect(x+18, y-22, 6, 6); zctx.fillRect(x+28, y-20, 6, 6); zctx.fillStyle='#ffff00'; zctx.beginPath(); zctx.arc(x+12, y-6, 5, 0, Math.PI*2); zctx.arc(x+28, y-6, 5, 0, Math.PI*2); zctx.fill(); zctx.fillStyle='#ff0000'; zctx.beginPath(); zctx.arc(x+12, y-6, 2, 0, Math.PI*2); zctx.arc(x+28, y-6, 2, 0, Math.PI*2); zctx.fill(); zctx.fillStyle='#2E7D32'; zctx.fillRect(x+18, y-1, 4, 4); zctx.fillStyle='#000'; zctx.fillRect(x+10, y+4, 20, 6); zctx.fillStyle='#fff'; zctx.fillRect(x+12, y+4, 4, 4); zctx.fillRect(x+20, y+4, 4, 4); zctx.fillRect(x+26, y+4, 4, 4); }
-function zDraw(){ zctx.clearRect(0,0,850,420); var zg = zctx.createLinearGradient(0,0,0,420); zg.addColorStop(0,'#0a0a1a'); zg.addColorStop(1,'#2a0a2a'); zctx.fillStyle=zg; zctx.fillRect(0,0,850,420); zctx.fillStyle='#fff'; zctx.beginPath(); zctx.arc(750,60,35,0,Math.PI*2); zctx.fill(); zctx.fillStyle='#1a3a1a'; zctx.fillRect(0,330,850,90); zctx.fillStyle='#fff'; for(var g=0;g<850;g+=60){ zctx.fillRect(g,370,30,6); } drawZombiePlayer(40, zy); zctx.fillStyle='#333'; zctx.fillRect(20,20,200,18); zctx.fillStyle='#00ff88'; zctx.fillRect(20,20,200*(zHP/100),18); zctx.fillStyle='#fff'; zctx.font='bold 14px Arial'; zctx.fillText('HP: '+zHP, 230, 35); zctx.fillStyle='#ff0055'; zctx.fillText('KILL: '+zKill+' / '+zKillsNeeded, 350, 35); zctx.fillStyle='#ffff00'; zctx.fillText('➡️ Guli SOJHA jabe! Zombie DAN dik theke SOJHA asbe!', 20, 60); for(var b=0;b<zBullets.length;b++){ zctx.fillStyle='#ffff00'; zctx.shadowColor='#ffff00'; zctx.shadowBlur=12; zctx.fillRect(zBullets[b].x, zBullets[b].y, 18, 6); zctx.shadowBlur=0; } for(var zi=0; zi<zZombies.length; zi++){ var zm=zZombies[zi]; drawZombieChar(zm.x, zm.y, zm.boss); zctx.fillStyle='#fff'; zctx.font='bold 11px Arial'; if(zm.hp>1) zctx.fillText('HP:'+zm.hp, zm.x, zm.y-40); } for(var pi=0; pi<zParticles.length; pi++){ var pt=zParticles[pi]; zctx.fillStyle=pt.color; zctx.fillRect(pt.x, pt.y, 6, 6); } }
-function zLoop(){ if(!zStarted) return; if(!zOver && !zWin){ if(zUp) zy-=7; if(zDown) zy+=7; if(zy<80) zy=80; if(zy>270) zy=270; var L = zLevels[zLevel-1]; zSpawnTimer++; if(zSpawnTimer>50 && zZombies.length < Math.min(6, L.count)){ zSpawnTimer=0; var isBoss = (zLevel===20 && zKill>=zKillsNeeded-1 && !zZombies.some(function(z){return z.boss;})); if(isBoss) zZombies.push({x:850, y:200, hp:10, speed:1.5, boss:true}); else { var zyPos = 100 + Math.floor(Math.random()*3)*80; zZombies.push({x:850, y:zyPos, hp:L.hp, speed:L.speed+Math.random()*0.5, boss:false}); } } for(var bi=zBullets.length-1; bi>=0; bi--){ zBullets[bi].x+=14; if(zBullets[bi].x>850) zBullets.splice(bi,1); } for(var zi=zZombies.length-1; zi>=0; zi--){ var zm=zZombies[zi]; zm.x-=zm.speed; if(zm.x<90){ zZombies.splice(zi,1); zHP-=15; document.getElementById('zHP').innerText=zHP; if(zHP<=0){ zOver=true; document.getElementById('zMsg').innerText='🧟 Zombie tore kheye felse! Level '+zLevel+' e harli! Abar try kor'; } } } for(var b2=zBullets.length-1; b2>=0; b2--){ for(var z2=zZombies.length-1; z2>=0; z2--){ var zb=zBullets[b2]; var zz=zZombies[z2]; var zw = zz.boss?70:40; var zh = zz.boss?80:55; if(zb && zb.x+18>zz.x && zb.x<zz.x+zw && zb.y>zz.y-25 && zb.y<zz.y+zh){ zBullets.splice(b2,1); zz.hp--; for(var pp=0; pp<5; pp++) zParticles.push({x:zz.x+20, y:zz.y+20, color:'#ffcc00'}); if(zz.hp<=0){ zZombies.splice(z2,1); zKill++; zTotalKill++; document.getElementById('zKill').innerText=zKill; for(var pp2=0; pp2<10; pp2++) zParticles.push({x:zz.x+20, y:zz.y+20, color:'#ff0055'}); } break; } } } for(var p3=zParticles.length-1; p3>=0; p3--){ zParticles[p3].x+=2; if(zParticles[p3].x>850) zParticles.splice(p3,1); } if(zKill>=zKillsNeeded){ zWin=true; if(zLevel===20) document.getElementById('zMsg').innerText='🏆🏆 TUI ZOMBIE KING! 20 TA LEVEL SES! Total Kill: '+zTotalKill; else { document.getElementById('zMsg').innerText='🎉 Level '+zLevel+' SES! '+zKill+' ta Zombie marsos! Next Level e ja!'; document.getElementById('zNextBtn').style.display='inline-block'; } zBuildLevel(zLevel); } } zDraw(); requestAnimationFrame(zLoop); }
+function drawZombiePlayer(x,y){ zctx.fillStyle='#0000ff'; zctx.fillRect(x+6,y+42,12,18); zctx.fillRect(x+26,y+42,12,18); zctx.fillStyle='#000'; zctx.fillRect(x+4,y+58,16,6); zctx.fillRect(x+24,y+58,16,6); zctx.fillStyle='#00ff88'; zctx.fillRect(x,y+10,45,34); zctx.fillStyle='#ffcc99'; zctx.fillRect(x-8,y+14,8,16); zctx.beginPath(); zctx.arc(x-4,y+32,5,0,Math.PI*2); zctx.fill(); zctx.fillRect(x+40,y+16,14,8); zctx.fillStyle='#222'; zctx.fillRect(x+50,y+16,38,9); zctx.fillStyle='#ffcc99'; zctx.fillRect(x+4,y-18,37,28); zctx.fillStyle='#000'; zctx.fillRect(x+4,y-20,37,8); zctx.fillStyle='#333'; zctx.fillRect(x+2,y-28,41,10); zctx.fillStyle='#fff'; zctx.beginPath(); zctx.arc(x+16,y-6,5,0,Math.PI*2); zctx.arc(x+32,y-6,5,0,Math.PI*2); zctx.fill(); zctx.fillStyle='#000'; zctx.beginPath(); zctx.arc(x+17,y-6,2.5,0,Math.PI*2); zctx.arc(x+33,y-6,2.5,0,Math.PI*2); zctx.fill(); zctx.strokeStyle='#000'; zctx.lineWidth=1.5; zctx.beginPath(); zctx.arc(x+24,y+5,6,0.2,Math.PI*0.8); zctx.stroke(); }
+function drawZombieChar(x,y){ zctx.fillStyle='#333'; zctx.fillRect(x+6,y+42,10,16); zctx.fillRect(x+24,y+42,10,16); zctx.fillStyle='#4CAF50'; zctx.fillRect(x,y+10,40,34); zctx.fillRect(x-12,y+12,12,8); zctx.fillRect(x+40,y+12,12,8); zctx.fillRect(x+4,y-16,32,26); zctx.fillStyle='#000'; zctx.fillRect(x+8,y-20,6,6); zctx.fillRect(x+18,y-22,6,6); zctx.fillStyle='#ffff00'; zctx.beginPath(); zctx.arc(x+12,y-6,5,0,Math.PI*2); zctx.arc(x+28,y-6,5,0,Math.PI*2); zctx.fill(); zctx.fillStyle='#ff0000'; zctx.beginPath(); zctx.arc(x+12,y-6,2,0,Math.PI*2); zctx.arc(x+28,y-6,2,0,Math.PI*2); zctx.fill(); zctx.fillStyle='#000'; zctx.fillRect(x+10,y+4,20,6); zctx.fillStyle='#fff'; zctx.fillRect(x+12,y+4,4,4); zctx.fillRect(x+20,y+4,4,4); }
+function zDraw(){ zctx.clearRect(0,0,850,420); var zg=zctx.createLinearGradient(0,0,0,420); zg.addColorStop(0,'#0a0a1a'); zg.addColorStop(1,'#2a0a2a'); zctx.fillStyle=zg; zctx.fillRect(0,0,850,420); zctx.fillStyle='#fff'; zctx.beginPath(); zctx.arc(750,60,35,0,Math.PI*2); zctx.fill(); zctx.fillStyle='#1a3a1a'; zctx.fillRect(0,330,850,90); zctx.fillStyle='#fff'; for(var g=0;g<850;g+=60) zctx.fillRect(g,370,30,6); drawZombiePlayer(40,zy); zctx.fillStyle='#333'; zctx.fillRect(20,20,200,18); zctx.fillStyle='#00ff88'; zctx.fillRect(20,20,200*(zHP/100),18); zctx.fillStyle='#fff'; zctx.font='bold 14px Arial'; zctx.fillText('HP: '+zHP,230,35); zctx.fillStyle='#ff0055'; zctx.fillText('KILL: '+zKill+' / '+zKillsNeeded,350,35); for(var b=0;b<zBullets.length;b++){ zctx.fillStyle='#ffff00'; zctx.fillRect(zBullets[b].x,zBullets[b].y,18,6); } for(var zi=0;zi<zZombies.length;zi++) drawZombieChar(zZombies[zi].x,zZombies[zi].y); for(var pi=0;pi<zParticles.length;pi++){ zctx.fillStyle=zParticles[pi].color; zctx.fillRect(zParticles[pi].x,zParticles[pi].y,6,6); } }
+function zLoop(){ if(!zStarted) return; if(!zOver && !zWin){ if(zUp) zy-=7; if(zDown) zy+=7; if(zy<80) zy=80; if(zy>270) zy=270; zSpawnTimer++; if(zSpawnTimer>50 && zZombies.length<6){ zSpawnTimer=0; var yy=100+Math.floor(Math.random()*3)*80; zZombies.push({x:850,y:yy,hp:1}); } for(var bi=zBullets.length-1;bi>=0;bi--){ zBullets[bi].x+=14; if(zBullets[bi].x>850) zBullets.splice(bi,1); } for(var zi=zZombies.length-1;zi>=0;zi--){ zZombies[zi].x-=2; if(zZombies[zi].x<90){ zZombies.splice(zi,1); zHP-=15; sBoom(); document.getElementById('zHP').innerText=zHP; if(zHP<=0){ zOver=true; sGameOver(); document.getElementById('zMsg').innerText='Zombie kheye felse!'; } } } for(var b2=zBullets.length-1;b2>=0;b2--){ for(var z2=zZombies.length-1;z2>=0;z2--){ var zb=zBullets[b2], zz=zZombies[z2]; if(zb && zb.x+18>zz.x && zb.x<zz.x+40 && zb.y>zz.y-15 && zb.y<zz.y+55){ zBullets.splice(b2,1); zZombies.splice(z2,1); zKill++; zTotalKill++; sBoom(); document.getElementById('zKill').innerText=zKill; for(var pp=0;pp<8;pp++) zParticles.push({x:zz.x+20,y:zz.y+20,color:'#ff0055'}); break; } } } for(var p3=zParticles.length-1;p3>=0;p3--){ zParticles[p3].x+=2; if(zParticles[p3].x>850) zParticles.splice(p3,1); } if(zKill>=zKillsNeeded){ zWin=true; sWin(); if(zLevel===20) document.getElementById('zMsg').innerText='🏆 ZOMBIE KING!'; else { document.getElementById('zMsg').innerText='🎉 Level '+zLevel+' SES!'; document.getElementById('zNextBtn').style.display='inline-block'; } zBuildLevel(zLevel); } } zDraw(); requestAnimationFrame(zLoop); }
 function startZombie(){ document.getElementById('zombiePlay').style.display='none'; zStarted=true; zLoadLevel(zLevel); zLoop(); }
-function zShoot(){ if(!zStarted || zOver || zWin) return; zBullets.push({x:128, y:zy+20}); }
+function zShoot(){ if(!zStarted||zOver||zWin) return; zBullets.push({x:128,y:zy+20}); sShoot(); }
 function zNextLevel(){ if(zLevel<20){ zLoadLevel(zLevel+1); zWin=false; zOver=false; } }
 function restartZombie(){ zTotalKill=0; zLoadLevel(1); zStarted=false; document.getElementById('zombiePlay').style.display='flex'; zDraw(); }
-document.getElementById('zombiePlayBtn').addEventListener('click', function(e){ e.stopPropagation(); startZombie(); }); document.getElementById('zombiePlayBtn').addEventListener('touchstart', function(e){ e.stopPropagation(); startZombie(); });
-document.addEventListener('keydown', function(e){ if(e.code==='Space'){ e.preventDefault(); jump(); } if(e.key==='ArrowLeft') mLeft=true; if(e.key==='ArrowRight') mRight=true; if(e.key==='ArrowUp') mJump(); if(e.key==='ArrowUp') zUp=true; if(e.key==='ArrowDown') zDown=true; if(e.key==='w' || e.key==='W') zShoot(); });
-document.addEventListener('keyup', function(e){ if(e.key==='ArrowLeft') mLeft=false; if(e.key==='ArrowRight') mRight=false; if(e.key==='ArrowUp') zUp=false; if(e.key==='ArrowDown') zDown=false; });
 zLoadLevel(1); zDraw();
+
+// === GAME 4 RACING ===
+var rc=document.getElementById('race'), rctx=rc.getContext('2d');
+var rx=425, rLeft=false, rRight=false, rStarted=false, rOver=false, rScore=0, rBest=0, rSpeed=5, rEnemies=[], rCoins=[], rRoadY=0, rSpawn=0, rBoostTime=0;
+function drawCar(x,y,color,isPlayer){ rctx.fillStyle='#000'; rctx.fillRect(x-32,y+10,12,25); rctx.fillRect(x+20,y+10,12,25); rctx.fillRect(x-32,y+55,12,25); rctx.fillRect(x+20,y+55,12,25); rctx.fillStyle=color; rctx.fillRect(x-25,y,50,90); rctx.fillStyle='#87CEEB'; rctx.fillRect(x-15,y+15,30,18); rctx.fillStyle='#111'; rctx.fillRect(x-15,y+38,30,12); rctx.fillStyle='#ffff00'; rctx.fillRect(x-20,y+2,8,6); rctx.fillRect(x+12,y+2,8,6); rctx.fillStyle='#ff0000'; rctx.fillRect(x-20,y+82,8,6); rctx.fillRect(x+12,y+82,8,6); rctx.fillStyle='#000'; rctx.fillRect(x-28,y+85,56,6); if(isPlayer){ rctx.fillStyle='#fff'; rctx.font='bold 12px Arial'; rctx.fillText('RA',x-8,y+50); } else { rctx.fillStyle='#fff'; rctx.font='bold 10px Arial'; rctx.fillText('ENEMY',x-18,y+50); } }
+function rDraw(){ rctx.clearRect(0,0,850,420); rctx.fillStyle='#2E7D32'; rctx.fillRect(0,0,120,420); rctx.fillRect(730,0,120,420); rctx.fillStyle='#333'; rctx.fillRect(120,0,610,420); rctx.fillStyle='#fff'; rctx.fillRect(120,0,6,420); rctx.fillRect(724,0,6,420); rctx.fillStyle='#ffff00'; for(var ly=-40;ly<420;ly+=80){ rctx.fillRect(310,ly+rRoadY,8,40); rctx.fillRect(525,ly+rRoadY,8,40); } for(var ci=0;ci<rCoins.length;ci++){ rctx.fillStyle='#ffcc00'; rctx.beginPath(); rctx.arc(rCoins[ci].x,rCoins[ci].y,12,0,Math.PI*2); rctx.fill(); } for(var ei=0;ei<rEnemies.length;ei++) drawCar(rEnemies[ei].x,rEnemies[ei].y,rEnemies[ei].color,false); drawCar(rx,300,'#ff0000',true); var kmh=Math.floor(rSpeed*22); rctx.fillStyle='rgba(0,0,0,0.85)'; rctx.fillRect(10,10,230,70); rctx.strokeStyle='#ff0000'; rctx.lineWidth=3; rctx.strokeRect(10,10,230,70); rctx.fillStyle='#ff0000'; rctx.font='900 30px Arial'; rctx.fillText(kmh,20,48); rctx.fillStyle='#fff'; rctx.font='bold 14px Arial'; rctx.fillText('KM/H',85,48); rctx.fillStyle='#ffcc00'; rctx.fillText('SCORE: '+rScore,20,68); if(rBoostTime>0){ rctx.fillStyle='#00ff88'; rctx.fillText('🚀 BOOST!',620,40); } var gear=kmh<60?1:kmh<110?2:kmh<160?3:kmh<210?4:5; rctx.fillText('GEAR: '+gear,620,65); document.getElementById('rGear').innerText=gear; }
+function rLoop(){ if(!rStarted) return; if(!rOver){ if(rLeft) rx-=8; if(rRight) rx+=8; if(rx<150) rx=150; if(rx>700) rx=700; if(rBoostTime>0){ rBoostTime--; rSpeed=11; } else { rSpeed=5+Math.floor(rScore/200); if(rSpeed>9) rSpeed=9; } rRoadY+=rSpeed*2; if(rRoadY>80) rRoadY=0; rSpawn++; if(rSpawn>45){ rSpawn=0; var lanes=[215,420,620]; var lx=lanes[Math.floor(Math.random()*3)]; var cols=['#00ff88','#ffcc00','#0095f6','#9900ff','#ff6600','#ffffff']; rEnemies.push({x:lx,y:-100,color:cols[Math.floor(Math.random()*cols.length)]}); if(Math.random()<0.4) rCoins.push({x:lanes[Math.floor(Math.random()*3)],y:-50}); } for(var ei=rEnemies.length-1;ei>=0;ei--){ rEnemies[ei].y+=rSpeed+2; if(rEnemies[ei].y>450) rEnemies.splice(ei,1); } for(var ci=rCoins.length-1;ci>=0;ci--){ rCoins[ci].y+=rSpeed+2; if(rCoins[ci].y>450) rCoins.splice(ci,1); } for(var c2=rCoins.length-1;c2>=0;c2--){ if(Math.abs(rCoins[c2].x-rx)<35 && Math.abs(rCoins[c2].y-340)<50){ rCoins.splice(c2,1); rScore+=20; sCoin(); } } for(var e2=0;e2<rEnemies.length;e2++){ var en=rEnemies[e2]; if(Math.abs(en.x-rx)<45 && Math.abs(en.y-300)<80){ rOver=true; sCrash(); if(rScore>rBest) rBest=rScore; document.getElementById('rBest').innerText=rBest; document.getElementById('rMsg').innerText='💥 CRASH! Score: '+rScore; } } rScore++; document.getElementById('rScore').innerText=rScore; document.getElementById('rScore2').innerText=rScore; document.getElementById('rSpeed').innerText=Math.floor(rSpeed*22); } rDraw(); requestAnimationFrame(rLoop); }
+function startRace(){ document.getElementById('racePlay').style.display='none'; rStarted=true; rOver=false; rx=425; rEnemies=[]; rCoins=[]; rScore=0; rSpeed=5; document.getElementById('rMsg').innerText=''; document.getElementById('rScore').innerText='0'; document.getElementById('rScore2').innerText='0'; rDraw(); rLoop(); }
+function rBoost(){ if(!rStarted||rOver) return; rBoostTime=60; sBoost(); }
+function restartRace(){ rStarted=false; document.getElementById('racePlay').style.display='flex'; rDraw(); }
+rDraw();
+
+// === GAME 5 FRUIT NINJA ===
+var fc=document.getElementById('fruit'), fctx=fc.getContext('2d');
+var fFruits=[], fParts=[], fStarted=false, fOver=false, fScore=0, fBest=0, fMiss=0, fSpawn=0, fCombo=1, fComboTimer=0, fBlade=[];
+var FRUIT_TYPES=[{name:'Tormuj',main:'#ff0055',inner:'#ff6b8a',r:38,score:10},{name:'Komola',main:'#ff8c00',inner:'#ffb347',r:34,score:10},{name:'Lebu',main:'#ffeb00',inner:'#fff176',r:32,score:10},{name:'Apple',main:'#ff0000',inner:'#ff6b6b',r:34,score:10},{name:'Angur',main:'#8e00ff',inner:'#c084fc',r:30,score:15},{name:'Kiwi',main:'#7cb342',inner:'#a5d66d',r:30,score:15},{name:'Strawberry',main:'#ff1744',inner:'#ff8a80',r:28,score:20},{name:'Aam',main:'#ffcc00',inner:'#ffe082',r:36,score:15},{name:'Kola',main:'#fff176',inner:'#ffee58',r:30,score:10},{name:'Narkel',main:'#8d6e63',inner:'#ffffff',r:34,score:20}];
+function spawnFruit(){ var isBomb=Math.random()<0.14; var t=FRUIT_TYPES[Math.floor(Math.random()*FRUIT_TYPES.length)]; fFruits.push({x:80+Math.random()*690,y:430,vx:(Math.random()-0.5)*3,vy:-13-Math.random()*3,type:isBomb?null:t,bomb:isBomb,rot:Math.random()*6,vr:(Math.random()-0.5)*0.2}); }
+function drawFruitObj(f){ fctx.save(); fctx.translate(f.x,f.y); fctx.rotate(f.rot); if(f.bomb){ fctx.fillStyle='#111'; fctx.beginPath(); fctx.arc(0,0,32,0,Math.PI*2); fctx.fill(); fctx.fillStyle='#ffcc00'; fctx.fillRect(-4,-38,8,10); fctx.fillStyle='#fff'; fctx.font='bold 18px Arial'; fctx.fillText('💣',-10,7); } else { var t=f.type; var g=fctx.createRadialGradient(-8,-8,5,0,0,t.r+5); g.addColorStop(0,'#ffffff'); g.addColorStop(0.25,t.inner); g.addColorStop(1,t.main); fctx.fillStyle=g; fctx.beginPath(); fctx.arc(0,0,t.r,0,Math.PI*2); fctx.fill(); fctx.fillStyle='#2E7D32'; fctx.fillRect(-3,-t.r-8,6,10); fctx.fillStyle='rgba(255,255,255,0.7)'; fctx.beginPath(); fctx.arc(-t.r*0.35,-t.r*0.35,6,0,Math.PI*2); fctx.fill(); } fctx.restore(); }
+function fDraw(){ fctx.clearRect(0,0,850,420); var bg=fctx.createLinearGradient(0,0,0,420); bg.addColorStop(0,'#fff3e0'); bg.addColorStop(1,'#ffcc80'); fctx.fillStyle=bg; fctx.fillRect(0,0,850,420); fctx.fillStyle='#8D6E63'; fctx.fillRect(0,360,850,60); fctx.strokeStyle='rgba(255,255,255,0.9)'; fctx.lineWidth=4; if(fBlade.length>1){ fctx.beginPath(); fctx.moveTo(fBlade[0].x,fBlade[0].y); for(var bi=1;bi<fBlade.length;bi++) fctx.lineTo(fBlade[bi].x,fBlade[bi].y); fctx.stroke(); } for(var i=0;i<fParts.length;i++){ var p=fParts[i]; fctx.fillStyle=p.color; fctx.beginPath(); fctx.arc(p.x,p.y,p.r,0,Math.PI*2); fctx.fill(); } for(var j=0;j<fFruits.length;j++) drawFruitObj(fFruits[j]); fctx.fillStyle='rgba(0,0,0,0.7)'; fctx.fillRect(10,10,260,50); fctx.fillStyle='#ff0055'; fctx.font='bold 18px Arial'; fctx.fillText('🍉 SCORE: '+fScore,20,32); fctx.fillStyle='#fff'; fctx.font='bold 14px Arial'; fctx.fillText('MISS: '+fMiss+'/3 COMBO x'+fCombo,20,52); }
+function fLoop(){ if(!fStarted) return; if(!fOver){ fSpawn++; if(fSpawn>50){ fSpawn=0; spawnFruit(); if(Math.random()<0.4) spawnFruit(); } if(fComboTimer>0){ fComboTimer--; if(fComboTimer===0) fCombo=1; document.getElementById('fCombo').innerText='x'+fCombo; } for(var i=fFruits.length-1;i>=0;i--){ var f=fFruits[i]; f.x+=f.vx; f.y+=f.vy; f.vy+=0.45; f.rot+=f.vr; if(f.y>450){ if(!f.bomb){ fMiss++; document.getElementById('fMiss').innerText=fMiss; if(fMiss>=3){ fOver=true; sGameOver(); if(fScore>fBest) fBest=fScore; document.getElementById('fBest').innerText=fBest; document.getElementById('fMsg').innerText='Game Over! Score: '+fScore; } } fFruits.splice(i,1); } } for(var pi=fParts.length-1;pi>=0;pi--){ var p=fParts[pi]; p.x+=p.vx; p.y+=p.vy; p.vy+=0.4; p.r-=0.3; if(p.r<=0) fParts.splice(pi,1); } if(fBlade.length>8) fBlade.shift(); } fDraw(); requestAnimationFrame(fLoop); }
+function sliceAt(x,y){ if(!fStarted||fOver) return; fBlade.push({x:x,y:y}); for(var i=fFruits.length-1;i>=0;i--){ var f=fFruits[i]; var d=Math.sqrt((f.x-x)*(f.x-x)+(f.y-y)*(f.y-y)); var rr=f.bomb?32:(f.type?f.type.r:30); if(d<rr+15){ if(f.bomb){ fFruits.splice(i,1); sBomb(); fOver=true; if(fScore>fBest) fBest=fScore; document.getElementById('fBest').innerText=fBest; document.getElementById('fMsg').innerText='💣 BOOM! Bomb katsos! Score: '+fScore; return; } else { fFruits.splice(i,1); sSlice(); fCombo++; fComboTimer=90; document.getElementById('fCombo').innerText='x'+fCombo; var pts=f.type.score*(fCombo>3?2:1); fScore+=pts; document.getElementById('fScore').innerText=fScore; var cols=[f.type.main,f.type.inner,'#ff0000','#ffff00']; for(var pp=0;pp<12;pp++) fParts.push({x:f.x,y:f.y,vx:(Math.random()-0.5)*8,vy:(Math.random()-0.5)*8-2,r:5+Math.random()*5,color:cols[pp%cols.length]}); } } } }
+function startFruit(){ document.getElementById('fruitPlay').style.display='none'; fStarted=true; fOver=false; fFruits=[]; fParts=[]; fScore=0; fMiss=0; fCombo=1; document.getElementById('fScore').innerText='0'; document.getElementById('fMiss').innerText='0'; document.getElementById('fCombo').innerText='x1'; document.getElementById('fMsg').innerText=''; fDraw(); fLoop(); }
+function restartFruit(){ fStarted=false; document.getElementById('fruitPlay').style.display='flex'; fDraw(); }
+var fruitCanvas=document.getElementById('fruit');
+function getFruitPos(e){ var r=fruitCanvas.getBoundingClientRect(); var cx=e.touches?e.touches[0].clientX:e.clientX; var cy=e.touches?e.touches[0].clientY:e.clientY; return {x:(cx-r.left)*(850/r.width), y:(cy-r.top)*(420/r.height)}; }
+fruitCanvas.addEventListener('mousemove', function(e){ if(fStarted && !fOver){ var p=getFruitPos(e); sliceAt(p.x,p.y); } });
+fruitCanvas.addEventListener('touchmove', function(e){ e.preventDefault(); if(fStarted && !fOver){ var p=getFruitPos(e); sliceAt(p.x,p.y); } }, {passive:false});
+fruitCanvas.addEventListener('click', function(e){ var p=getFruitPos(e); sliceAt(p.x,p.y); });
+document.addEventListener('keydown', function(e){ if(e.code==='Space'){ e.preventDefault(); jump(); } if(e.key==='ArrowLeft'){ mLeft=true; rLeft=true; } if(e.key==='ArrowRight'){ mRight=true; rRight=true; } if(e.key==='ArrowUp') mJump(); if(e.key==='ArrowUp') zUp=true; if(e.key==='ArrowDown') zDown=true; if(e.key==='w'||e.key==='W') zShoot(); if(e.key==='Shift') rBoost(); });
+document.addEventListener('keyup', function(e){ if(e.key==='ArrowLeft'){ mLeft=false; rLeft=false; } if(e.key==='ArrowRight'){ mRight=false; rRight=false; } if(e.key==='ArrowUp') zUp=false; if(e.key==='ArrowDown') zDown=false; });
+fDraw();
 </script>
 </body>
 </html>
