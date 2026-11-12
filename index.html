@@ -1,4 +1,818 @@
 <!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neon Arcade & RA AI</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Hind+Siliguri:wght@400;600&display=swap');
+
+        :root {
+            --bg-dark: #090a14;
+            --card-bg: #131629;
+            --neon-blue: #00f3ff;
+            --neon-pink: #ff007f;
+            --neon-green: #00ff88;
+            --neon-purple: #9d00ff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Hind Siliguri', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: #fff;
+            min-height: 100vh;
+            background-image: radial-gradient(circle at 50% 0%, #1c2242 0%, #090a14 70%);
+            overflow-x: hidden;
+        }
+
+        header {
+            text-align: center;
+            padding: 30px 20px;
+            border-bottom: 1px solid rgba(0, 243, 255, 0.2);
+            box-shadow: 0 4px 20px rgba(0, 243, 255, 0.1);
+        }
+
+        header h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.5rem;
+            background: linear-gradient(90deg, var(--neon-blue), var(--neon-pink));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 20px rgba(0, 243, 255, 0.3);
+        }
+
+        header p {
+            color: #a0a8d0;
+            margin-top: 8px;
+            font-size: 1.1rem;
+        }
+
+        /* Game Menu Grid */
+        .game-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .game-card {
+            background: var(--card-bg);
+            border: 1px solid rgba(0, 243, 255, 0.2);
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .game-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--neon-blue);
+            box-shadow: 0 10px 25px rgba(0, 243, 255, 0.25);
+        }
+
+        .game-icon {
+            font-size: 3.5rem;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .game-card h3 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.3rem;
+            color: var(--neon-blue);
+            margin-bottom: 10px;
+        }
+
+        .game-card p {
+            color: #b0b8d8;
+            font-size: 0.95rem;
+        }
+
+        /* Game Arena Modal */
+        #game-arena {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(9, 10, 20, 0.95);
+            z-index: 100;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .arena-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            max-width: 600px;
+            margin-bottom: 15px;
+        }
+
+        .arena-header h2 {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--neon-green);
+        }
+
+        .btn {
+            background: linear-gradient(45deg, var(--neon-blue), var(--neon-purple));
+            border: none;
+            color: white;
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            box-shadow: 0 0 15px var(--neon-blue);
+            transform: scale(1.05);
+        }
+
+        .btn-close {
+            background: var(--neon-pink);
+        }
+
+        canvas {
+            background: #05060c;
+            border: 2px solid var(--neon-blue);
+            border-radius: 10px;
+            box-shadow: 0 0 25px rgba(0, 243, 255, 0.2);
+            max-width: 100%;
+        }
+
+        #score-board {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.2rem;
+            margin: 10px 0;
+            color: var(--neon-pink);
+        }
+
+        /* Tic Tac Toe & Memory Board Styles */
+        .ttt-board {
+            display: grid;
+            grid-template-columns: repeat(3, 100px);
+            gap: 10px;
+            margin: 20px 0;
+        }
+
+        .ttt-cell {
+            width: 100px;
+            height: 100px;
+            background: var(--card-bg);
+            border: 2px solid var(--neon-blue);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.5rem;
+            cursor: pointer;
+            text-shadow: 0 0 10px currentColor;
+        }
+
+        .memory-board {
+            display: grid;
+            grid-template-columns: repeat(4, 75px);
+            gap: 10px;
+            margin: 15px 0;
+        }
+
+        .mem-card {
+            width: 75px;
+            height: 75px;
+            background: var(--card-bg);
+            border: 2px solid var(--neon-purple);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .mem-card.flipped {
+            background: #23294d;
+            border-color: var(--neon-green);
+            transform: rotateY(180deg);
+        }
+
+        /* Mobile Controls */
+        .mobile-controls {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        .ctrl-btn {
+            padding: 12px 20px;
+            background: var(--card-bg);
+            border: 1px solid var(--neon-blue);
+            color: white;
+            border-radius: 8px;
+            font-size: 1.2rem;
+            cursor: pointer;
+        }
+
+        /* RA AI Chatbot Styles */
+        #ra-ai-toggle {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            width: 65px;
+            height: 65px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--neon-blue), var(--neon-pink));
+            border: none;
+            color: white;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: bold;
+            font-size: 1.1rem;
+            cursor: pointer;
+            box-shadow: 0 0 20px rgba(0, 243, 255, 0.5);
+            z-index: 200;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(0, 243, 255, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(0, 243, 255, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(0, 243, 255, 0); }
+        }
+
+        #ra-ai-window {
+            display: none;
+            position: fixed;
+            bottom: 100px;
+            right: 25px;
+            width: 340px;
+            max-width: calc(100vw - 50px);
+            height: 450px;
+            background: var(--card-bg);
+            border: 1px solid var(--neon-blue);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+            z-index: 200;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .ai-header {
+            background: linear-gradient(90deg, #161b33, #241938);
+            padding: 15px;
+            border-bottom: 1px solid rgba(0, 243, 255, 0.2);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .ai-header h4 {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--neon-blue);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .ai-dot {
+            width: 10px;
+            height: 10px;
+            background: var(--neon-green);
+            border-radius: 50%;
+            box-shadow: 0 0 8px var(--neon-green);
+        }
+
+        #ai-messages {
+            flex: 1;
+            padding: 15px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .msg {
+            padding: 10px 14px;
+            border-radius: 12px;
+            max-width: 82%;
+            font-size: 0.95rem;
+            line-height: 1.4;
+        }
+
+        .msg.ai {
+            background: #1e2442;
+            color: #e0e6ff;
+            align-self: flex-start;
+            border-bottom-left-radius: 2px;
+            border-left: 3px solid var(--neon-blue);
+        }
+
+        .msg.user {
+            background: linear-gradient(135deg, var(--neon-blue), #0088ff);
+            color: #05060c;
+            font-weight: 600;
+            align-self: flex-end;
+            border-bottom-right-radius: 2px;
+        }
+
+        .ai-input-area {
+            display: flex;
+            padding: 10px;
+            background: #0d101d;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .ai-input-area input {
+            flex: 1;
+            background: transparent;
+            border: none;
+            color: white;
+            padding: 8px;
+            outline: none;
+        }
+
+        .ai-input-area button {
+            background: var(--neon-blue);
+            color: #05060c;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>NEON ARCADE HUB</h1>
+        <p>৫টি হাই-গ্রাফিক্স গেম এবং আপনার পার্সোনাল AI অ্যাসিস্ট্যান্ট (RA AI)</p>
+    </header>
+
+    <div class="game-grid">
+        <div class="game-card" onclick="openGame('snake')">
+            <span class="game-icon">🐍</span>
+            <h3>NEON SNAKE</h3>
+            <p>গ্লোয়িং স্নেক এবং পার্টিকেল ইফেক্টের সাথে ক্লাসিক গেমের আধুনিক ভার্সন।</p>
+        </div>
+
+        <div class="game-card" onclick="openGame('ttt')">
+            <span class="game-icon">❌⭕</span>
+            <h3>AI TIC-TAC-TOE</h3>
+            <p>অপরাজেয় Minimax AI-এর সাথে বুদ্ধির লড়াই। জিততে পারবেন কি?</p>
+        </div>
+
+        <div class="game-card" onclick="openGame('shooter')">
+            <span class="game-icon">🚀</span>
+            <h3>SPACE DEFENDER</h3>
+            <p>লেজার ক্যানন দিয়ে এলিয়েন স্পেসশিপ ধ্বংস করুন এবং হাই-স্কোর গড়ুন।</p>
+        </div>
+
+        <div class="game-card" onclick="openGame('breaker')">
+            <span class="game-icon">🧱</span>
+            <h3>CYBER BREAKER</h3>
+            <p>নিয়ন ব্রিকস ভেঙে ফেলুন স্মুথ ফিজিক্স এবং গ্লোয়িং বলের সাহায্যে।</p>
+        </div>
+
+        <div class="game-card" onclick="openGame('memory')">
+            <span class="game-icon">🧠</span>
+            <h3>MEMORY MATRIX</h3>
+            <p>কার্ড উল্টে জোড়া মেলান এবং আপনার স্মৃতিশক্তির পরীক্ষা নিন।</p>
+        </div>
+    </div>
+
+    <!-- Game Arena -->
+    <div id="game-arena">
+        <div class="arena-header">
+            <h2 id="game-title">GAME</h2>
+            <button class="btn btn-close" onclick="closeGame()">বন্ধ করুন ✖</button>
+        </div>
+        <div id="score-board">Score: 0</div>
+        <div id="game-container"></div>
+    </div>
+
+    <!-- RA AI Chatbot -->
+    <button id="ra-ai-toggle" onclick="toggleAI()">RA AI</button>
+
+    <div id="ra-ai-window">
+        <div class="ai-header">
+            <h4><span class="ai-dot"></span> RA AI (Smart Mode)</h4>
+            <button style="background:none; border:none; color:white; cursor:pointer; font-size:1.2rem;" onclick="toggleAI()">✖</button>
+        </div>
+        <div id="ai-messages">
+            <div class="msg ai">হ্যালো! আমি **RA AI**। আমি তোমাকে গেম খেলতে সাহায্য করতে পারি, যেকোনো প্রশ্নের উত্তর দিতে পারি বা অংক কষে দিতে পারি। কী জানতে চাও?</div>
+        </div>
+        <div class="ai-input-area">
+            <input type="text" id="ai-input" placeholder="এখানে কিছু লিখুন..." onkeypress="if(event.key==='Enter') sendMessage()">
+            <button onclick="sendMessage()">Send</button>
+        </div>
+    </div>
+
+    <script>
+        let gameLoop;
+        const arena = document.getElementById('game-arena');
+        const container = document.getElementById('game-container');
+        const scoreBoard = document.getElementById('score-board');
+        const gameTitle = document.getElementById('game-title');
+
+        function closeGame() {
+            clearInterval(gameLoop);
+            cancelAnimationFrame(gameLoop);
+            arena.style.display = 'none';
+            container.innerHTML = '';
+        }
+
+        function openGame(type) {
+            closeGame();
+            arena.style.display = 'flex';
+            if (type === 'snake') initSnake();
+            else if (type === 'ttt') initTTT();
+            else if (type === 'shooter') initShooter();
+            else if (type === 'breaker') initBreaker();
+            else if (type === 'memory') initMemory();
+        }
+
+        // ================= 1. NEON SNAKE =================
+        function initSnake() {
+            gameTitle.innerText = "NEON SNAKE";
+            container.innerHTML = `
+                <canvas id="snakeCanvas" width="360" height="360"></canvas>
+                <div class="mobile-controls">
+                    <button class="ctrl-btn" onclick="setDir('LEFT')">◀</button>
+                    <button class="ctrl-btn" onclick="setDir('UP')">▲</button>
+                    <button class="ctrl-btn" onclick="setDir('DOWN')">▼</button>
+                    <button class="ctrl-btn" onclick="setDir('RIGHT')">▶</button>
+                </div>`;
+            const canvas = document.getElementById('snakeCanvas');
+            const ctx = canvas.getContext('2d');
+            const box = 18;
+            let snake = [{x: 9 * box, y: 10 * box}];
+            let food = { x: Math.floor(Math.random()*19+1)*box, y: Math.floor(Math.random()*19+1)*box };
+            let score = 0, d = "RIGHT";
+            scoreBoard.innerText = "Score: 0";
+
+            window.setDir = (dir) => {
+                if(dir == "LEFT" && d != "RIGHT") d = "LEFT";
+                if(dir == "UP" && d != "DOWN") d = "UP";
+                if(dir == "RIGHT" && d != "LEFT") d = "RIGHT";
+                if(dir == "DOWN" && d != "UP") d = "DOWN";
+            };
+
+            document.onkeydown = (e) => {
+                if(e.keyCode == 37) setDir("LEFT");
+                else if(e.keyCode == 38) setDir("UP");
+                else if(e.keyCode == 39) setDir("RIGHT");
+                else if(e.keyCode == 40) setDir("DOWN");
+            };
+
+            gameLoop = setInterval(() => {
+                ctx.fillStyle = "rgba(5, 6, 12, 0.85)";
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+                for(let i = 0; i < snake.length; i++) {
+                    ctx.fillStyle = (i == 0) ? "#00ff88" : "#00f3ff";
+                    ctx.shadowBlur = 12;
+                    ctx.shadowColor = (i == 0) ? "#00ff88" : "#00f3ff";
+                    ctx.fillRect(snake[i].x, snake[i].y, box-2, box-2);
+                }
+
+                // Glowing Food
+                ctx.fillStyle = "#ff007f";
+                ctx.shadowBlur = 15;
+                ctx.shadowColor = "#ff007f";
+                ctx.beginPath();
+                ctx.arc(food.x + box/2, food.y + box/2, box/2.2, 0, Math.PI*2);
+                ctx.fill();
+                ctx.shadowBlur = 0;
+
+                let snakeX = snake[0].x;
+                let snakeY = snake[0].y;
+
+                if(d == "LEFT") snakeX -= box;
+                if(d == "UP") snakeY -= box;
+                if(d == "RIGHT") snakeX += box;
+                if(d == "DOWN") snakeY += box;
+
+                if(snakeX == food.x && snakeY == food.y) {
+                    score += 10;
+                    scoreBoard.innerText = "Score: " + score;
+                    food = { x: Math.floor(Math.random()*19)*box, y: Math.floor(Math.random()*19)*box };
+                } else {
+                    snake.pop();
+                }
+
+                let newHead = {x: snakeX, y: snakeY};
+                if(snakeX < 0 || snakeY < 0 || snakeX >= canvas.width || snakeY >= canvas.height || snake.some(s => s.x === newHead.x && s.y === newHead.y)) {
+                    clearInterval(gameLoop);
+                    scoreBoard.innerText = "Game Over! Final Score: " + score;
+                    return;
+                }
+                snake.unshift(newHead);
+            }, 110);
+        }
+
+        // ================= 2. UNBEATABLE TIC-TAC-TOE =================
+        function initTTT() {
+            gameTitle.innerText = "AI TIC-TAC-TOE";
+            scoreBoard.innerText = "আপনি (X) বনাম RA AI (O)";
+            let board = ["", "", "", "", "", "", "", "", ""];
+            container.innerHTML = `<div class="ttt-board" id="tttBoard"></div><button class="btn" onclick="initTTT()">আবার খেলুন</button>`;
+            const boardEl = document.getElementById('tttBoard');
+
+            function render() {
+                boardEl.innerHTML = "";
+                board.forEach((cell, idx) => {
+                    const div = document.createElement('div');
+                    div.className = 'ttt-cell';
+                    div.style.color = cell === 'X' ? '#00f3ff' : '#ff007f';
+                    div.innerText = cell;
+                    div.onclick = () => makeMove(idx);
+                    boardEl.appendChild(div);
+                });
+            }
+
+            function checkWin(b, player) {
+                const wins = [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]];
+                return wins.some(w => w.every(i => b[i] === player));
+            }
+
+            function minimax(newBoard, player) {
+                let avail = newBoard.map((v, i) => v === "" ? i : null).filter(v => v !== null);
+                if (checkWin(newBoard, "X")) return {score: -10};
+                if (checkWin(newBoard, "O")) return {score: 10};
+                if (avail.length === 0) return {score: 0};
+
+                let moves = [];
+                for (let i = 0; i < avail.length; i++) {
+                    let move = {index: avail[i]};
+                    newBoard[avail[i]] = player;
+                    move.score = player === "O" ? minimax(newBoard, "X").score : minimax(newBoard, "O").score;
+                    newBoard[avail[i]] = "";
+                    moves.push(move);
+                }
+
+                let bestMove;
+                if (player === "O") {
+                    let bestScore = -10000;
+                    moves.forEach((m, i) => { if (m.score > bestScore) { bestScore = m.score; bestMove = i; } });
+                } else {
+                    let bestScore = 10000;
+                    moves.forEach((m, i) => { if (m.score < bestScore) { bestScore = m.score; bestMove = i; } });
+                }
+                return moves[bestMove];
+            }
+
+            function makeMove(idx) {
+                if (board[idx] !== "" || checkWin(board, "O") || checkWin(board, "X")) return;
+                board[idx] = "X";
+                render();
+                if (checkWin(board, "X")) { scoreBoard.innerText = "অভিনন্দন! আপনি জিতেছেন!"; return; }
+                if (!board.includes("")) { scoreBoard.innerText = "ম্যাচ ড্র হয়েছে!"; return; }
+
+                let best = minimax(board, "O").index;
+                board[best] = "O";
+                render();
+                if (checkWin(board, "O")) scoreBoard.innerText = "RA AI জিতেছে! আবার চেষ্টা করুন।";
+            }
+            render();
+        }
+
+        // ================= 3. SPACE DEFENDER =================
+        function initShooter() {
+            gameTitle.innerText = "SPACE DEFENDER";
+            container.innerHTML = `<canvas id="spaceCanvas" width="360" height="420"></canvas>
+            <div class="mobile-controls">
+                <button class="ctrl-btn" onmousedown="ship.x-=25">◀ বামে</button>
+                <button class="ctrl-btn" onclick="shoot()">🔥 ফায়ার</button>
+                <button class="ctrl-btn" onmousedown="ship.x+=25">ডানে ▶</button>
+            </div>`;
+            const canvas = document.getElementById('spaceCanvas');
+            const ctx = canvas.getContext('2d');
+            window.ship = {x: 160, y: 370, w: 40, h: 20};
+            let bullets = [], enemies = [], particles = [], score = 0;
+            scoreBoard.innerText = "Score: 0";
+
+            window.shoot = () => bullets.push({x: ship.x + 18, y: ship.y});
+            document.onkeydown = (e) => {
+                if(e.key === "ArrowLeft" && ship.x > 0) ship.x -= 20;
+                if(e.key === "ArrowRight" && ship.x < 320) ship.x += 20;
+                if(e.key === " " || e.key === "ArrowUp") shoot();
+            };
+
+            let enemyTimer = 0;
+            gameLoop = setInterval(() => {
+                ctx.fillStyle = "rgba(5, 6, 12, 0.4)";
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+                // Draw Ship
+                ctx.fillStyle = "#00f3ff";
+                ctx.shadowBlur = 15; ctx.shadowColor = "#00f3ff";
+                ctx.beginPath();
+                ctx.moveTo(ship.x + 20, ship.y);
+                ctx.lineTo(ship.x, ship.y + 25);
+                ctx.lineTo(ship.x + 40, ship.y + 25);
+                ctx.fill();
+
+                // Bullets
+                ctx.fillStyle = "#00ff88";
+                bullets.forEach((b, i) => {
+                    b.y -= 7;
+                    ctx.fillRect(b.x, b.y, 4, 12);
+                    if(b.y < 0) bullets.splice(i, 1);
+                });
+
+                // Enemies
+                if(++enemyTimer % 35 === 0) enemies.push({x: Math.random()*320, y: 0, w: 30, h: 25});
+                ctx.fillStyle = "#ff007f";
+                ctx.shadowColor = "#ff007f";
+                enemies.forEach((en, ei) => {
+                    en.y += 2.5;
+                    ctx.fillRect(en.x, en.y, en.w, en.h);
+
+                    bullets.forEach((b, bi) => {
+                        if(b.x > en.x && b.x < en.x+en.w && b.y < en.y+en.h && b.y > en.y) {
+                            for(let p=0; p<8; p++) particles.push({x: en.x+15, y: en.y+12, vx: (Math.random()-0.5)*6, vy: (Math.random()-0.5)*6, life: 15});
+                            enemies.splice(ei, 1);
+                            bullets.splice(bi, 1);
+                            score += 20;
+                            scoreBoard.innerText = "Score: " + score;
+                        }
+                    });
+
+                    if(en.y > 400) {
+                        clearInterval(gameLoop);
+                        scoreBoard.innerText = "Game Over! Score: " + score;
+                    }
+                });
+
+                // Explosion Particles
+                ctx.fillStyle = "#ffaa00";
+                particles.forEach((p, pi) => {
+                    p.x += p.vx; p.y += p.vy; p.life--;
+                    ctx.fillRect(p.x, p.y, 3, 3);
+                    if(p.life <= 0) particles.splice(pi, 1);
+                });
+                ctx.shadowBlur = 0;
+            }, 30);
+        }
+
+        // ================= 4. CYBER BREAKER =================
+        function initBreaker() {
+            gameTitle.innerText = "CYBER BREAKER";
+            container.innerHTML = `<canvas id="breakerCanvas" width="360" height="360"></canvas>`;
+            const canvas = document.getElementById('breakerCanvas');
+            const ctx = canvas.getContext('2d');
+            let ball = {x: 180, y: 250, dx: 3, dy: -3, r: 7};
+            let paddle = {x: 140, w: 80, h: 10};
+            let bricks = [], score = 0;
+            scoreBoard.innerText = "Score: 0";
+
+            for(let c=0; c<5; c++) {
+                for(let r=0; r<4; r++) {
+                    bricks.push({x: c*68 + 15, y: r*25 + 30, w: 60, h: 15, status: 1, color: r%2==0 ? '#00f3ff' : '#ff007f'});
+                }
+            }
+
+            canvas.onmousemove = (e) => {
+                let rect = canvas.getBoundingClientRect();
+                paddle.x = e.clientX - rect.left - paddle.w/2;
+            };
+            canvas.ontouchmove = (e) => {
+                let rect = canvas.getBoundingClientRect();
+                paddle.x = e.touches[0].clientX - rect.left - paddle.w/2;
+            };
+
+            gameLoop = setInterval(() => {
+                ctx.fillStyle = "rgba(5, 6, 12, 0.4)";
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+                // Ball
+                ctx.beginPath();
+                ctx.arc(ball.x, ball.y, ball.r, 0, Math.PI*2);
+                ctx.fillStyle = "#00ff88";
+                ctx.shadowBlur = 12; ctx.shadowColor = "#00ff88";
+                ctx.fill();
+
+                // Paddle
+                ctx.fillStyle = "#9d00ff";
+                ctx.shadowColor = "#9d00ff";
+                ctx.fillRect(paddle.x, canvas.height - 20, paddle.w, paddle.h);
+
+                // Bricks
+                bricks.forEach(b => {
+                    if(b.status === 1) {
+                        ctx.fillStyle = b.color;
+                        ctx.shadowColor = b.color;
+                        ctx.fillRect(b.x, b.y, b.w, b.h);
+                        if(ball.x > b.x && ball.x < b.x+b.w && ball.y > b.y && ball.y < b.y+b.h) {
+                            ball.dy = -ball.dy;
+                            b.status = 0;
+                            score += 15;
+                            scoreBoard.innerText = "Score: " + score;
+                        }
+                    }
+                });
+                ctx.shadowBlur = 0;
+
+                if(ball.x + ball.dx > canvas.width - ball.r || ball.x + ball.dx < ball.r) ball.dx = -ball.dx;
+                if(ball.y + ball.dy < ball.r) ball.dy = -ball.dy;
+                else if(ball.y + ball.dy > canvas.height - 20) {
+                    if(ball.x > paddle.x && ball.x < paddle.x + paddle.w) ball.dy = -ball.dy;
+                    else {
+                        clearInterval(gameLoop);
+                        scoreBoard.innerText = "Game Over! Score: " + score;
+                    }
+                }
+                ball.x += ball.dx; ball.y += ball.dy;
+            }, 20);
+        }
+
+        // ================= 5. MEMORY MATRIX =================
+        function initMemory() {
+            gameTitle.innerText = "MEMORY MATRIX";
+            const icons = ['🚀','🐍','💎','⚡','🔥','👾','🚀','🐍','💎','⚡','🔥','👾'].sort(() => Math.random() - 0.5);
+            let flipped = [], matched = 0, moves = 0;
+            scoreBoard.innerText = "Moves: 0";
+            container.innerHTML = `<div class="memory-board" id="memBoard"></div>`;
+            const board = document.getElementById('memBoard');
+
+            icons.forEach((icon, i) => {
+                const card = document.createElement('div');
+                card.className = 'mem-card';
+                card.dataset.icon = icon;
+                card.innerText = '❓';
+                card.onclick = () => {
+                    if(flipped.length < 2 && !card.classList.contains('flipped')) {
+                        card.classList.add('flipped');
+                        card.innerText = icon;
+                        flipped.push(card);
+                        if(flipped.length === 2) {
+                            moves++;
+                            scoreBoard.innerText = "Moves: " + moves;
+                            if(flipped[0].dataset.icon === flipped[1].dataset.icon) {
+                                matched += 2;
+                                flipped = [];
+                                if(matched === icons.length) scoreBoard.innerText = `জিতেছেন! মোট চাল: ${moves}`;
+                            } else {
+                                setTimeout(() => {
+                                    flipped.forEach(c => { c.classList.remove('flipped'); c.innerText = '❓'; });
+                                    flipped = [];
+                                }, 700);
+                            }
+                        }
+                    }
+                };
+                board.appendChild(card);
+            });
+        }
+
+        // ================= INTELLIGENT RA AI ENGINE =================
+        function toggleAI() {
+            const win = document.getElementById('ra-ai-window');
+            win.style.display = win.style.display === 'flex' ? 'none' : 'flex';
+        }
+
+        function sendMessage() {
+            const input = document.getElementById('ai-input');
+            const msgBox = document.getElementById('ai-messages');
+            const text = input.value.trim();
+            if(!text) return;
+
+            msgBox.innerHTML += `<div class="msg user">${text}</div>`;
+            input.value = '';
+            msgBox.scrollTop = msgBox.scrollHeight;
+
+            setTimeout(() => {
+                const reply = generateSmartReply(text);
+                msgBox.innerHTML += `<div class="msg ai">${reply}</div>`;
+                msgBox.scrollTop = msgBox.scrollHeight;
+            }, 400);
+        }
+
+        function generateSmartReply(q) {
+            const low = q.toLowerCase();
+
+            // Math Solver
+            const mathMatch = low.match(/(\d+\s*[\+\-\*\/]\s*\d+)/);
+            if (mathMatch) {
+                try {
+                    const ans = eval(mathMatch[0]);
+                    return `হিসাব অনুযায়ী **${mathMatch[0]} = ${ans}**। আর কোনো অংক আছে?`;
+                } catch(e) {}
+        <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -440,5 +1254,37 @@ document.addEventListener('keydown', function(e){ if(e.code==='Space'){ e.preven
 document.addEventListener('keyup', function(e){ if(e.key==='ArrowLeft'){ mLeft=false; rLeft=false; } if(e.key==='ArrowRight'){ mRight=false; rRight=false; } if(e.key==='ArrowUp'){ zUp=false; } if(e.key==='ArrowDown'){ zDown=false; } });
 fDraw();
 </script>
+</body>
+</html>    }
+
+            // Conversational & Smart Knowledge Base
+            if (low.includes('hi') || low.includes('hello') || low.includes('হ্যালো') || low.includes('সালাম')) {
+                return "হ্যালো! কেমন আছো? আজ কোন গেমটি খেলতে চাও—Neon Snake নাকি Space Defender?";
+            }
+            if (low.includes('কেমন আছ') || low.includes('kemon acho')) {
+                return "আমি দারুণ আছি! আমার সিস্টেম ১০০% অ্যাক্টিভ। তুমি কেমন আছো?";
+            }
+            if (low.includes('তোমার নাম') || low.includes('who are you') || low.includes('ke tumi')) {
+                return "আমি **RA AI**—এই ওয়েবসাইটের ইন্টেলিজেন্ট অ্যাসিস্ট্যান্ট। আমাকে তৈরি করা হয়েছে তোমাকে সাহায্য করার জন্য!";
+            }
+            if (low.includes('game') || low.includes('গেম') || low.includes('খেলব')) {
+                return "আমাদের এখানে ৫টি দারুণ গেম আছে: **Neon Snake, AI Tic-Tac-Toe, Space Defender, Cyber Breaker** এবং **Memory Matrix**। Tic-Tac-Toe গেমে আমাকে হারানোর চ্যালেঞ্জ নেবে নাকি?";
+            }
+            if (low.includes('tic tac toe') || low.includes('টিক ট্যাক টো') || low.includes('হারাব')) {
+                return "টিপস: Tic-Tac-Toe গেমে আমি Minimax অ্যালগরিদম ব্যবহার করি। আমাকে হারাতে হলে শুরুতেই মাঝখানের ঘর বা কোণার ঘর দখল করার চেষ্টা করো!";
+            }
+            if (low.includes('সময়') || low.includes('time') || low.includes('কয়টা বাজে')) {
+                return "এখন সময় হলো: **" + new Date().toLocaleTimeString() + "**।";
+            }
+            if (low.includes('তারিখ') || low.includes('date') || low.includes('আজ কি বার')) {
+                return "আজকের তারিখ: **" + new Date().toLocaleDateString() + "**।";
+            }
+            if (low.includes('ধন্যবাদ') || low.includes('thanks') || low.includes('thank you')) {
+                return "তোমাকেও অনেক ধন্যবাদ! যেকোনো প্রয়োজনে আমাকে জিজ্ঞাসা করো। 😊";
+            }
+
+            return "দারুণ প্রশ্ন! আমি বিষয়টি নিয়ে ভাবছি। তুমি চাইলে আমাকে যেকোনো অংক (যেমন: 25*4), সময়, অথবা এই ওয়েবসাইটের গেমগুলোর টিপস জিজ্ঞাসা করতে পারো!";
+        }
+    </script>
 </body>
 </html>
